@@ -1,0 +1,42 @@
+D:\Programs\DNSpy32\Source\Projects\Grim38Lite\Grimoire\obj\Debug\Grimoire.csprojAssemblyReference.cache
+D:\Programs\DNSpy32\Source\Projects\Grim38Lite\Grimoire\obj\Debug\Grimoire.csproj.CoreCompileInputs.cache
+D:\Programs\DNSpy32\Source\Projects\Grim38Lite\Grimoire\bin\Debug\Grimoire.exe
+D:\Programs\DNSpy32\Source\Projects\Grim38Lite\Grimoire\bin\Debug\Grimoire.pdb
+D:\Programs\DNSpy32\Source\Projects\Grim38Lite\Grimoire\bin\Debug\AxInterop.ShockwaveFlashObjects.dll
+D:\Programs\DNSpy32\Source\Projects\Grim38Lite\Grimoire\bin\Debug\HtmlAgilityPack.dll
+D:\Programs\DNSpy32\Source\Projects\Grim38Lite\Grimoire\bin\Debug\Newtonsoft.Json.dll
+D:\Programs\DNSpy32\Source\Projects\Grim38Lite\Grimoire\bin\Debug\Interop.ShockwaveFlashObjects.dll
+D:\Programs\DNSpy32\Source\Projects\Grim38Lite\Grimoire\bin\Debug\stdole.dll
+D:\Programs\DNSpy32\Source\Projects\Grim38Lite\Grimoire\obj\Debug\Grimoire.csproj.CopyComplete
+D:\Programs\DNSpy32\Source\Projects\Grim38Lite\Grimoire\obj\Debug\Grimoire.exe
+D:\Programs\DNSpy32\Source\Projects\Grim38Lite\Grimoire\obj\Debug\Grimoire.pdb
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.UI.BotManager.resources
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.csproj.GenerateResource.cache
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.csproj.CoreCompileInputs.cache
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.csprojAssemblyReference.cache
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\bin\Debug\Grimoire.exe
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\bin\Debug\Grimoire.pdb
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.csproj.CopyComplete
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.exe
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.pdb
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\bin\Debug\Interop.ShockwaveFlashObjects.dll
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\bin\Debug\stdole.dll
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.UI.PluginManager.resources
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.UI.Root.resources
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.UI.PacketLogger.resources
+D:\Programs\Visual Studio Professional\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.UI.Loaders.resources
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\bin\Debug\Grimoire.exe
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\bin\Debug\Grimoire.pdb
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\bin\Debug\Interop.ShockwaveFlashObjects.dll
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\bin\Debug\stdole.dll
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.csprojAssemblyReference.cache
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.UI.BotManager.resources
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.UI.Loaders.resources
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.UI.PacketLogger.resources
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.UI.PluginManager.resources
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.UI.Root.resources
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.csproj.GenerateResource.cache
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.csproj.CoreCompileInputs.cache
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.csproj.CopyComplete
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.exe
+D:\ProjectPlugin\Souce\Grim38Lite\Grimoire\obj\Debug\Grimoire.pdb

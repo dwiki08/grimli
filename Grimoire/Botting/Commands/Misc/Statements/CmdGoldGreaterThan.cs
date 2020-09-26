@@ -1,0 +1,26 @@
+﻿using System.Threading.Tasks;
+using Grimoire.Game;
+
+namespace Grimoire.Botting.Commands.Misc.Statements
+{
+    public class CmdGoldGreaterThan : StatementCommand, IBotCommand
+    {
+        public CmdGoldGreaterThan()
+        {
+            Tag = "This player";
+            Text = "Gold is greater than";
+        }
+
+        public Task Execute(IBotEngine instance)
+        {
+            if (Player.Gold <= int.Parse(Value1))
+                instance.Index++;
+            return Task.FromResult<object>(null);
+        }
+
+        public override string ToString()
+        {
+            return $"Gold is greater than: {Value1}";
+        }
+    }
+}

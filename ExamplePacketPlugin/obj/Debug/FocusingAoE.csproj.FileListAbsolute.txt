@@ -1,0 +1,16 @@
+D:\Programs\Visual Studio Professional\Souce\Grimoire\ExamplePacketPlugin\obj\Debug\FocusingAoE.csprojAssemblyReference.cache
+D:\Programs\Visual Studio Professional\Souce\Grimoire\ExamplePacketPlugin\obj\Debug\ExamplePacketPlugin.Main.resources
+D:\Programs\Visual Studio Professional\Souce\Grimoire\ExamplePacketPlugin\obj\Debug\FocusingAoE.csproj.GenerateResource.cache
+D:\Programs\Visual Studio Professional\Souce\Grimoire\ExamplePacketPlugin\obj\Debug\FocusingAoE.csproj.CoreCompileInputs.cache
+D:\Programs\Visual Studio Professional\Souce\Grimoire\ExamplePacketPlugin\bin\Debug\FocusingAoE.dll
+D:\Programs\Visual Studio Professional\Souce\Grimoire\ExamplePacketPlugin\bin\Debug\FocusingAoE.pdb
+D:\Programs\Visual Studio Professional\Souce\Grimoire\ExamplePacketPlugin\obj\Debug\FocusingAoE.dll
+D:\Programs\Visual Studio Professional\Souce\Grimoire\ExamplePacketPlugin\obj\Debug\FocusingAoE.pdb
+D:\Programs\Visual Studio Professional\Souce\ReFocus\ExamplePacketPlugin\obj\Debug\FocusingAoE.csprojAssemblyReference.cache
+D:\Programs\Visual Studio Professional\Souce\ReFocus\ExamplePacketPlugin\obj\Debug\ExamplePacketPlugin.Main.resources
+D:\Programs\Visual Studio Professional\Souce\ReFocus\ExamplePacketPlugin\obj\Debug\FocusingAoE.csproj.GenerateResource.cache
+D:\Programs\Visual Studio Professional\Souce\ReFocus\ExamplePacketPlugin\obj\Debug\FocusingAoE.csproj.CoreCompileInputs.cache
+D:\Programs\Visual Studio Professional\Souce\ReFocus\ExamplePacketPlugin\bin\Debug\AutoFocusingAoE.dll
+D:\Programs\Visual Studio Professional\Souce\ReFocus\ExamplePacketPlugin\bin\Debug\AutoFocusingAoE.pdb
+D:\Programs\Visual Studio Professional\Souce\ReFocus\ExamplePacketPlugin\obj\Debug\AutoFocusingAoE.dll
+D:\Programs\Visual Studio Professional\Souce\ReFocus\ExamplePacketPlugin\obj\Debug\AutoFocusingAoE.pdb
