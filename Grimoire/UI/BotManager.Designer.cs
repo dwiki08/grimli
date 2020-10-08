@@ -234,19 +234,20 @@
             this.clientSideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.froztt13ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlFroztt = new System.Windows.Forms.Panel();
-            this.label20 = new System.Windows.Forms.Label();
-            this.tbMonNameF = new System.Windows.Forms.TextBox();
-            this.tbMapF = new System.Windows.Forms.TextBox();
+            this.btnAddCmdFrozzt = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.chkGetAfterF = new System.Windows.Forms.CheckBox();
+            this.tbGetAfterF = new System.Windows.Forms.TextBox();
+            this.chkAddToWhitelistF = new System.Windows.Forms.CheckBox();
+            this.chkIsTempF = new System.Windows.Forms.CheckBox();
+            this.tbItemNameF = new System.Windows.Forms.TextBox();
+            this.btnGetMapF = new System.Windows.Forms.Button();
             this.tbPadF = new System.Windows.Forms.TextBox();
             this.tbCellF = new System.Windows.Forms.TextBox();
-            this.btnGetMapF = new System.Windows.Forms.Button();
-            this.tbItemNameF = new System.Windows.Forms.TextBox();
-            this.chkIsTempF = new System.Windows.Forms.CheckBox();
-            this.chkAddToWhitelistF = new System.Windows.Forms.CheckBox();
-            this.tbGetAfterF = new System.Windows.Forms.TextBox();
-            this.chkGetAfterF = new System.Windows.Forms.CheckBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.btnAddCmdFrozzt = new System.Windows.Forms.Button();
+            this.tbMapF = new System.Windows.Forms.TextBox();
+            this.tbMonNameF = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tbItemQtyF = new System.Windows.Forms.TextBox();
             this.pnlCombat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRestMP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRest)).BeginInit();
@@ -2651,6 +2652,7 @@
             // 
             // pnlFroztt
             // 
+            this.pnlFroztt.Controls.Add(this.tbItemQtyF);
             this.pnlFroztt.Controls.Add(this.btnAddCmdFrozzt);
             this.pnlFroztt.Controls.Add(this.label21);
             this.pnlFroztt.Controls.Add(this.chkGetAfterF);
@@ -2669,30 +2671,81 @@
             this.pnlFroztt.Size = new System.Drawing.Size(338, 248);
             this.pnlFroztt.TabIndex = 111;
             // 
-            // label20
+            // btnAddCmdFrozzt
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(7, 5);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(72, 13);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "Short Hunting";
+            this.btnAddCmdFrozzt.Location = new System.Drawing.Point(11, 180);
+            this.btnAddCmdFrozzt.Name = "btnAddCmdFrozzt";
+            this.btnAddCmdFrozzt.Size = new System.Drawing.Size(131, 23);
+            this.btnAddCmdFrozzt.TabIndex = 49;
+            this.btnAddCmdFrozzt.Text = "Add Command";
+            this.btnAddCmdFrozzt.UseVisualStyleBackColor = true;
+            this.btnAddCmdFrozzt.Click += new System.EventHandler(this.btnAddCmdFrozzt_Click);
             // 
-            // tbMonNameF
+            // label21
             // 
-            this.tbMonNameF.Location = new System.Drawing.Point(10, 49);
-            this.tbMonNameF.Name = "tbMonNameF";
-            this.tbMonNameF.Size = new System.Drawing.Size(132, 20);
-            this.tbMonNameF.TabIndex = 1;
-            this.tbMonNameF.Text = "Monster (*  = random)";
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(145, 151);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(19, 13);
+            this.label21.TabIndex = 48;
+            this.label21.Text = "kill";
             // 
-            // tbMapF
+            // chkGetAfterF
             // 
-            this.tbMapF.Location = new System.Drawing.Point(10, 23);
-            this.tbMapF.Name = "tbMapF";
-            this.tbMapF.Size = new System.Drawing.Size(132, 20);
-            this.tbMapF.TabIndex = 2;
-            this.tbMapF.Text = "Map";
+            this.chkGetAfterF.AutoSize = true;
+            this.chkGetAfterF.Location = new System.Drawing.Point(11, 150);
+            this.chkGetAfterF.Name = "chkGetAfterF";
+            this.chkGetAfterF.Size = new System.Drawing.Size(91, 17);
+            this.chkGetAfterF.TabIndex = 47;
+            this.chkGetAfterF.Text = "Get drop after";
+            this.chkGetAfterF.UseVisualStyleBackColor = true;
+            // 
+            // tbGetAfterF
+            // 
+            this.tbGetAfterF.Location = new System.Drawing.Point(99, 146);
+            this.tbGetAfterF.Name = "tbGetAfterF";
+            this.tbGetAfterF.Size = new System.Drawing.Size(43, 20);
+            this.tbGetAfterF.TabIndex = 46;
+            // 
+            // chkAddToWhitelistF
+            // 
+            this.chkAddToWhitelistF.AutoSize = true;
+            this.chkAddToWhitelistF.Checked = true;
+            this.chkAddToWhitelistF.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAddToWhitelistF.Location = new System.Drawing.Point(11, 127);
+            this.chkAddToWhitelistF.Name = "chkAddToWhitelistF";
+            this.chkAddToWhitelistF.Size = new System.Drawing.Size(97, 17);
+            this.chkAddToWhitelistF.TabIndex = 45;
+            this.chkAddToWhitelistF.Text = "Add to whitelist";
+            this.chkAddToWhitelistF.UseVisualStyleBackColor = true;
+            // 
+            // chkIsTempF
+            // 
+            this.chkIsTempF.AutoSize = true;
+            this.chkIsTempF.Location = new System.Drawing.Point(148, 77);
+            this.chkIsTempF.Name = "chkIsTempF";
+            this.chkIsTempF.Size = new System.Drawing.Size(63, 17);
+            this.chkIsTempF.TabIndex = 44;
+            this.chkIsTempF.Text = "is Temp";
+            this.chkIsTempF.UseVisualStyleBackColor = true;
+            // 
+            // tbItemNameF
+            // 
+            this.tbItemNameF.Location = new System.Drawing.Point(10, 75);
+            this.tbItemNameF.Name = "tbItemNameF";
+            this.tbItemNameF.Size = new System.Drawing.Size(132, 20);
+            this.tbItemNameF.TabIndex = 43;
+            this.tbItemNameF.Text = "Item name";
+            // 
+            // btnGetMapF
+            // 
+            this.btnGetMapF.Location = new System.Drawing.Point(284, 21);
+            this.btnGetMapF.Name = "btnGetMapF";
+            this.btnGetMapF.Size = new System.Drawing.Size(52, 23);
+            this.btnGetMapF.TabIndex = 42;
+            this.btnGetMapF.Text = "Get";
+            this.btnGetMapF.UseVisualStyleBackColor = true;
+            this.btnGetMapF.Click += new System.EventHandler(this.btnGetMapF_Click);
             // 
             // tbPadF
             // 
@@ -2710,79 +2763,38 @@
             this.tbCellF.TabIndex = 40;
             this.tbCellF.Text = "Cell";
             // 
-            // btnGetMapF
+            // tbMapF
             // 
-            this.btnGetMapF.Location = new System.Drawing.Point(284, 21);
-            this.btnGetMapF.Name = "btnGetMapF";
-            this.btnGetMapF.Size = new System.Drawing.Size(52, 23);
-            this.btnGetMapF.TabIndex = 42;
-            this.btnGetMapF.Text = "Get";
-            this.btnGetMapF.UseVisualStyleBackColor = true;
+            this.tbMapF.Location = new System.Drawing.Point(10, 23);
+            this.tbMapF.Name = "tbMapF";
+            this.tbMapF.Size = new System.Drawing.Size(132, 20);
+            this.tbMapF.TabIndex = 2;
+            this.tbMapF.Text = "Map";
             // 
-            // tbItemNameF
+            // tbMonNameF
             // 
-            this.tbItemNameF.Location = new System.Drawing.Point(10, 75);
-            this.tbItemNameF.Name = "tbItemNameF";
-            this.tbItemNameF.Size = new System.Drawing.Size(132, 20);
-            this.tbItemNameF.TabIndex = 43;
-            this.tbItemNameF.Text = "Item name";
+            this.tbMonNameF.Location = new System.Drawing.Point(10, 49);
+            this.tbMonNameF.Name = "tbMonNameF";
+            this.tbMonNameF.Size = new System.Drawing.Size(132, 20);
+            this.tbMonNameF.TabIndex = 1;
+            this.tbMonNameF.Text = "Monster (*  = random)";
             // 
-            // chkIsTempF
+            // label20
             // 
-            this.chkIsTempF.AutoSize = true;
-            this.chkIsTempF.Location = new System.Drawing.Point(148, 77);
-            this.chkIsTempF.Name = "chkIsTempF";
-            this.chkIsTempF.Size = new System.Drawing.Size(63, 17);
-            this.chkIsTempF.TabIndex = 44;
-            this.chkIsTempF.Text = "is Temp";
-            this.chkIsTempF.UseVisualStyleBackColor = true;
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(7, 5);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(72, 13);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Short Hunting";
             // 
-            // chkAddToWhitelistF
+            // tbItemQtyF
             // 
-            this.chkAddToWhitelistF.AutoSize = true;
-            this.chkAddToWhitelistF.Checked = true;
-            this.chkAddToWhitelistF.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAddToWhitelistF.Location = new System.Drawing.Point(11, 102);
-            this.chkAddToWhitelistF.Name = "chkAddToWhitelistF";
-            this.chkAddToWhitelistF.Size = new System.Drawing.Size(97, 17);
-            this.chkAddToWhitelistF.TabIndex = 45;
-            this.chkAddToWhitelistF.Text = "Add to whitelist";
-            this.chkAddToWhitelistF.UseVisualStyleBackColor = true;
-            // 
-            // tbGetAfterF
-            // 
-            this.tbGetAfterF.Location = new System.Drawing.Point(99, 121);
-            this.tbGetAfterF.Name = "tbGetAfterF";
-            this.tbGetAfterF.Size = new System.Drawing.Size(43, 20);
-            this.tbGetAfterF.TabIndex = 46;
-            // 
-            // chkGetAfterF
-            // 
-            this.chkGetAfterF.AutoSize = true;
-            this.chkGetAfterF.Location = new System.Drawing.Point(11, 125);
-            this.chkGetAfterF.Name = "chkGetAfterF";
-            this.chkGetAfterF.Size = new System.Drawing.Size(91, 17);
-            this.chkGetAfterF.TabIndex = 47;
-            this.chkGetAfterF.Text = "Get drop after";
-            this.chkGetAfterF.UseVisualStyleBackColor = true;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(145, 126);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(19, 13);
-            this.label21.TabIndex = 48;
-            this.label21.Text = "kill";
-            // 
-            // btnAddCmdFrozzt
-            // 
-            this.btnAddCmdFrozzt.Location = new System.Drawing.Point(11, 155);
-            this.btnAddCmdFrozzt.Name = "btnAddCmdFrozzt";
-            this.btnAddCmdFrozzt.Size = new System.Drawing.Size(131, 23);
-            this.btnAddCmdFrozzt.TabIndex = 49;
-            this.btnAddCmdFrozzt.Text = "Add Command";
-            this.btnAddCmdFrozzt.UseVisualStyleBackColor = true;
+            this.tbItemQtyF.Location = new System.Drawing.Point(10, 101);
+            this.tbItemQtyF.Name = "tbItemQtyF";
+            this.tbItemQtyF.Size = new System.Drawing.Size(132, 20);
+            this.tbItemQtyF.TabIndex = 50;
+            this.tbItemQtyF.Text = "Quantity (* = any)";
             // 
             // BotManager
             // 
@@ -3086,5 +3098,6 @@
         private System.Windows.Forms.TextBox tbMapF;
         private System.Windows.Forms.TextBox tbMonNameF;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox tbItemQtyF;
     }
 }

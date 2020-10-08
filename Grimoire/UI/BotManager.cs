@@ -88,7 +88,7 @@ namespace Grimoire.UI
             pnlOptions.Size = new Size(283, 315);
             pnlSaved.Size = new Size(438, 315);
             pnlClientSide.Size = new Size(283, 315);
-            pnlFroztt.Size = new Size(283, 315);
+            pnlFroztt.Size = new Size(438, 315);
             HidePanels(pnlCombat);
             lstBoosts.DisplayMember = "Text";
             lstQuests.DisplayMember = "Text";
@@ -435,7 +435,7 @@ namespace Grimoire.UI
                     Size = new Size(562, 392);
                     break;
                 case "pnlQuest":
-                    Size = new Size(493, 392);
+                    Size = new Size(562, 392);
                     break;
                 case "pnlMisc":
                     Size = new Size(682, 392);
@@ -450,7 +450,7 @@ namespace Grimoire.UI
                     Size = new Size(527, 392);
                     break;
                 case "pnlFroztt":
-                    Size = new Size(527, 392);
+                    Size = new Size(632, 392);
                     break;
                 default: return;
             }
@@ -1536,6 +1536,64 @@ namespace Grimoire.UI
         }
         #endregion
 
+        #region Frozt ShortHunt
+        private void btnGetMapF_Click(object sender, EventArgs e)
+        {
+            tbCellF.Text = Player.Cell;
+            tbPadF.Text = Player.Pad;
+            tbMapF.Text = Player.Map;
+        }
+
+        private void btnAddCmdFrozzt_Click(object sender, EventArgs e)
+        {
+            if (tbItemNameF.Text.Length > 0 && tbItemQtyF.Text.Length > 0)
+            {
+                string monster = string.IsNullOrEmpty(this.tbMonNameF.Text) ? "*" : this.tbMonNameF.Text;
+                string monId = "";
+                if (monster.Split(' ')[0].Equals("/id"))
+                {
+                    monId = monster.Split(' ')[1];
+                }
+                bool flag = this.tbMonNameF.Text == "Monster (*  = random)";
+                if (flag) monster = "*";
+                string text = this.tbItemNameF.Text;
+                string text2 = this.tbItemQtyF.Text;
+
+                if (chkAddToWhitelistF.Checked)
+                {
+                    if (tbItemNameF.Text.Length <= 0) return;
+                    string[] items = tbItemNameF.Text.Split(new char[] {
+                        ','
+                    });
+
+                    foreach (string item in items)
+                    {
+                        if (!lstDrops.Items.Cast<string>().ToList().Any((string d) => d.Equals(item, StringComparison.OrdinalIgnoreCase)))
+                            lstDrops.Items.Add(item);
+                    }
+                }
+
+                int times = 0;
+
+                CmdShortHunt cmd = new CmdShortHunt
+                {
+                    Map = tbMapF.Text,
+                    Cell = tbCellF.Text,
+                    Pad = tbPadF.Text,
+                    ItemType = (chkIsTempF.Checked ? ItemType.TempItems : ItemType.Items),
+                    Monster = monster,
+                    ItemName = text,
+                    Quantity = text2,
+                    IsGetDrops = chkGetAfterF.Checked,
+                    AfterKills = int.TryParse(this.tbGetAfterF.Text, out times) ? times : 1
+                };
+
+                this.AddCommand(cmd, (Control.ModifierKeys & Keys.Control) == Keys.Control);
+            }
+
+        }
+        #endregion
+
         private void rbForQuest_CheckedChanged(object sender, EventArgs e)
         {
             chkAddToWhitelist.Enabled = !rbForQuest.Checked;
@@ -1544,5 +1602,6 @@ namespace Grimoire.UI
             txtKillFItem.Enabled = !rbForQuest.Checked;
             txtKillFQ.Enabled = !rbForQuest.Checked;
         }
+
     }
 }

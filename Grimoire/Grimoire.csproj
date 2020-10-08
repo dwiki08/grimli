@@ -59,6 +59,7 @@
     <Compile Include="Botting\Bot.cs" />
     <Compile Include="Botting\BotUtilities.cs" />
     <Compile Include="Botting\Commands\Combat\CmdAttack.cs" />
+    <Compile Include="Botting\Commands\Combat\CmdShortHunt.cs" />
     <Compile Include="Botting\Commands\Combat\CmdKill.cs" />
     <Compile Include="Botting\Commands\Combat\CmdKillFor.cs" />
     <Compile Include="Botting\Commands\Combat\CmdRest.cs" />
