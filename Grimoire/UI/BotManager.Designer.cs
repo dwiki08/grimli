@@ -234,6 +234,7 @@
             this.clientSideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.froztt13ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlFroztt = new System.Windows.Forms.Panel();
+            this.tbItemQtyF = new System.Windows.Forms.TextBox();
             this.btnAddCmdFrozzt = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.chkGetAfterF = new System.Windows.Forms.CheckBox();
@@ -247,7 +248,6 @@
             this.tbMapF = new System.Windows.Forms.TextBox();
             this.tbMonNameF = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.tbItemQtyF = new System.Windows.Forms.TextBox();
             this.pnlCombat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRestMP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRest)).BeginInit();
@@ -1472,7 +1472,7 @@
             // 
             // numQuestTry
             // 
-            this.numQuestTry.Location = new System.Drawing.Point(131, 78);
+            this.numQuestTry.Location = new System.Drawing.Point(127, 131);
             this.numQuestTry.Minimum = new decimal(new int[] {
             1,
             0,
@@ -1490,7 +1490,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(184, 84);
+            this.label5.Location = new System.Drawing.Point(180, 137);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 14;
@@ -1498,7 +1498,7 @@
             // 
             // btnQuestAccept
             // 
-            this.btnQuestAccept.Location = new System.Drawing.Point(9, 129);
+            this.btnQuestAccept.Location = new System.Drawing.Point(10, 77);
             this.btnQuestAccept.Name = "btnQuestAccept";
             this.btnQuestAccept.Size = new System.Drawing.Size(112, 23);
             this.btnQuestAccept.TabIndex = 13;
@@ -1508,7 +1508,7 @@
             // 
             // btnQuestComplete
             // 
-            this.btnQuestComplete.Location = new System.Drawing.Point(9, 77);
+            this.btnQuestComplete.Location = new System.Drawing.Point(9, 130);
             this.btnQuestComplete.Name = "btnQuestComplete";
             this.btnQuestComplete.Size = new System.Drawing.Size(112, 23);
             this.btnQuestComplete.TabIndex = 12;
@@ -2671,6 +2671,14 @@
             this.pnlFroztt.Size = new System.Drawing.Size(338, 248);
             this.pnlFroztt.TabIndex = 111;
             // 
+            // tbItemQtyF
+            // 
+            this.tbItemQtyF.Location = new System.Drawing.Point(10, 101);
+            this.tbItemQtyF.Name = "tbItemQtyF";
+            this.tbItemQtyF.Size = new System.Drawing.Size(132, 20);
+            this.tbItemQtyF.TabIndex = 50;
+            this.tbItemQtyF.Text = "Quantity (* = any)";
+            // 
             // btnAddCmdFrozzt
             // 
             this.btnAddCmdFrozzt.Location = new System.Drawing.Point(11, 180);
@@ -2787,14 +2795,6 @@
             this.label20.Size = new System.Drawing.Size(72, 13);
             this.label20.TabIndex = 0;
             this.label20.Text = "Short Hunting";
-            // 
-            // tbItemQtyF
-            // 
-            this.tbItemQtyF.Location = new System.Drawing.Point(10, 101);
-            this.tbItemQtyF.Name = "tbItemQtyF";
-            this.tbItemQtyF.Size = new System.Drawing.Size(132, 20);
-            this.tbItemQtyF.TabIndex = 50;
-            this.tbItemQtyF.Text = "Quantity (* = any)";
             // 
             // BotManager
             // 

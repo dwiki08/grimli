@@ -63,8 +63,18 @@ namespace Grimoire.Botting.Commands.Combat
                 if (ItemType == ItemType.Items)
                 {
                     int times = 0;
-                    while (instance.IsRunning && Player.IsLoggedIn && Player.IsAlive &&
-                        !Enumerable.Range(0, itemsName.Length).All(i => Player.Inventory.ContainsItem(itemsName[i], quantities[i])))
+                    bool flagItem = !Enumerable.Range(0, itemsName.Length).All(i => Player.Inventory.ContainsItem(itemsName[i], quantities[i]));
+                    bool flagTempItem = !Enumerable.Range(0, itemsName.Length).All(i => Player.TempInventory.ContainsItem(itemsName[i], quantities[i]));
+                    bool flagHunt;
+                    if (ItemType == ItemType.Items)
+                    {
+                        flagHunt = flagItem;
+                    }
+                    else
+                    {
+                        flagHunt = flagTempItem;
+                    }
+                    while (instance.IsRunning && Player.IsLoggedIn && Player.IsAlive && flagHunt)
                     {
                         await kill.Execute(instance);
                         await Task.Delay(DelayAfterKill);
