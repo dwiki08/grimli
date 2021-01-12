@@ -12,8 +12,12 @@ namespace Grimoire.Botting.Commands.Quest
         {
             await instance.WaitUntil(() => Player.Quests.QuestTree.Any(q => q.Id == Quest.Id));
             await instance.WaitUntil(() => World.IsActionAvailable(LockActions.AcceptQuest));
-            Quest.Accept();
-            await instance.WaitUntil(() => Player.Quests.IsInProgress(Quest.Id));
+            while (!Player.Quests.IsInProgress(Quest.Id))
+            {
+                Quest.Accept();
+                await Task.Delay(1000);
+            }
+            //await instance.WaitUntil(() => Player.Quests.IsInProgress(Quest.Id));
         }
 
         public override string ToString()

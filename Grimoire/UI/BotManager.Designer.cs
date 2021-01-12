@@ -2106,7 +2106,8 @@
             this.chkEnableSettings.TabIndex = 132;
             this.chkEnableSettings.Text = "Enable options\r\nwithout starting\r\nthe bot";
             this.chkEnableSettings.UseVisualStyleBackColor = true;
-            this.chkEnableSettings.Click += new System.EventHandler(this.chkEnableSettings_Click);
+            this.chkEnableSettings.CheckedChanged += new System.EventHandler(this.chkEnableSettings_CheckedChanged);
+            //this.chkEnableSettings.Click += new System.EventHandler(this.chkEnableSettings_Click);
             // 
             // chkDisableAnims
             // 
@@ -2800,7 +2801,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1362, 494);
+            this.ClientSize = new System.Drawing.Size(1362, 713);
             this.Controls.Add(this.pnlFroztt);
             this.Controls.Add(this.pnlItem);
             this.Controls.Add(this.pnlQuest);

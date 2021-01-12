@@ -110,7 +110,7 @@ namespace Grimoire.UI
             if (txtLoaders.Text == null) return;
             int questId = Int32.Parse(txtLoaders.Text);
             List<int> listQuests = new List<int>();
-            for (int i = 0; i <= (int)numQuestPlus.Value; i++)
+            for (int i = 0; i < (int)numQuestPlus.Value; i++)
             {
                 listQuests.Add(questId);
                 questId++;
@@ -123,7 +123,7 @@ namespace Grimoire.UI
             //btnFAccept.Enabled = false;
             Player.Quests.Get(listQuest);
             await Task.Delay(1000);
-            for (int i = 0; i <= listQuest.Count; i++)
+            for (int i = 0; i < listQuest.Count; i++)
             {
                 if (!Player.Quests.IsInProgress(listQuest[i]))
                 {

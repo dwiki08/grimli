@@ -1,0 +1,8 @@
+D:\ProjectPlugin\grimli\GoldGenerator\obj\Debug\GoldGenerator.csprojAssemblyReference.cache
+D:\ProjectPlugin\grimli\GoldGenerator\obj\Debug\ExamplePacketPlugin.Main.resources
+D:\ProjectPlugin\grimli\GoldGenerator\obj\Debug\GoldGenerator.csproj.GenerateResource.cache
+D:\ProjectPlugin\grimli\GoldGenerator\obj\Debug\GoldGenerator.csproj.CoreCompileInputs.cache
+D:\ProjectPlugin\grimli\GoldGenerator\bin\Debug\GoldGenerator.dll
+D:\ProjectPlugin\grimli\GoldGenerator\bin\Debug\GoldGenerator.pdb
+D:\ProjectPlugin\grimli\GoldGenerator\obj\Debug\GoldGenerator.dll
+D:\ProjectPlugin\grimli\GoldGenerator\obj\Debug\GoldGenerator.pdb

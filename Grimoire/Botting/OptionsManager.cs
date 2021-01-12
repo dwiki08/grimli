@@ -85,8 +85,9 @@ namespace Grimoire.Botting
 			}
 			set
 			{
-                OptionsManager._infRange = value;
-                if (value)
+				OptionsManager._infRange = value;
+
+				if (value)
                 {
                     Proxy.Instance.RegisterHandler(OptionsManager.HandlerRange);
                     OptionsManager.SetInfiniteRange();
@@ -102,7 +103,7 @@ namespace Grimoire.Botting
 			}
 		}
 
-		public static int WalkSpeed { get; set; } = 8;
+        public static int WalkSpeed { get; set; } = 8;
 
 		private static void SetInfiniteRange()
 		{

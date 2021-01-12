@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using Grimoire.Botting;
+using Grimoire.Tools;
 using Newtonsoft.Json.Linq;
 
 namespace Grimoire.Networking.Handlers
 {
 	public class HandlerSkills : IJsonMessageHandler
 	{
+		public Boolean isInfinite { get; set; }
 		public string[] HandledCommands { get; } = new string[]
 		{
 			"sAct"
@@ -14,6 +16,7 @@ namespace Grimoire.Networking.Handlers
 
 		public void Handle(JsonMessage message)
 		{
+			Flash.Call("SetInfiniteRange", new string[0]);
 			JToken jtoken = message.DataObject["actions"];
 			JToken jtoken2 = (jtoken != null) ? jtoken["passive"] : null;
 			if (jtoken2 != null)

@@ -1495,7 +1495,15 @@ namespace Grimoire.UI
                 chkEnableSettings.Checked = state;
         }
 
-        private void chkEnableSettings_Click(object sender, EventArgs e)
+        /*private void chkEnableSettings_Click(object sender, EventArgs e)
+        {
+            if (chkEnableSettings.Checked)
+                OptionsManager.Start();
+            else
+                OptionsManager.Stop();
+        }*/
+
+        private void chkEnableSettings_CheckedChanged(object sender, EventArgs e)
         {
             if (chkEnableSettings.Checked)
                 OptionsManager.Start();
@@ -1602,6 +1610,5 @@ namespace Grimoire.UI
             txtKillFItem.Enabled = !rbForQuest.Checked;
             txtKillFQ.Enabled = !rbForQuest.Checked;
         }
-
     }
 }
