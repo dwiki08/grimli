@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using AxShockwaveFlashObjects;
 using Grimoire.Botting;
 using Grimoire.Botting.Commands.Combat;
+using Grimoire.FlashEoLHook;
 using Grimoire.Game;
 using Grimoire.Game.Data;
 using Grimoire.Networking;
@@ -32,6 +33,7 @@ namespace Grimoire.UI
 
 		public Root()
 		{
+			EoLHook.Hook();
 			this.InitializeComponent();
 			Root.Instance = this;
 		}
@@ -123,6 +125,7 @@ namespace Grimoire.UI
 					this.flashPlayer.OcxState = new AxHost.State(memoryStream, 1, false, null);
 				}
 			}
+			EoLHook.Unhook();
 		}
 
 		private void btnBank_Click(object sender, EventArgs e)

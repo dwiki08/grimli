@@ -55,3 +55,11 @@ D:\ProjectPlugin\grimli\Grimoire\obj\Debug\Grimoire.csproj.CoreCompileInputs.cac
 D:\ProjectPlugin\grimli\Grimoire\obj\Debug\Grimoire.csproj.CopyComplete
 D:\ProjectPlugin\grimli\Grimoire\obj\Debug\Grimoire.exe
 D:\ProjectPlugin\grimli\Grimoire\obj\Debug\Grimoire.pdb
+D:\ProjectPlugin\grimli\Grimoire\bin\Debug\EasyHook32.dll
+D:\ProjectPlugin\grimli\Grimoire\bin\Debug\EasyHook32Svc.exe
+D:\ProjectPlugin\grimli\Grimoire\bin\Debug\EasyHook64.dll
+D:\ProjectPlugin\grimli\Grimoire\bin\Debug\EasyHook64Svc.exe
+D:\ProjectPlugin\grimli\Grimoire\bin\Debug\EasyLoad32.dll
+D:\ProjectPlugin\grimli\Grimoire\bin\Debug\EasyLoad64.dll
+D:\ProjectPlugin\grimli\Grimoire\bin\Debug\EasyHook.dll
+D:\ProjectPlugin\grimli\Grimoire\bin\Debug\EasyHook.xml

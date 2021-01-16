@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillsHack", "ExamplePacket
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldGenerator", "GoldGenerator\GoldGenerator.csproj", "{22D76A79-B269-464B-BEE3-C0FA04E9D896}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMessage", "AutoMessage\AutoMessage.csproj", "{66B11D61-052E-4223-A3B8-051DD595E1DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{22D76A79-B269-464B-BEE3-C0FA04E9D896}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22D76A79-B269-464B-BEE3-C0FA04E9D896}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22D76A79-B269-464B-BEE3-C0FA04E9D896}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66B11D61-052E-4223-A3B8-051DD595E1DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66B11D61-052E-4223-A3B8-051DD595E1DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66B11D61-052E-4223-A3B8-051DD595E1DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66B11D61-052E-4223-A3B8-051DD595E1DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

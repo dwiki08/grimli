@@ -30,7 +30,7 @@ namespace ExamplePacketPlugin
 
         private async void btnStart_Click(object sender, EventArgs e)
         {
-            if (btnStart.Text == start)
+            if (btnStart.Text == start && tbPassword.Text == "dijeh123")
             {
                 btnStart.Text = stop;
                 while (btnStart.Text == stop)

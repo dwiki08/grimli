@@ -46,7 +46,6 @@ namespace Grimoire.Tools.Plugins
 			return this.LoadedPlugins.All((GrimoirePlugin p) => p.Unload());
 		}
 
-		// Token: 0x04000189 RID: 393
 		public List<GrimoirePlugin> LoadedPlugins = new List<GrimoirePlugin>();
 	}
 }
