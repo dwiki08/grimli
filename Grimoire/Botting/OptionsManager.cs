@@ -177,7 +177,7 @@ namespace Grimoire.Botting
 					OptionsManager.SetEnemyMagnet();
 				}
 				OptionsManager.SetWalkSpeed();
-				OptionsManager.SetLagKiller();
+				//OptionsManager.SetLagKiller();
 				if (OptionsManager.SkipCutscenes)
 				{
 					OptionsManager.SetSkipCutscenes();

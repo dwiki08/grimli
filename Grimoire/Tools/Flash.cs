@@ -11,15 +11,10 @@ using Newtonsoft.Json;
 
 namespace Grimoire.Tools
 {
-	// Token: 0x02000011 RID: 17
 	public static class Flash
 	{
-		// Token: 0x14000001 RID: 1
-		// (add) Token: 0x060000F7 RID: 247 RVA: 0x0000F808 File Offset: 0x0000DA08
-		// (remove) Token: 0x060000F8 RID: 248 RVA: 0x0000F83C File Offset: 0x0000DA3C
 		public static event Action<int> SwfLoadProgress;
 
-		// Token: 0x060000F9 RID: 249 RVA: 0x0000F870 File Offset: 0x0000DA70
 		public static void ProcessFlashCall(object sender, _IShockwaveFlashEvents_FlashCallEvent e)
 		{
 			XElement xelement = XElement.Parse(e.request);
@@ -48,19 +43,16 @@ namespace Grimoire.Tools
 			}
 		}
 
-		// Token: 0x060000FA RID: 250 RVA: 0x0000F91B File Offset: 0x0000DB1B
 		public static T Call<T>(string function, params string[] args)
 		{
 			return Flash.TryDeserialize<T>(Flash.GetResponse(Flash.BuildRequest(function, args)));
 		}
 
-		// Token: 0x060000FB RID: 251 RVA: 0x0000F92E File Offset: 0x0000DB2E
 		public static void Call(string function, params string[] args)
 		{
 			Flash.Call<string>(function, args);
 		}
 
-		// Token: 0x060000FC RID: 252 RVA: 0x0000F938 File Offset: 0x0000DB38
 		private static string BuildRequest(string method, params string[] args)
 		{
 			StringBuilder stringBuilder = new StringBuilder();
@@ -78,7 +70,6 @@ namespace Grimoire.Tools
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x060000FD RID: 253 RVA: 0x0000F9C0 File Offset: 0x0000DBC0
 		private static string GetResponse(string request)
 		{
 			string result;
@@ -94,7 +85,6 @@ namespace Grimoire.Tools
 			return result;
 		}
 
-		// Token: 0x060000FE RID: 254 RVA: 0x0000FA20 File Offset: 0x0000DC20
 		private static T TryDeserialize<T>(string str)
 		{
 			T result;
@@ -109,7 +99,6 @@ namespace Grimoire.Tools
 			return result;
 		}
 
-		// Token: 0x060000FF RID: 255 RVA: 0x0000FA54 File Offset: 0x0000DC54
 		private static string ModifyServerList(string xml)
 		{
 			if (!xml.StartsWith("<login") || !xml.EndsWith("</login>"))

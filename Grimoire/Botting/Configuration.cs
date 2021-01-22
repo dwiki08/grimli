@@ -43,5 +43,6 @@ namespace Grimoire.Botting
         public int RestHp { get; set; }
         public bool RestartUponDeath { get; set; }
         public bool PopNotify { get; set; }
+        public List<string> Items { get; set; }
     }
 }

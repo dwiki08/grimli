@@ -30,13 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.btnStart = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.cbMaxGold = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(61, 87);
+            this.btnStart.Location = new System.Drawing.Point(62, 70);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 3;
@@ -44,31 +43,22 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // label1
+            // cbMaxGold
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "1jt gold per 2 detik";
-            // 
-            // tbPassword
-            // 
-            this.tbPassword.Location = new System.Drawing.Point(40, 16);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(125, 20);
-            this.tbPassword.TabIndex = 5;
-            this.tbPassword.Text = "PASSWORD";
-            this.tbPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.cbMaxGold.AutoSize = true;
+            this.cbMaxGold.Location = new System.Drawing.Point(67, 30);
+            this.cbMaxGold.Name = "cbMaxGold";
+            this.cbMaxGold.Size = new System.Drawing.Size(69, 17);
+            this.cbMaxGold.TabIndex = 6;
+            this.cbMaxGold.Text = "Max gold";
+            this.cbMaxGold.UseVisualStyleBackColor = true;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(210, 131);
-            this.Controls.Add(this.tbPassword);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbMaxGold);
             this.Controls.Add(this.btnStart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -85,7 +75,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.CheckBox cbMaxGold;
     }
 }

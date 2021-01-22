@@ -10,6 +10,7 @@ namespace Grimoire.Botting.Commands.Quest
         public bool ReAccept { get; set; } = false;
         public bool LogoutFailed { get; set; } = false;
         public bool InBlank { get; set; } = false;
+        public int Delay { get; set; } = 1000;
 
         public async Task Execute(IBotEngine instance)
         {
@@ -33,7 +34,7 @@ namespace Grimoire.Botting.Commands.Quest
                     await Task.Delay(2000);
                 }
                 Quest.Complete();
-                if (CompleteTry > 1) await Task.Delay(1000);
+                if (CompleteTry > 1) await Task.Delay(Delay);
                 i++;
                 //await instance.WaitUntil(() => !Player.Quests.IsInProgress(Quest.Id));
             }

@@ -100,6 +100,8 @@
             this.txtJoinCell = new System.Windows.Forms.TextBox();
             this.txtJoin = new System.Windows.Forms.TextBox();
             this.pnlItem = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.numDropDelay = new System.Windows.Forms.NumericUpDown();
             this.chkPickupv2 = new System.Windows.Forms.CheckBox();
             this.chkPickupAll = new System.Windows.Forms.CheckBox();
             this.txtShopItem = new System.Windows.Forms.TextBox();
@@ -187,7 +189,6 @@
             this.lstSoundItems = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.numWalkSpeed = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
             this.chkSkipCutscenes = new System.Windows.Forms.CheckBox();
             this.chkHidePlayers = new System.Windows.Forms.CheckBox();
             this.chkLag = new System.Windows.Forms.CheckBox();
@@ -234,6 +235,7 @@
             this.clientSideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.froztt13ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlFroztt = new System.Windows.Forms.Panel();
+            this.cbBlankFirst = new System.Windows.Forms.CheckBox();
             this.tbItemQtyF = new System.Windows.Forms.TextBox();
             this.btnAddCmdFrozzt = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
@@ -248,6 +250,7 @@
             this.tbMapF = new System.Windows.Forms.TextBox();
             this.tbMonNameF = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.cbWalkSpeed = new System.Windows.Forms.CheckBox();
             this.pnlCombat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRestMP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRest)).BeginInit();
@@ -258,6 +261,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numWalkY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWalkX)).BeginInit();
             this.pnlItem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDropDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numShopId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMapItem)).BeginInit();
             this.pnlQuest.SuspendLayout();
@@ -289,6 +293,7 @@
             this.lstCommands.HorizontalScrollbar = true;
             this.lstCommands.Location = new System.Drawing.Point(12, 27);
             this.lstCommands.Name = "lstCommands";
+            this.lstCommands.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstCommands.Size = new System.Drawing.Size(201, 238);
             this.lstCommands.TabIndex = 1;
             this.lstCommands.DoubleClick += new System.EventHandler(this.lstCommands_DoubleClick);
@@ -303,8 +308,10 @@
             this.lstBoosts.HorizontalScrollbar = true;
             this.lstBoosts.Location = new System.Drawing.Point(12, 27);
             this.lstBoosts.Name = "lstBoosts";
+            this.lstBoosts.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstBoosts.Size = new System.Drawing.Size(201, 238);
             this.lstBoosts.TabIndex = 25;
+            this.lstBoosts.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstBoxs_KeyPress);
             // 
             // lstDrops
             // 
@@ -315,8 +322,10 @@
             this.lstDrops.HorizontalScrollbar = true;
             this.lstDrops.Location = new System.Drawing.Point(12, 27);
             this.lstDrops.Name = "lstDrops";
+            this.lstDrops.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstDrops.Size = new System.Drawing.Size(201, 238);
             this.lstDrops.TabIndex = 26;
+            this.lstDrops.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstBoxs_KeyPress);
             // 
             // lstQuests
             // 
@@ -327,8 +336,10 @@
             this.lstQuests.HorizontalScrollbar = true;
             this.lstQuests.Location = new System.Drawing.Point(12, 27);
             this.lstQuests.Name = "lstQuests";
+            this.lstQuests.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstQuests.Size = new System.Drawing.Size(201, 238);
             this.lstQuests.TabIndex = 27;
+            this.lstQuests.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstBoxs_KeyPress);
             // 
             // lstSkills
             // 
@@ -339,6 +350,7 @@
             this.lstSkills.HorizontalScrollbar = true;
             this.lstSkills.Location = new System.Drawing.Point(12, 27);
             this.lstSkills.Name = "lstSkills";
+            this.lstSkills.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstSkills.Size = new System.Drawing.Size(201, 238);
             this.lstSkills.TabIndex = 28;
             this.lstSkills.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstBoxs_KeyPress);
@@ -1113,6 +1125,8 @@
             // 
             // pnlItem
             // 
+            this.pnlItem.Controls.Add(this.label22);
+            this.pnlItem.Controls.Add(this.numDropDelay);
             this.pnlItem.Controls.Add(this.chkPickupv2);
             this.pnlItem.Controls.Add(this.chkPickupAll);
             this.pnlItem.Controls.Add(this.txtShopItem);
@@ -1138,6 +1152,33 @@
             this.pnlItem.Size = new System.Drawing.Size(318, 276);
             this.pnlItem.TabIndex = 104;
             this.pnlItem.Visible = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(224, 150);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(56, 13);
+            this.label22.TabIndex = 47;
+            this.label22.Text = "drop delay";
+            // 
+            // numDropDelay
+            // 
+            this.numDropDelay.Enabled = false;
+            this.numDropDelay.Location = new System.Drawing.Point(153, 146);
+            this.numDropDelay.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numDropDelay.Name = "numDropDelay";
+            this.numDropDelay.Size = new System.Drawing.Size(69, 20);
+            this.numDropDelay.TabIndex = 46;
+            this.numDropDelay.Value = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
             // 
             // chkPickupv2
             // 
@@ -2052,6 +2093,7 @@
             // 
             // pnlOptions
             // 
+            this.pnlOptions.Controls.Add(this.cbWalkSpeed);
             this.pnlOptions.Controls.Add(this.btnCmdPing);
             this.pnlOptions.Controls.Add(this.chkPopNotify);
             this.pnlOptions.Controls.Add(this.chkEnableSettings);
@@ -2063,7 +2105,6 @@
             this.pnlOptions.Controls.Add(this.lstSoundItems);
             this.pnlOptions.Controls.Add(this.label9);
             this.pnlOptions.Controls.Add(this.numWalkSpeed);
-            this.pnlOptions.Controls.Add(this.label8);
             this.pnlOptions.Controls.Add(this.chkSkipCutscenes);
             this.pnlOptions.Controls.Add(this.chkHidePlayers);
             this.pnlOptions.Controls.Add(this.chkLag);
@@ -2100,14 +2141,13 @@
             // chkEnableSettings
             // 
             this.chkEnableSettings.AutoSize = true;
-            this.chkEnableSettings.Location = new System.Drawing.Point(172, 188);
+            this.chkEnableSettings.Location = new System.Drawing.Point(174, 191);
             this.chkEnableSettings.Name = "chkEnableSettings";
             this.chkEnableSettings.Size = new System.Drawing.Size(97, 43);
             this.chkEnableSettings.TabIndex = 132;
             this.chkEnableSettings.Text = "Enable options\r\nwithout starting\r\nthe bot";
             this.chkEnableSettings.UseVisualStyleBackColor = true;
             this.chkEnableSettings.CheckedChanged += new System.EventHandler(this.chkEnableSettings_CheckedChanged);
-            //this.chkEnableSettings.Click += new System.EventHandler(this.chkEnableSettings_Click);
             // 
             // chkDisableAnims
             // 
@@ -2176,7 +2216,7 @@
             // 
             // numWalkSpeed
             // 
-            this.numWalkSpeed.Location = new System.Drawing.Point(226, 162);
+            this.numWalkSpeed.Location = new System.Drawing.Point(246, 164);
             this.numWalkSpeed.Maximum = new decimal(new int[] {
             99,
             0,
@@ -2196,15 +2236,6 @@
             0,
             0});
             this.numWalkSpeed.ValueChanged += new System.EventHandler(this.numWalkSpeed_ValueChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(160, 164);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 13);
-            this.label8.TabIndex = 122;
-            this.label8.Text = "Walk speed";
             // 
             // chkSkipCutscenes
             // 
@@ -2653,6 +2684,7 @@
             // 
             // pnlFroztt
             // 
+            this.pnlFroztt.Controls.Add(this.cbBlankFirst);
             this.pnlFroztt.Controls.Add(this.tbItemQtyF);
             this.pnlFroztt.Controls.Add(this.btnAddCmdFrozzt);
             this.pnlFroztt.Controls.Add(this.label21);
@@ -2669,12 +2701,24 @@
             this.pnlFroztt.Controls.Add(this.label20);
             this.pnlFroztt.Location = new System.Drawing.Point(978, 237);
             this.pnlFroztt.Name = "pnlFroztt";
-            this.pnlFroztt.Size = new System.Drawing.Size(338, 248);
+            this.pnlFroztt.Size = new System.Drawing.Size(338, 280);
             this.pnlFroztt.TabIndex = 111;
+            // 
+            // cbBlankFirst
+            // 
+            this.cbBlankFirst.AutoSize = true;
+            this.cbBlankFirst.Checked = true;
+            this.cbBlankFirst.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbBlankFirst.Location = new System.Drawing.Point(11, 49);
+            this.cbBlankFirst.Name = "cbBlankFirst";
+            this.cbBlankFirst.Size = new System.Drawing.Size(124, 17);
+            this.cbBlankFirst.TabIndex = 51;
+            this.cbBlankFirst.Text = "Blank first before join";
+            this.cbBlankFirst.UseVisualStyleBackColor = true;
             // 
             // tbItemQtyF
             // 
-            this.tbItemQtyF.Location = new System.Drawing.Point(10, 101);
+            this.tbItemQtyF.Location = new System.Drawing.Point(10, 123);
             this.tbItemQtyF.Name = "tbItemQtyF";
             this.tbItemQtyF.Size = new System.Drawing.Size(132, 20);
             this.tbItemQtyF.TabIndex = 50;
@@ -2682,7 +2726,7 @@
             // 
             // btnAddCmdFrozzt
             // 
-            this.btnAddCmdFrozzt.Location = new System.Drawing.Point(11, 180);
+            this.btnAddCmdFrozzt.Location = new System.Drawing.Point(11, 202);
             this.btnAddCmdFrozzt.Name = "btnAddCmdFrozzt";
             this.btnAddCmdFrozzt.Size = new System.Drawing.Size(131, 23);
             this.btnAddCmdFrozzt.TabIndex = 49;
@@ -2693,7 +2737,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(145, 151);
+            this.label21.Location = new System.Drawing.Point(145, 173);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(19, 13);
             this.label21.TabIndex = 48;
@@ -2702,7 +2746,7 @@
             // chkGetAfterF
             // 
             this.chkGetAfterF.AutoSize = true;
-            this.chkGetAfterF.Location = new System.Drawing.Point(11, 150);
+            this.chkGetAfterF.Location = new System.Drawing.Point(11, 172);
             this.chkGetAfterF.Name = "chkGetAfterF";
             this.chkGetAfterF.Size = new System.Drawing.Size(91, 17);
             this.chkGetAfterF.TabIndex = 47;
@@ -2711,7 +2755,7 @@
             // 
             // tbGetAfterF
             // 
-            this.tbGetAfterF.Location = new System.Drawing.Point(99, 146);
+            this.tbGetAfterF.Location = new System.Drawing.Point(99, 168);
             this.tbGetAfterF.Name = "tbGetAfterF";
             this.tbGetAfterF.Size = new System.Drawing.Size(43, 20);
             this.tbGetAfterF.TabIndex = 46;
@@ -2721,7 +2765,7 @@
             this.chkAddToWhitelistF.AutoSize = true;
             this.chkAddToWhitelistF.Checked = true;
             this.chkAddToWhitelistF.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAddToWhitelistF.Location = new System.Drawing.Point(11, 127);
+            this.chkAddToWhitelistF.Location = new System.Drawing.Point(11, 149);
             this.chkAddToWhitelistF.Name = "chkAddToWhitelistF";
             this.chkAddToWhitelistF.Size = new System.Drawing.Size(97, 17);
             this.chkAddToWhitelistF.TabIndex = 45;
@@ -2731,7 +2775,7 @@
             // chkIsTempF
             // 
             this.chkIsTempF.AutoSize = true;
-            this.chkIsTempF.Location = new System.Drawing.Point(148, 77);
+            this.chkIsTempF.Location = new System.Drawing.Point(148, 99);
             this.chkIsTempF.Name = "chkIsTempF";
             this.chkIsTempF.Size = new System.Drawing.Size(63, 17);
             this.chkIsTempF.TabIndex = 44;
@@ -2740,7 +2784,7 @@
             // 
             // tbItemNameF
             // 
-            this.tbItemNameF.Location = new System.Drawing.Point(10, 75);
+            this.tbItemNameF.Location = new System.Drawing.Point(10, 97);
             this.tbItemNameF.Name = "tbItemNameF";
             this.tbItemNameF.Size = new System.Drawing.Size(132, 20);
             this.tbItemNameF.TabIndex = 43;
@@ -2782,7 +2826,7 @@
             // 
             // tbMonNameF
             // 
-            this.tbMonNameF.Location = new System.Drawing.Point(10, 49);
+            this.tbMonNameF.Location = new System.Drawing.Point(10, 71);
             this.tbMonNameF.Name = "tbMonNameF";
             this.tbMonNameF.Size = new System.Drawing.Size(132, 20);
             this.tbMonNameF.TabIndex = 1;
@@ -2796,6 +2840,17 @@
             this.label20.Size = new System.Drawing.Size(72, 13);
             this.label20.TabIndex = 0;
             this.label20.Text = "Short Hunting";
+            // 
+            // cbWalkSpeed
+            // 
+            this.cbWalkSpeed.AutoSize = true;
+            this.cbWalkSpeed.Location = new System.Drawing.Point(163, 167);
+            this.cbWalkSpeed.Name = "cbWalkSpeed";
+            this.cbWalkSpeed.Size = new System.Drawing.Size(83, 17);
+            this.cbWalkSpeed.TabIndex = 135;
+            this.cbWalkSpeed.Text = "Walk speed";
+            this.cbWalkSpeed.UseVisualStyleBackColor = true;
+            this.cbWalkSpeed.CheckedChanged += new System.EventHandler(this.cbWalkSpeed_CheckedChanged);
             // 
             // BotManager
             // 
@@ -2846,6 +2901,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numWalkX)).EndInit();
             this.pnlItem.ResumeLayout(false);
             this.pnlItem.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDropDelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numShopId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMapItem)).EndInit();
             this.pnlQuest.ResumeLayout(false);
@@ -2983,7 +3039,6 @@
         private System.Windows.Forms.ListBox lstSoundItems;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown numWalkSpeed;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox chkSkipCutscenes;
         private System.Windows.Forms.CheckBox chkHidePlayers;
         private System.Windows.Forms.CheckBox chkLag;
@@ -3100,5 +3155,9 @@
         private System.Windows.Forms.TextBox tbMonNameF;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox tbItemQtyF;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.NumericUpDown numDropDelay;
+        private System.Windows.Forms.CheckBox cbBlankFirst;
+        private System.Windows.Forms.CheckBox cbWalkSpeed;
     }
 }

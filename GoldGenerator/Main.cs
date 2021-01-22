@@ -30,7 +30,7 @@ namespace ExamplePacketPlugin
 
         private async void btnStart_Click(object sender, EventArgs e)
         {
-            if (btnStart.Text == start && tbPassword.Text == "dijeh123")
+            if (btnStart.Text == start)
             {
                 btnStart.Text = stop;
                 while (btnStart.Text == stop)
@@ -39,6 +39,13 @@ namespace ExamplePacketPlugin
                     await Task.Delay(500);
                     await Proxy.Instance.SendToServer("%xt%zm%sellItem%254671%9131%1%1777757744%");
                     await Task.Delay(500);
+                    if (cbMaxGold.Checked)
+                    {
+                        if (Player.Gold >= 99000000)
+                        {
+                            btnStart.Text = stop;
+                        }
+                    }
                 }
             }
             else

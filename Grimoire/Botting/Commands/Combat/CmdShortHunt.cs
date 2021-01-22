@@ -22,6 +22,7 @@ namespace Grimoire.Botting.Commands.Combat
         public int AfterKills { get; set; } = 1;
         public string QuestId { get; set; }
         public int DelayAfterKill { get; set; } = 500;
+        public bool BlankFirst { get; set; }
 
         public async Task Execute(IBotEngine instance)
         {
@@ -42,6 +43,13 @@ namespace Grimoire.Botting.Commands.Combat
                     Cell = this.Cell,
                     Pad = this.Pad
                 };
+
+                if (BlankFirst)
+                {
+                    Player.MoveToCell("Blank", "Left");
+                    await Task.Delay(1000);
+                }
+
                 await join.Execute(instance);
             }
             else

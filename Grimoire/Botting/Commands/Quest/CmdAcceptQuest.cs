@@ -14,8 +14,8 @@ namespace Grimoire.Botting.Commands.Quest
             await instance.WaitUntil(() => World.IsActionAvailable(LockActions.AcceptQuest));
             while (!Player.Quests.IsInProgress(Quest.Id))
             {
-                Quest.Accept();
                 await Task.Delay(1000);
+                Quest.Accept();
             }
             //await instance.WaitUntil(() => Player.Quests.IsInProgress(Quest.Id));
         }

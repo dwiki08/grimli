@@ -181,7 +181,7 @@ namespace Grimoire.UI
                 RelogDelay = (int)numRelogDelay.Value,
                 RelogRetryUponFailure = chkRelogRetry.Checked,
                 BotDelay = (int)numBotDelay.Value,
-                DropDelay = 0,
+                DropDelay = 2000,
                 EnablePickup = chkPickup.Checked,
                 EnablePickupV2 = chkPickupv2.Checked,
                 EnablePickupAll = chkPickupAll.Checked,
@@ -357,17 +357,138 @@ namespace Grimoire.UI
         {
             if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Up)
             {
-                this.MoveListItemByKey(-1);
+                this._MoveListBoxUp();
+                e.Handled = true;
+                return;
             }
             if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Down)
             {
-                this.MoveListItemByKey(1);
+                this._MoveListBoxDown();
+                e.Handled = true;
+                return;
             }
             if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.Delete)
             {
                 this.btnRemove.PerformClick();
+                e.Handled = true;
+                return;
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.C && this.SelectedList.SelectedIndex > -1)
+            {
+                Clipboard.Clear();
+                Configuration value = new Configuration
+                {
+                    Commands = this.lstCommands.SelectedItems.Cast<IBotCommand>().ToList<IBotCommand>(),
+                    Skills = this.lstSkills.SelectedItems.Cast<Skill>().ToList<Skill>(),
+                    Quests = this.lstQuests.SelectedItems.Cast<Quest>().ToList<Quest>(),
+                    Boosts = this.lstBoosts.SelectedItems.Cast<InventoryItem>().ToList<InventoryItem>(),
+                    Drops = this.lstDrops.SelectedItems.Cast<string>().ToList<string>(),
+                };
+                Clipboard.SetText(JsonConvert.SerializeObject(value, Formatting.Indented, this._serializerSettings));
+                e.Handled = true;
+                return;
+            }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.V)
+            {
+                Configuration configuration;
+                this.TryDeserialize(Clipboard.GetText(), out configuration);
+                List<IBotCommand> commands = configuration.Commands;
+                if (commands != null && commands.Count > 0)
+                {
+                    ListBox.ObjectCollection items = this.lstCommands.Items;
+                    object[] array = configuration.Commands.ToArray();
+                    object[] array2 = array;
+                    int selectedIndex = this.lstCommands.SelectedIndex;
+                    this.lstCommands.SelectedIndex = -1;
+                    int num2 = 0;
+                    while (array2.Count<object>() > num2)
+                    {
+                        items.Insert(selectedIndex + num2 + 1, array2[num2]);
+                        this.lstCommands.SelectedIndex = selectedIndex + num2 + 1;
+                        num2++;
+                    }
+                }
+                List<Skill> skills = configuration.Skills;
+                if (skills != null && skills.Count > 0)
+                {
+                    ListBox.ObjectCollection items2 = this.lstSkills.Items;
+                    object[] array = configuration.Skills.ToArray();
+                    object[] items3 = array;
+                    items2.AddRange(items3);
+                }
+                List<Quest> quests = configuration.Quests;
+                if (quests != null && quests.Count > 0)
+                {
+                    ListBox.ObjectCollection items4 = this.lstQuests.Items;
+                    object[] array = configuration.Quests.ToArray();
+                    object[] items5 = array;
+                    items4.AddRange(items5);
+                }
+                List<InventoryItem> boosts = configuration.Boosts;
+                if (boosts != null && boosts.Count > 0)
+                {
+                    ListBox.ObjectCollection items6 = this.lstBoosts.Items;
+                    object[] array = configuration.Boosts.ToArray();
+                    object[] items7 = array;
+                    items6.AddRange(items7);
+                }
+                List<string> drops = configuration.Drops;
+                if (drops != null && drops.Count > 0)
+                {
+                    ListBox.ObjectCollection items8 = this.lstDrops.Items;
+                    object[] array = configuration.Drops.ToArray();
+                    object[] items9 = array;
+                    items8.AddRange(items9);
+                }
+                e.Handled = true;
+                return;
             }
         }
+        private void _MoveListBoxUp()
+        {
+            this.SelectedList.BeginUpdate();
+            int count = this.SelectedList.SelectedItems.Count;
+            for (int i = 0; i < count; i++)
+            {
+                if (this.SelectedList.SelectedIndices[i] > 0)
+                {
+                    int num = this.SelectedList.SelectedIndices[i] - 1;
+                    this.SelectedList.Items.Insert(num, this.SelectedList.SelectedItems[i]);
+                    this.SelectedList.Items.RemoveAt(num + 2);
+                    this.SelectedList.SelectedItem = this.SelectedList.Items[num];
+                }
+            }
+            this.SelectedList.EndUpdate();
+        }
+
+        private void _MoveListBoxDown()
+        {
+            this.SelectedList.BeginUpdate();
+            int count = this.SelectedList.SelectedItems.Count;
+            for (int i = count - 1; i >= 0; i--)
+            {
+                if (this.SelectedList.SelectedIndices[i] < this.SelectedList.Items.Count - 1)
+                {
+                    int num = this.SelectedList.SelectedIndices[i] + 2;
+                    this.SelectedList.Items.Insert(num, this.SelectedList.SelectedItems[i]);
+                    this.SelectedList.Items.RemoveAt(num - 2);
+                    this.SelectedList.SelectedItem = this.SelectedList.Items[num - 1];
+                }
+            }
+            this.SelectedList.EndUpdate();
+        }
+
+        private void _RemoveListBoxItem()
+        {
+            this.SelectedList.BeginUpdate();
+            for (int i = this.SelectedList.SelectedIndices.Count - 1; i >= 0; i--)
+            {
+                int index = this.SelectedList.SelectedIndices[i];
+                this.SelectedList.Items.RemoveAt(index);
+            }
+            this.SelectedList.EndUpdate();
+        }
+
         private void lstCommands_DoubleClick(object sender, EventArgs e)
         {
             int index = lstCommands.SelectedIndex;
@@ -507,10 +628,13 @@ namespace Grimoire.UI
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            int selected = SelectedList.SelectedIndex;
-            if (selected > -1)
+            if (this.SelectedList.SelectedItem != null)
             {
-                SelectedList.Items.RemoveAt(selected);
+                int selectedIndex = this.SelectedList.SelectedIndex;
+                if (selectedIndex > -1)
+                {
+                    this._RemoveListBoxItem();
+                }
             }
         }
 
@@ -712,7 +836,8 @@ namespace Grimoire.UI
                     AfterKills = int.TryParse(this.txtAfterXKill.Text, out times) ? times : 1
                 };
 
-                if (rbForQuest.Checked) {
+                if (rbForQuest.Checked)
+                {
                     cmd = new CmdKillFor
                     {
                         Monster = monster,
@@ -995,11 +1120,13 @@ namespace Grimoire.UI
                 chkPickup.Checked = false;
                 chkPickupAll.Enabled = false;
                 chkPickupAll.Checked = false;
+                numDropDelay.Enabled = true;
             }
             else
             {
                 chkPickup.Enabled = true;
                 chkPickupAll.Enabled = true;
+                numDropDelay.Enabled = false;
             }
         }
 
@@ -1503,12 +1630,20 @@ namespace Grimoire.UI
                 OptionsManager.Stop();
         }*/
 
+        private bool isWalkSpeed = false;
         private void chkEnableSettings_CheckedChanged(object sender, EventArgs e)
         {
+            isWalkSpeed = cbWalkSpeed.Checked;
             if (chkEnableSettings.Checked)
+            {
+                cbWalkSpeed.Checked = true;
                 OptionsManager.Start();
+            }
             else
+            {
+                cbWalkSpeed.Checked = isWalkSpeed;
                 OptionsManager.Stop();
+            }
         }
 
         #endregion}
@@ -1593,7 +1728,8 @@ namespace Grimoire.UI
                     ItemName = text,
                     Quantity = text2,
                     IsGetDrops = chkGetAfterF.Checked,
-                    AfterKills = int.TryParse(this.tbGetAfterF.Text, out times) ? times : 1
+                    AfterKills = int.TryParse(this.tbGetAfterF.Text, out times) ? times : 1,
+                    BlankFirst = cbBlankFirst.Checked
                 };
 
                 this.AddCommand(cmd, (Control.ModifierKeys & Keys.Control) == Keys.Control);
@@ -1609,6 +1745,15 @@ namespace Grimoire.UI
             txtAfterXKill.Enabled = !rbForQuest.Checked;
             txtKillFItem.Enabled = !rbForQuest.Checked;
             txtKillFQ.Enabled = !rbForQuest.Checked;
+        }
+
+        private async void cbWalkSpeed_CheckedChanged(object sender, EventArgs e)
+        {
+            while (cbWalkSpeed.Checked)
+            {
+                Flash.Call("SetWalkSpeed", new string[] { numWalkSpeed.Value.ToString() });
+                await Task.Delay(500);
+            }
         }
     }
 }
