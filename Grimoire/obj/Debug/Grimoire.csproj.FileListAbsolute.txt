@@ -65,3 +65,4 @@ D:\ProjectPlugin\grimli\Grimoire\bin\Debug\EasyHook.dll
 D:\ProjectPlugin\grimli\Grimoire\bin\Debug\EasyHook.xml
 D:\ProjectPlugin\grimli\Grimoire\obj\Debug\Grimoire.UI.Travel.resources
 D:\ProjectPlugin\grimli\Grimoire\obj\Debug\Grimoire.UI.PacketSpammer.resources
+D:\ProjectPlugin\grimli\Grimoire\obj\Debug\Grimoire.Properties.Resources.resources

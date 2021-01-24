@@ -1,0 +1,219 @@
+{
+  "$type": "System.Collections.Generic.List`1[[Grimoire.Botting.Commands.Misc.Statements.StatementCommand, Grimoire]], mscorlib",
+  "$values": [
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdCellIs, Grimoire",
+      "Tag": "Map",
+      "Text": "Cell is",
+      "Description1": "Cell"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdCellIsNot, Grimoire",
+      "Tag": "Map",
+      "Text": "Cell is not",
+      "Description1": "Cell"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdGoldGreaterThan, Grimoire",
+      "Tag": "This player",
+      "Text": "Gold is greater than",
+      "Description1": "Gold"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdGoldLessThan, Grimoire",
+      "Tag": "This player",
+      "Text": "Gold is less than",
+      "Description1": "Gold"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdHealthGreaterThan, Grimoire",
+      "Tag": "This player",
+      "Text": "Health is greater than",
+      "Description1": "Health"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdHealthLessThan, Grimoire",
+      "Tag": "This player",
+      "Text": "Health is less than",
+      "Description1": "Health"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdInBank, Grimoire",
+      "Tag": "Item",
+      "Text": "Is in bank",
+      "Description1": "Item name",
+      "Description2": "Quantity (* = any)"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdInCombat, Grimoire",
+      "Tag": "This player",
+      "Text": "Is in combat"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdNotInCombat, Grimoire",
+      "Tag": "This player",
+      "Text": "Not in combat"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdInInventory, Grimoire",
+      "Tag": "Item",
+      "Text": "Is in inventory",
+      "Description1": "Item name",
+      "Description2": "Quantity (* = any)"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdInTemp, Grimoire",
+      "Tag": "Item",
+      "Text": "Is in temp inventory",
+      "Description1": "Item name",
+      "Description2": "Quantity (* = any)"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdItemNotPickupable, Grimoire",
+      "Tag": "Item",
+      "Text": "Has not dropped",
+      "Description1": "Item name"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdItemPickupable, Grimoire",
+      "Tag": "Item",
+      "Text": "Has dropped",
+      "Description1": "Item name"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdLevelGreaterThan, Grimoire",
+      "Tag": "This player",
+      "Text": "Level is greater than",
+      "Description1": "Level"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdLevelIs, Grimoire",
+      "Tag": "This player",
+      "Text": "Level is",
+      "Description1": "Level"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdLevelLessThan, Grimoire",
+      "Tag": "This player",
+      "Text": "Level is less than",
+      "Description1": "Level"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdManaGreaterThan, Grimoire",
+      "Tag": "This player",
+      "Text": "Mana is greater than",
+      "Description1": "Mana"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdManaLessThan, Grimoire",
+      "Tag": "This player",
+      "Text": "Mana is less than",
+      "Description1": "Mana"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdMapIs, Grimoire",
+      "Tag": "Map",
+      "Text": "Map is",
+      "Description1": "Map name"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdMapIsNot, Grimoire",
+      "Tag": "Map",
+      "Text": "Map is not",
+      "Description1": "Map name"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdMonsterInRoom, Grimoire",
+      "Tag": "Monster",
+      "Text": "Is in room",
+      "Description1": "Monster name"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdMonsterNotInRoom, Grimoire",
+      "Tag": "Monster",
+      "Text": "Is not in room",
+      "Description1": "Monster name"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdMonstersGreaterThan, Grimoire",
+      "Tag": "Monster",
+      "Text": "Count is greater than",
+      "Description1": "Monster count"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdMonstersLessThan, Grimoire",
+      "Tag": "Monster",
+      "Text": "Count is less than",
+      "Description1": "Monster count"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdNotInBank, Grimoire",
+      "Tag": "Item",
+      "Text": "Is not in bank",
+      "Description1": "Item name",
+      "Description2": "Quantity (* = any)"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdNotInInventory, Grimoire",
+      "Tag": "Item",
+      "Text": "Is not in inventory",
+      "Description1": "Item name",
+      "Description2": "Quantity (* = any)"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdNotInTemp, Grimoire",
+      "Tag": "Item",
+      "Text": "Is not in temp",
+      "Description1": "Item name",
+      "Description2": "Quantity (* = any)"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdPlayerInRoom, Grimoire",
+      "Tag": "Player",
+      "Text": "Player is in room",
+      "Description1": "Player name"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdPlayerNotInRoom, Grimoire",
+      "Tag": "Player",
+      "Text": "Player is not in room",
+      "Description1": "Player name"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdPlayersGreaterThan, Grimoire",
+      "Tag": "Player",
+      "Text": "Count is greater than",
+      "Description1": "Player count"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdPlayersLessThan, Grimoire",
+      "Tag": "Player",
+      "Text": "Count is less than",
+      "Description1": "Player count"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdQuestCompleted, Grimoire",
+      "Tag": "Quest",
+      "Text": "Quest can be turned in",
+      "Description1": "Quest ID"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdQuestNotCompleted, Grimoire",
+      "Tag": "Quest",
+      "Text": "Quest can not be turned in",
+      "Description1": "Quest ID"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdQuestInProgress, Grimoire",
+      "Tag": "Quest",
+      "Text": "Quest is in progess",
+      "Description1": "Quest ID"
+    },
+    {
+      "$type": "Grimoire.Botting.Commands.Misc.Statements.CmdQuestNotInProgress, Grimoire",
+      "Tag": "Quest",
+      "Text": "Quest is not in progess",
+      "Description1": "Quest ID"
+    }
+  ]
+}
