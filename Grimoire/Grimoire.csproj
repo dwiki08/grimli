@@ -131,7 +131,9 @@
     <Compile Include="Botting\Commands\Misc\Statements\CmdPlayersGreaterThan.cs" />
     <Compile Include="Botting\Commands\Misc\Statements\CmdPlayersLessThan.cs" />
     <Compile Include="Botting\Commands\Misc\Statements\CmdQuestCompleted.cs" />
+    <Compile Include="Botting\Commands\Misc\Statements\CmdQuestInProgress.cs" />
     <Compile Include="Botting\Commands\Misc\Statements\CmdQuestNotCompleted.cs" />
+    <Compile Include="Botting\Commands\Misc\Statements\CmdQuestNotInProgress.cs" />
     <Compile Include="Botting\Commands\Misc\Statements\StatementCommand.cs" />
     <Compile Include="Botting\Commands\Quest\CmdAcceptQuest.cs" />
     <Compile Include="Botting\Commands\Quest\CmdCompleteQuest.cs" />
@@ -269,7 +271,9 @@
     <EmbeddedResource Include="UI\PacketLogger.resx">
       <DependentUpon>PacketLogger.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\PacketSpammer.resources" />
+    <EmbeddedResource Include="UI\PacketSpammer.resx">
+      <DependentUpon>PacketSpammer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\PacketTamperer.resources" />
     <EmbeddedResource Include="UI\PluginManager.resx">
       <DependentUpon>PluginManager.cs</DependentUpon>
@@ -278,7 +282,9 @@
     <EmbeddedResource Include="UI\Root.resx">
       <DependentUpon>Root.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Travel.resources" />
+    <EmbeddedResource Include="UI\Travel.resx">
+      <DependentUpon>Travel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.manifest" />

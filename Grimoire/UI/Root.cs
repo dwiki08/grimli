@@ -178,9 +178,40 @@ namespace Grimoire.UI
 			Proxy.Instance.Stop(true);
 		}
 
+		private static IJsonMessageHandler HandlerRMP { get; } = new HandlerSkills();
+
 		private async void chkAttack_CheckedChangedAsync(object sender, EventArgs e)
-        {
-            if (chkAttack.Checked)
+		{
+			if (chkAttack.Checked)
+			{
+				Proxy.Instance.RegisterHandler(HandlerRMP);
+				Flash.Call("SetInfiniteRange", new string[0]);
+
+				/*CmdKill kill = new CmdKill
+				{
+					Monster = "*"
+				};
+
+				await kill.Execute(BotManager.Instance.ActiveBotEngine);*/
+
+				string[] listSkills = tbSkills.Text.Split(';');
+                int index = 0;
+                while (chkAttack.Checked)
+                {
+                    if (!Player.HasTarget) Player.AttackMonster("*");
+                    await Task.Delay(100);
+                    Player.UseSkill(listSkills[index]);
+					index++;
+                    if (index == listSkills.Length) index = 0;
+                }
+            }
+			else
+			{
+				Proxy.Instance.UnregisterHandler(HandlerRMP);
+			}
+
+
+            /*if (chkAttack.Checked)
             {
                 listSkill.Add("1");
                 listSkill.Add("2");
@@ -191,7 +222,7 @@ namespace Grimoire.UI
             else
             {
                 Proxy.Instance.ReceivedFromClient -= CaptureSkill;
-            }
+            }*/
         }
 
 		private List<string> listSkill = new List<string>();

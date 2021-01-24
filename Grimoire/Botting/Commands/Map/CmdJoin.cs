@@ -25,7 +25,7 @@ namespace Grimoire.Botting.Commands.Map
 			if (!cmdMap.Equals(Player.Map, StringComparison.OrdinalIgnoreCase))
 			{
 				int n;
-				if (!int.TryParse(text, out n))
+				if (!int.TryParse(text, out n) && text != "")
 				{
 					Random random = new Random();
 					int num = random.Next(9000, 9999);

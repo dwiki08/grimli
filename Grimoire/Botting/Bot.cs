@@ -84,28 +84,6 @@ namespace Grimoire.Botting
                     BotData.SkillSet.Add(this.Configuration.Skills[i].Text.ToUpper(), i);
                 }
             }
-
-            dropV2();
-        }
-
-        public async void dropV2()
-        {
-            if (this.Configuration.EnablePickupV2)
-            {
-                List<string> listDrop = this.Configuration.Drops;
-                int i = 0;
-                while (IsRunning)
-                {
-                    if (i >= listDrop.Count - 1) i = 0;
-                    string itemName = listDrop[i];
-                    if (World.DropStack.Contains(itemName))
-                    {
-                        await World.DropStack.GetDrop(itemName);
-                        await Task.Delay(this.Configuration.DropDelay);
-                    }
-                    i++;
-                }
-            }
         }
 
         public void Stop()
@@ -282,6 +260,7 @@ namespace Grimoire.Botting
                 World.DropStack.GetDrop(drop.Id);
         }
 
+        bool isBusy = false;
         private async void OnItemDropped(InventoryItem drop)
         {
             this.NotifyDrop(drop);
@@ -294,36 +273,24 @@ namespace Grimoire.Botting
                     Configuration.Drops.Any(d =>
                         d.Equals(drop.Name, StringComparison.OrdinalIgnoreCase));
 
-                if (isInWhitelist)
+                if (isInWhitelist && !isBusy)
+                {
+                    /*await Task.Delay(this.Configuration.DropDelay);
+                    World.DropStack.GetDrop(drop.Id);*/
+                    isBusy = true;
                     await World.DropStack.GetDrop(drop.Id);
+                    isBusy = false;
+                }
             }
             else
             {
                 if (this.Configuration.EnablePickupAll)
                 {
-                    //pickup all items 
-                    await Task.Delay(Configuration.DropDelay);
+                    /*await Task.Delay(this.Configuration.DropDelay);
+                    World.DropStack.GetDrop(drop.Id);*/
+                    //await this.WaitUntil(() => !World.DropStack.Contains(drop.Id), null, 4);
                     await World.DropStack.GetDrop(drop.Id);
-                    await this.WaitUntil(() => !World.DropStack.Contains(drop.Id), null, 4);
                 }
-
-                /*if (this.Configuration.EnablePickupV2)
-                {
-                    //pickup whitelisted items only
-                    busy = true;
-                    if (whitelisted && enablePickup)
-                    {
-                        await Task.Delay(this.Configuration.DropDelay);
-                        await World.DropStack.GetDrop(drop.Id);
-                        await this.WaitUntil(() => !World.DropStack.Contains(drop.Id), null, 4);
-                    }
-                    busy = false;
-                    if (queue > 0)
-                    {
-                        queue--;
-                        OnItemDropped(drop);
-                    }
-                }*/
             }
         }
 

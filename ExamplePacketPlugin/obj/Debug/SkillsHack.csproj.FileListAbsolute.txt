@@ -20,3 +20,14 @@ D:\ProjectPlugin\Souce\Grim38Lite\ExamplePacketPlugin\bin\Debug\SkillsHack.pdb
 D:\ProjectPlugin\Souce\Grim38Lite\ExamplePacketPlugin\bin\Debug\Newtonsoft.Json.dll
 D:\ProjectPlugin\Souce\Grim38Lite\ExamplePacketPlugin\bin\Debug\Newtonsoft.Json.xml
 D:\ProjectPlugin\Souce\Grim38Lite\ExamplePacketPlugin\obj\Debug\SkillsHack.csproj.CopyComplete
+D:\ProjectPlugin\grimli\ExamplePacketPlugin\bin\Debug\SkillsHack.dll
+D:\ProjectPlugin\grimli\ExamplePacketPlugin\bin\Debug\SkillsHack.pdb
+D:\ProjectPlugin\grimli\ExamplePacketPlugin\bin\Debug\Newtonsoft.Json.dll
+D:\ProjectPlugin\grimli\ExamplePacketPlugin\bin\Debug\Newtonsoft.Json.xml
+D:\ProjectPlugin\grimli\ExamplePacketPlugin\obj\Debug\SkillsHack.csprojAssemblyReference.cache
+D:\ProjectPlugin\grimli\ExamplePacketPlugin\obj\Debug\ExamplePacketPlugin.Main.resources
+D:\ProjectPlugin\grimli\ExamplePacketPlugin\obj\Debug\SkillsHack.csproj.GenerateResource.cache
+D:\ProjectPlugin\grimli\ExamplePacketPlugin\obj\Debug\SkillsHack.csproj.CoreCompileInputs.cache
+D:\ProjectPlugin\grimli\ExamplePacketPlugin\obj\Debug\SkillsHack.csproj.CopyComplete
+D:\ProjectPlugin\grimli\ExamplePacketPlugin\obj\Debug\SkillsHack.dll
+D:\ProjectPlugin\grimli\ExamplePacketPlugin\obj\Debug\SkillsHack.pdb

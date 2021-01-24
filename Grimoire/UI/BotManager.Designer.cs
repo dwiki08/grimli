@@ -102,7 +102,6 @@
             this.pnlItem = new System.Windows.Forms.Panel();
             this.label22 = new System.Windows.Forms.Label();
             this.numDropDelay = new System.Windows.Forms.NumericUpDown();
-            this.chkPickupv2 = new System.Windows.Forms.CheckBox();
             this.chkPickupAll = new System.Windows.Forms.CheckBox();
             this.txtShopItem = new System.Windows.Forms.TextBox();
             this.numShopId = new System.Windows.Forms.NumericUpDown();
@@ -178,6 +177,7 @@
             this.txtPacket = new System.Windows.Forms.TextBox();
             this.btnPacket = new System.Windows.Forms.Button();
             this.pnlOptions = new System.Windows.Forms.Panel();
+            this.cbWalkSpeed = new System.Windows.Forms.CheckBox();
             this.btnCmdPing = new System.Windows.Forms.Button();
             this.chkPopNotify = new System.Windows.Forms.CheckBox();
             this.chkEnableSettings = new System.Windows.Forms.CheckBox();
@@ -250,7 +250,6 @@
             this.tbMapF = new System.Windows.Forms.TextBox();
             this.tbMonNameF = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.cbWalkSpeed = new System.Windows.Forms.CheckBox();
             this.pnlCombat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRestMP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRest)).BeginInit();
@@ -1119,7 +1118,7 @@
             this.txtJoin.Name = "txtJoin";
             this.txtJoin.Size = new System.Drawing.Size(130, 20);
             this.txtJoin.TabIndex = 26;
-            this.txtJoin.Text = "battleon-1e99";
+            this.txtJoin.Text = "battleon-a";
             this.txtJoin.Enter += new System.EventHandler(this.TextboxEnter);
             this.txtJoin.Leave += new System.EventHandler(this.TextboxLeave);
             // 
@@ -1127,7 +1126,6 @@
             // 
             this.pnlItem.Controls.Add(this.label22);
             this.pnlItem.Controls.Add(this.numDropDelay);
-            this.pnlItem.Controls.Add(this.chkPickupv2);
             this.pnlItem.Controls.Add(this.chkPickupAll);
             this.pnlItem.Controls.Add(this.txtShopItem);
             this.pnlItem.Controls.Add(this.numShopId);
@@ -1156,16 +1154,16 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(224, 150);
+            this.label22.Location = new System.Drawing.Point(224, 126);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(56, 13);
+            this.label22.Size = new System.Drawing.Size(58, 13);
             this.label22.TabIndex = 47;
-            this.label22.Text = "drop delay";
+            this.label22.Text = "Drop delay";
+            this.label22.Visible = false;
             // 
             // numDropDelay
             // 
-            this.numDropDelay.Enabled = false;
-            this.numDropDelay.Location = new System.Drawing.Point(153, 146);
+            this.numDropDelay.Location = new System.Drawing.Point(153, 122);
             this.numDropDelay.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -1175,26 +1173,16 @@
             this.numDropDelay.Size = new System.Drawing.Size(69, 20);
             this.numDropDelay.TabIndex = 46;
             this.numDropDelay.Value = new decimal(new int[] {
-            2000,
+            1000,
             0,
             0,
             0});
-            // 
-            // chkPickupv2
-            // 
-            this.chkPickupv2.AutoSize = true;
-            this.chkPickupv2.Location = new System.Drawing.Point(153, 78);
-            this.chkPickupv2.Name = "chkPickupv2";
-            this.chkPickupv2.Size = new System.Drawing.Size(156, 17);
-            this.chkPickupv2.TabIndex = 45;
-            this.chkPickupv2.Text = "Pick up whitelisted items v2";
-            this.chkPickupv2.UseVisualStyleBackColor = true;
-            this.chkPickupv2.CheckedChanged += new System.EventHandler(this.chkPickupv2_CheckedChanged);
+            this.numDropDelay.Visible = false;
             // 
             // chkPickupAll
             // 
             this.chkPickupAll.AutoSize = true;
-            this.chkPickupAll.Location = new System.Drawing.Point(153, 101);
+            this.chkPickupAll.Location = new System.Drawing.Point(153, 77);
             this.chkPickupAll.Name = "chkPickupAll";
             this.chkPickupAll.Size = new System.Drawing.Size(99, 17);
             this.chkPickupAll.TabIndex = 44;
@@ -1334,7 +1322,7 @@
             // chkReject
             // 
             this.chkReject.AutoSize = true;
-            this.chkReject.Location = new System.Drawing.Point(153, 123);
+            this.chkReject.Location = new System.Drawing.Point(153, 99);
             this.chkReject.Name = "chkReject";
             this.chkReject.Size = new System.Drawing.Size(157, 17);
             this.chkReject.TabIndex = 25;
@@ -2118,6 +2106,17 @@
             this.pnlOptions.TabIndex = 107;
             this.pnlOptions.Visible = false;
             // 
+            // cbWalkSpeed
+            // 
+            this.cbWalkSpeed.AutoSize = true;
+            this.cbWalkSpeed.Location = new System.Drawing.Point(163, 167);
+            this.cbWalkSpeed.Name = "cbWalkSpeed";
+            this.cbWalkSpeed.Size = new System.Drawing.Size(83, 17);
+            this.cbWalkSpeed.TabIndex = 135;
+            this.cbWalkSpeed.Text = "Walk speed";
+            this.cbWalkSpeed.UseVisualStyleBackColor = true;
+            this.cbWalkSpeed.CheckedChanged += new System.EventHandler(this.cbWalkSpeed_CheckedChanged);
+            // 
             // btnCmdPing
             // 
             this.btnCmdPing.Location = new System.Drawing.Point(163, 287);
@@ -2841,17 +2840,6 @@
             this.label20.TabIndex = 0;
             this.label20.Text = "Short Hunting";
             // 
-            // cbWalkSpeed
-            // 
-            this.cbWalkSpeed.AutoSize = true;
-            this.cbWalkSpeed.Location = new System.Drawing.Point(163, 167);
-            this.cbWalkSpeed.Name = "cbWalkSpeed";
-            this.cbWalkSpeed.Size = new System.Drawing.Size(83, 17);
-            this.cbWalkSpeed.TabIndex = 135;
-            this.cbWalkSpeed.Text = "Walk speed";
-            this.cbWalkSpeed.UseVisualStyleBackColor = true;
-            this.cbWalkSpeed.CheckedChanged += new System.EventHandler(this.cbWalkSpeed_CheckedChanged);
-            // 
             // BotManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3122,7 +3110,6 @@
         private System.Windows.Forms.RadioButton rbForQuest;
         private System.Windows.Forms.TextBox txtKillFMonster;
         private System.Windows.Forms.CheckBox chkPckToClient;
-        private System.Windows.Forms.CheckBox chkPickupv2;
         private System.Windows.Forms.Button btnAddToWhitelist;
         private System.Windows.Forms.CheckBox chkRequir;
         private System.Windows.Forms.CheckBox chkReward;

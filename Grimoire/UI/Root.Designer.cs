@@ -35,6 +35,7 @@
             this.btnFPS = new System.Windows.Forms.Button();
             this.flashPlayer = new AxShockwaveFlashObjects.AxShockwaveFlash();
             this.chkAttack = new System.Windows.Forms.CheckBox();
+            this.tbSkills = new System.Windows.Forms.TextBox();
             this.MenuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFPS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flashPlayer)).BeginInit();
@@ -228,14 +229,22 @@
             this.chkAttack.TabIndex = 25;
             this.chkAttack.Text = "Auto Attack";
             this.chkAttack.UseVisualStyleBackColor = true;
-            this.chkAttack.Visible = false;
             this.chkAttack.CheckedChanged += new System.EventHandler(this.chkAttack_CheckedChangedAsync);
+            // 
+            // tbSkills
+            // 
+            this.tbSkills.Location = new System.Drawing.Point(384, 2);
+            this.tbSkills.Name = "tbSkills";
+            this.tbSkills.Size = new System.Drawing.Size(58, 20);
+            this.tbSkills.TabIndex = 26;
+            this.tbSkills.Text = "1;2;3;4";
             // 
             // Root
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(960, 575);
+            this.Controls.Add(this.tbSkills);
             this.Controls.Add(this.chkAttack);
             this.Controls.Add(this.btnFPS);
             this.Controls.Add(this.numFPS);
@@ -300,5 +309,6 @@
 
 		private global::System.Windows.Forms.ToolStripMenuItem tampererToolStripMenuItem;
         private System.Windows.Forms.CheckBox chkAttack;
+        private System.Windows.Forms.TextBox tbSkills;
     }
 }

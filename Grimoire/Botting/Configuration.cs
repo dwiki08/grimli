@@ -20,7 +20,6 @@ namespace Grimoire.Botting
         public bool CustomPickup { get; set; }
         public bool EnablePickupAll { get; set; }
         public bool EnablePickup { get; set; }
-        public bool EnablePickupV2 { get; set; }
         public bool EnableRejection { get; set; }
         public bool AutoRelogin { get; set; }
         public int RelogDelay { get; set; }

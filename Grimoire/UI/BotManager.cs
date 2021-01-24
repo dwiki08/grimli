@@ -181,9 +181,8 @@ namespace Grimoire.UI
                 RelogDelay = (int)numRelogDelay.Value,
                 RelogRetryUponFailure = chkRelogRetry.Checked,
                 BotDelay = (int)numBotDelay.Value,
-                DropDelay = 2000,
+                DropDelay = (int)numDropDelay.Value,
                 EnablePickup = chkPickup.Checked,
-                EnablePickupV2 = chkPickupv2.Checked,
                 EnablePickupAll = chkPickupAll.Checked,
                 EnableRejection = chkReject.Checked,
                 WaitForSkills = chkSkillCD.Checked,
@@ -245,7 +244,6 @@ namespace Grimoire.UI
             chkRelogRetry.Checked = config.RelogRetryUponFailure;
             numBotDelay.Value = config.BotDelay;
             chkPickup.Checked = config.EnablePickup;
-            chkPickupv2.Checked = config.EnablePickupV2;
             chkPickupAll.Checked = config.EnablePickupAll;
             chkReject.Checked = config.EnableRejection;
             chkSkillCD.Checked = config.WaitForSkills;
@@ -388,6 +386,22 @@ namespace Grimoire.UI
                 e.Handled = true;
                 return;
             }
+            if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.X && this.SelectedList.SelectedIndex > -1)
+            {
+                Clipboard.Clear();
+                Configuration value = new Configuration
+                {
+                    Commands = this.lstCommands.SelectedItems.Cast<IBotCommand>().ToList<IBotCommand>(),
+                    Skills = this.lstSkills.SelectedItems.Cast<Skill>().ToList<Skill>(),
+                    Quests = this.lstQuests.SelectedItems.Cast<Quest>().ToList<Quest>(),
+                    Boosts = this.lstBoosts.SelectedItems.Cast<InventoryItem>().ToList<InventoryItem>(),
+                    Drops = this.lstDrops.SelectedItems.Cast<string>().ToList<string>(),
+                };
+                Clipboard.SetText(JsonConvert.SerializeObject(value, Formatting.Indented, this._serializerSettings));
+                this.btnRemove.PerformClick();
+                e.Handled = true;
+                return;
+            }
             if (Control.ModifierKeys == Keys.Control && e.KeyCode == Keys.V)
             {
                 Configuration configuration;
@@ -523,6 +537,12 @@ namespace Grimoire.UI
 
             if (chkEnable.Checked)
             {
+                this.lstCommands.SelectionMode = SelectionMode.One;
+                this.lstSkills.SelectionMode = SelectionMode.One;
+                this.lstQuests.SelectionMode = SelectionMode.One;
+                this.lstDrops.SelectionMode = SelectionMode.One;
+                this.lstBoosts.SelectionMode = SelectionMode.One;
+
                 btnUp.Enabled = false;
                 btnDown.Enabled = false;
                 btnClear.Enabled = false;
@@ -536,6 +556,12 @@ namespace Grimoire.UI
             {
                 if (clearSkillAfter) lstSkills.Items.Clear();
                 ActiveBotEngine.Stop();
+
+                this.lstCommands.SelectionMode = SelectionMode.MultiExtended;
+                this.lstSkills.SelectionMode = SelectionMode.MultiExtended;
+                this.lstQuests.SelectionMode = SelectionMode.MultiExtended;
+                this.lstDrops.SelectionMode = SelectionMode.MultiExtended;
+                this.lstBoosts.SelectionMode = SelectionMode.MultiExtended;
             }
         }
 
@@ -1080,8 +1106,6 @@ namespace Grimoire.UI
         {
             if (chkPickupAll.Checked)
             {
-                chkPickupv2.Enabled = false;
-                chkPickupv2.Checked = false;
                 chkPickup.Enabled = false;
                 chkPickup.Checked = false;
                 chkReject.Checked = false;
@@ -1089,7 +1113,6 @@ namespace Grimoire.UI
             }
             else
             {
-                chkPickupv2.Enabled = true;
                 chkPickup.Enabled = true;
                 chkReject.Enabled = true;
             }
@@ -1099,34 +1122,12 @@ namespace Grimoire.UI
         {
             if (chkPickup.Checked)
             {
-                chkPickupv2.Enabled = false;
-                chkPickupv2.Checked = false;
                 chkPickupAll.Enabled = false;
                 chkPickupAll.Checked = false;
             }
             else
             {
-                chkPickupv2.Enabled = true;
                 chkPickupAll.Enabled = true;
-            }
-        }
-
-        private void chkPickupv2_CheckedChanged(object sender, EventArgs e)
-        {
-
-            if (chkPickupv2.Checked)
-            {
-                chkPickup.Enabled = false;
-                chkPickup.Checked = false;
-                chkPickupAll.Enabled = false;
-                chkPickupAll.Checked = false;
-                numDropDelay.Enabled = true;
-            }
-            else
-            {
-                chkPickup.Enabled = true;
-                chkPickupAll.Enabled = true;
-                numDropDelay.Enabled = false;
             }
         }
 
@@ -1751,8 +1752,8 @@ namespace Grimoire.UI
         {
             while (cbWalkSpeed.Checked)
             {
+                await Task.Delay(250);
                 Flash.Call("SetWalkSpeed", new string[] { numWalkSpeed.Value.ToString() });
-                await Task.Delay(500);
             }
         }
     }
