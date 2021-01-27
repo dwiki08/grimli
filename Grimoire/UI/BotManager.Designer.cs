@@ -250,6 +250,7 @@
             this.tbMapF = new System.Windows.Forms.TextBox();
             this.tbMonNameF = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pnlCombat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRestMP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRest)).BeginInit();
@@ -435,6 +436,7 @@
             // 
             // pnlCombat
             // 
+            this.pnlCombat.Controls.Add(this.comboBox1);
             this.pnlCombat.Controls.Add(this.txtKillFMonster);
             this.pnlCombat.Controls.Add(this.rbForQuest);
             this.pnlCombat.Controls.Add(this.txtForQuestId);
@@ -2840,6 +2842,17 @@
             this.label20.TabIndex = 0;
             this.label20.Text = "Short Hunting";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "<=",
+            ">="});
+            this.comboBox1.Location = new System.Drawing.Point(155, 204);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(74, 21);
+            this.comboBox1.TabIndex = 74;
+            // 
             // BotManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3146,5 +3159,6 @@
         private System.Windows.Forms.NumericUpDown numDropDelay;
         private System.Windows.Forms.CheckBox cbBlankFirst;
         private System.Windows.Forms.CheckBox cbWalkSpeed;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

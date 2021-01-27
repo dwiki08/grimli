@@ -176,13 +176,13 @@ namespace Grimoire.Botting
 				{
 					OptionsManager.SetEnemyMagnet();
 				}
-				OptionsManager.SetWalkSpeed();
-				//OptionsManager.SetLagKiller();
+				//OptionsManager.SetWalkSpeed();
+				OptionsManager.SetLagKiller();
 				if (OptionsManager.SkipCutscenes)
 				{
 					OptionsManager.SetSkipCutscenes();
 				}
-				if(OptionsManager.InfiniteRange) Proxy.Instance.UnregisterHandler(OptionsManager.HandlerRange);
+				//if(OptionsManager.InfiniteRange) Proxy.Instance.UnregisterHandler(OptionsManager.HandlerRange);
 				await Task.Delay(1000);
 			}
 		}

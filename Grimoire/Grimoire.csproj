@@ -13,6 +13,21 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Grimoire.ico</ApplicationIcon>
     <StartupObject>Grimoire.Program</StartupObject>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -85,7 +100,7 @@
     <Compile Include="Botting\Commands\Map\CmdMoveToCell.cs" />
     <Compile Include="Botting\Commands\Map\CmdTravel.cs" />
     <Compile Include="Botting\Commands\Map\CmdWalk.cs" />
-    <Compile Include="Botting\Commands\Map\JsonMapHandler.cs" />
+    <Compile Include="Botting\Commands\Map\MapHandler.cs" />
     <Compile Include="Botting\Commands\Misc\CmdBotDelay.cs" />
     <Compile Include="Botting\Commands\Misc\CmdDelay.cs" />
     <Compile Include="Botting\Commands\Misc\CmdGotoLabel.cs" />
@@ -320,6 +335,7 @@
     <Content Include="EasyLoad64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\aqlitegrimoire_e.swf" />
     <None Include="Resources\aqlitegrimoire.swf" />
     <None Include="Resources\grimpro.swf" />
     <None Include="Resources\grim.swf" />
@@ -327,6 +343,13 @@
     <None Include="Resources\defaulttext.txt" />
     <None Include="Resources\statementcmds.txt" />
     <None Include="Resources\grimoire.swf" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

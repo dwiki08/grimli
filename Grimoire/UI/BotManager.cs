@@ -1623,20 +1623,12 @@ namespace Grimoire.UI
                 chkEnableSettings.Checked = state;
         }
 
-        /*private void chkEnableSettings_Click(object sender, EventArgs e)
-        {
-            if (chkEnableSettings.Checked)
-                OptionsManager.Start();
-            else
-                OptionsManager.Stop();
-        }*/
-
         private bool isWalkSpeed = false;
         private void chkEnableSettings_CheckedChanged(object sender, EventArgs e)
         {
-            isWalkSpeed = cbWalkSpeed.Checked;
             if (chkEnableSettings.Checked)
             {
+                isWalkSpeed = cbWalkSpeed.Checked;
                 cbWalkSpeed.Checked = true;
                 OptionsManager.Start();
             }
@@ -1750,10 +1742,17 @@ namespace Grimoire.UI
 
         private async void cbWalkSpeed_CheckedChanged(object sender, EventArgs e)
         {
-            while (cbWalkSpeed.Checked)
+            if (cbWalkSpeed.Checked)
             {
-                await Task.Delay(250);
-                Flash.Call("SetWalkSpeed", new string[] { numWalkSpeed.Value.ToString() });
+                while (cbWalkSpeed.Checked && (int)numWalkSpeed.Value != 8)
+                {
+                    await Task.Delay(250);
+                    Flash.Call("SetWalkSpeed", new string[] { numWalkSpeed.Value.ToString() });
+                }
+            }
+            else
+            {
+                Flash.Call("SetWalkSpeed", new string[] { "8" });
             }
         }
     }

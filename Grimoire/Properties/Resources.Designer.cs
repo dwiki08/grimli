@@ -81,6 +81,16 @@ namespace Grimoire.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] aqlitegrimoire_e {
+            get {
+                object obj = ResourceManager.GetObject("aqlitegrimoire_e", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {&quot;txtMonster&quot;:&quot;Monster (*  = random)&quot;,&quot;txtKillFMon&quot;:&quot;Monster (* = random)&quot;,&quot;txtKillFItem&quot;:&quot;Item name&quot;,&quot;txtKillFQ&quot;:&quot;Quantity (* = any)&quot;,&quot;txtPacket&quot;:&quot;%xt%zm%.........&quot;,&quot;txtPlayer&quot;:&quot;Player name&quot;,&quot;txtAuthor&quot;:&quot;Author&quot;,&quot;txtDescription&quot;:&quot;Description&quot;,&quot;txtJoin&quot;:&quot;battleon-1e99&quot;,&quot;txtJoinCell&quot;:&quot;Enter&quot;,&quot;txtJoinPad&quot;:&quot;Spawn&quot;,&quot;txtCell&quot;:&quot;Cell&quot;,&quot;txtPad&quot;:&quot;Pad&quot;,&quot;txtItem&quot;:&quot;Item name&quot;,&quot;txtSwapBank&quot;:&quot;Bank item name&quot;,&quot;txtSwapInv&quot;:&quot;Inventory item name&quot;,&quot;txtWhitelist&quot;:&quot;Item name&quot;,&quot;txtLabel&quot;:&quot;Label name&quot;}.
         /// </summary>
         internal static string defaulttext {

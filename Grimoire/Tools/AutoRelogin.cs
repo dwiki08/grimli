@@ -8,11 +8,8 @@ using Grimoire.UI;
 
 namespace Grimoire.Tools
 {
-	// Token: 0x0200000F RID: 15
 	public static class AutoRelogin
 	{
-		// Token: 0x17000016 RID: 22
-		// (get) Token: 0x060000EC RID: 236 RVA: 0x0000F6B5 File Offset: 0x0000D8B5
 		public static bool IsTemporarilyKicked
 		{
 			get
@@ -21,20 +18,16 @@ namespace Grimoire.Tools
 			}
 		}
 
-		// Token: 0x060000ED RID: 237 RVA: 0x0000F6C7 File Offset: 0x0000D8C7
 		public static void Login()
 		{
 			Flash.Call("Login", new string[0]);
 		}
 
-		// Token: 0x060000EE RID: 238 RVA: 0x0000F6D9 File Offset: 0x0000D8D9
 		public static bool ResetServers()
 		{
 			return Flash.Call<bool>("ResetServers", new string[0]);
 		}
 
-		// Token: 0x17000017 RID: 23
-		// (get) Token: 0x060000EF RID: 239 RVA: 0x0000F6EB File Offset: 0x0000D8EB
 		public static bool AreServersLoaded
 		{
 			get
@@ -43,7 +36,6 @@ namespace Grimoire.Tools
 			}
 		}
 
-		// Token: 0x060000F0 RID: 240 RVA: 0x0000F6FD File Offset: 0x0000D8FD
 		public static void Connect(Server server)
 		{
 			Flash.Call("Connect", new string[]
@@ -52,7 +44,6 @@ namespace Grimoire.Tools
 			});
 		}
 
-		// Token: 0x060000F1 RID: 241 RVA: 0x0000F718 File Offset: 0x0000D918
 		public static async Task Login(Server server, int relogDelay, CancellationTokenSource cts, bool ensureSuccess)
 		{
 			bool killLag = OptionsManager.LagKiller;
@@ -107,7 +98,6 @@ namespace Grimoire.Tools
 			}
 		}
 
-		// Token: 0x060000F2 RID: 242 RVA: 0x0000F778 File Offset: 0x0000D978
 		private static async Task EnsureLoginSuccess(CancellationTokenSource cts)
 		{
 			for (int i = 0; i < 20; i++)

@@ -48,15 +48,19 @@ namespace Grimoire.Botting.Commands.Map
 			}
 		}
 
+		private static IJsonMessageHandler MapHandler { get; } = new MapHandler();
+
 		public async Task TryJoin(IBotEngine instance, string MapName, string RoomProp = "")
 		{
 			fMap = MapName;
-			if (MapName == "mobius" || MapName == "rangda")
-			{
-				Proxy.Instance.ReceivedFromServer += JsonMapHandler;
-			}
 
-			await instance.WaitUntil(() => World.IsActionAvailable(LockActions.Transfer), null, 15);
+            //Proxy.Instance.ReceivedFromServer += JsonMapHandler;
+            if (MapName == "mobius" || MapName == "rangda")
+            {
+                Proxy.Instance.ReceivedFromServer += JsonMapHandler;
+            }
+
+            await instance.WaitUntil(() => World.IsActionAvailable(LockActions.Transfer), null, 15);
 			if (Player.CurrentState == Player.State.InCombat)
 			{
 				Player.MoveToCell(Player.Cell, Player.Pad);
@@ -66,12 +70,13 @@ namespace Grimoire.Botting.Commands.Map
 			await instance.WaitUntil(() => Player.Map.Equals(MapName, StringComparison.OrdinalIgnoreCase), null, 5);
 			await instance.WaitUntil(() => !World.IsMapLoading, null, 40);
 
-			if (MapName == "mobius" || MapName == "rangda")
-			{
-				Proxy.Instance.ReceivedFromServer -= JsonMapHandler;
+			//Proxy.Instance.ReceivedFromServer -= JsonMapHandler;
+            if (MapName == "mobius" || MapName == "rangda")
+            {
                 await Proxy.Instance.SendToClient(result);
-			}
-		}
+				await Task.Delay(500);
+            }
+        }
 
 		private string fMap = "";
 		private string result = "";
