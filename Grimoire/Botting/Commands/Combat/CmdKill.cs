@@ -45,15 +45,39 @@ namespace Grimoire.Botting.Commands.Combat
 
                 if (s.Type == Skill.SkillType.Safe)
                 {
-                    if (s.SafeMp)
+                    if (s.IsSafeMp)
                     {
-						if ((double)Player.Mana / Player.ManaMax * 100 <= s.SafeHealth)
-							Player.UseSkill(s.Index);
+						if (s.SType == Skill.SafeType.LowerThan)
+                        {
+							if ((double)Player.Mana / Player.ManaMax * 100 <= s.SafeValue)
+								Player.UseSkill(s.Index);
+						} else if (s.SType == Skill.SafeType.GreaterThan)
+                        {
+							if ((double)Player.Mana / Player.ManaMax * 100 >= s.SafeValue)
+								Player.UseSkill(s.Index);
+						} else if (s.SType == Skill.SafeType.Equals)
+						{
+							if ((double)Player.Mana / Player.ManaMax * 100 == s.SafeValue)
+								Player.UseSkill(s.Index);
+						}
 					}
                     else
                     {
-                        if ((double)Player.Health / Player.HealthMax * 100 <= s.SafeHealth)
-							Player.UseSkill(s.Index);
+						if (s.SType == Skill.SafeType.LowerThan)
+						{
+							if ((double)Player.Health / Player.HealthMax * 100 <= s.SafeValue)
+								Player.UseSkill(s.Index);
+						} else if (s.SType == Skill.SafeType.GreaterThan)
+						{
+							if ((double)Player.Health / Player.HealthMax * 100 >= s.SafeValue)
+								Player.UseSkill(s.Index);
+						}
+
+						if (s.SType == Skill.SafeType.Equals)
+						{
+							if ((double)Player.Health / Player.HealthMax * 100 == s.SafeValue)
+								Player.UseSkill(s.Index);
+						}
 					}
                 }
                 else
@@ -111,16 +135,42 @@ namespace Grimoire.Botting.Commands.Combat
 					}
 					if (s.Type == Skill.SkillType.Safe)
 					{
-						if (s.SafeMp)
+						if (s.IsSafeMp)
 						{
-							if ((double)Player.Mana / (double)Player.ManaMax * 100.0 <= (double)s.SafeHealth)
+							if (s.SType == Skill.SafeType.LowerThan)
 							{
-								Player.UseSkill(s.Index);
+								if ((double)Player.Mana / Player.ManaMax * 100 <= s.SafeValue)
+									Player.UseSkill(s.Index);
+							}
+							else if (s.SType == Skill.SafeType.GreaterThan)
+							{
+								if ((double)Player.Mana / Player.ManaMax * 100 >= s.SafeValue)
+									Player.UseSkill(s.Index);
+							}
+							else if (s.SType == Skill.SafeType.Equals)
+							{
+								if ((double)Player.Mana / Player.ManaMax * 100 == s.SafeValue)
+									Player.UseSkill(s.Index);
 							}
 						}
-						else if ((double)Player.Health / (double)Player.HealthMax * 100.0 <= (double)s.SafeHealth)
-						{
-							Player.UseSkill(s.Index);
+						else
+                        {
+							if (s.SType == Skill.SafeType.LowerThan)
+							{
+								if ((double)Player.Health / Player.HealthMax * 100 <= s.SafeValue)
+									Player.UseSkill(s.Index);
+							}
+							else if (s.SType == Skill.SafeType.GreaterThan)
+							{
+								if ((double)Player.Health / Player.HealthMax * 100 >= s.SafeValue)
+									Player.UseSkill(s.Index);
+							}
+
+							if (s.SType == Skill.SafeType.Equals)
+							{
+								if ((double)Player.Health / Player.HealthMax * 100 == s.SafeValue)
+									Player.UseSkill(s.Index);
+							}
 						}
 					}
 					else
@@ -147,16 +197,41 @@ namespace Grimoire.Botting.Commands.Combat
 					Skill s = instance.Configuration.Skills[_skillIndex];
 					if (s.Type == Skill.SkillType.Safe)
 					{
-						if (s.SafeMp)
+						if (s.IsSafeMp)
 						{
-							if ((double)Player.Mana / (double)Player.ManaMax * 100.0 <= (double)s.SafeHealth)
+							if (s.SType == Skill.SafeType.LowerThan)
 							{
-								Player.UseSkill(s.Index);
+								if ((double)Player.Mana / Player.ManaMax * 100 <= s.SafeValue)
+									Player.UseSkill(s.Index);
 							}
-						}
-						else if ((double)Player.Health / (double)Player.HealthMax * 100.0 <= (double)s.SafeHealth)
-						{
-							Player.UseSkill(s.Index);
+							else if (s.SType == Skill.SafeType.GreaterThan)
+							{
+								if ((double)Player.Mana / Player.ManaMax * 100 >= s.SafeValue)
+									Player.UseSkill(s.Index);
+							}
+							else if (s.SType == Skill.SafeType.Equals)
+							{
+								if ((double)Player.Mana / Player.ManaMax * 100 == s.SafeValue)
+									Player.UseSkill(s.Index);
+							}
+						} else
+                        {
+							if (s.SType == Skill.SafeType.LowerThan)
+							{
+								if ((double)Player.Health / Player.HealthMax * 100 <= s.SafeValue)
+									Player.UseSkill(s.Index);
+							}
+							else if (s.SType == Skill.SafeType.GreaterThan)
+							{
+								if ((double)Player.Health / Player.HealthMax * 100 >= s.SafeValue)
+									Player.UseSkill(s.Index);
+							}
+
+							if (s.SType == Skill.SafeType.Equals)
+							{
+								if ((double)Player.Health / Player.HealthMax * 100 == s.SafeValue)
+									Player.UseSkill(s.Index);
+							}
 						}
 					}
 					else

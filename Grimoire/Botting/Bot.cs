@@ -232,16 +232,28 @@ namespace Grimoire.Botting
                     Quest quest = Configuration.Quests.FirstOrDefault(q => q.CanComplete);
                     if (quest != null)
                     {
+                        string cell = Player.Cell;
+                        string pad = Player.Pad;
                         bool provokeMons = this.Configuration.ProvokeMonsters;
                         if (_config.ExitCombatBeforeQuest)
                         {
                             if (provokeMons) this.Configuration.ProvokeMonsters = false;
-                            Player.MoveToCell(Player.Cell, Player.Pad);
+                            if (quest.CompleteInBlank)
+                            {
+                                Player.MoveToCell("Blank", "Spawn");
+                            }
+                            else
+                            {
+                                Player.MoveToCell(cell, pad);
+                            }
                             await this.WaitUntil(() => Player.CurrentState != Player.State.InCombat);
-                            await Task.Delay(1000);
+                            await Task.Delay(2000);
                         }
                         quest.Complete();
+                        await Task.Delay(500);
                         this.Configuration.ProvokeMonsters = provokeMons;
+                        Player.MoveToCell(cell, pad);
+
                         _questDelayCounter.Restart();
                     }
                 }

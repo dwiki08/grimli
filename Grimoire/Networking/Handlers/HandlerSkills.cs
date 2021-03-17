@@ -26,7 +26,7 @@ namespace Grimoire.Networking.Handlers
 					if (OptionsManager.InfiniteRange)
 					{
 						jtoken3["range"] = "200000";
-						jtoken3["mp"] = "0";
+						//jtoken3["mp"] = "0";
 					}
 				}
 			}
@@ -37,8 +37,9 @@ namespace Grimoire.Networking.Handlers
 				{
 					if (OptionsManager.InfiniteRange)
 					{
-						jtoken5["range"] = "200000";
-						jtoken5["mp"] = "0";
+                        jtoken5["range"] = "200000";
+						jtoken5["forceResult"] = "crit";
+						//jtoken5["mp"] = "0";
 					}
 				}
 			}

@@ -115,6 +115,11 @@
             // numSpamTimes
             // 
             this.numSpamTimes.Location = new System.Drawing.Point(169, 45);
+            this.numSpamTimes.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numSpamTimes.Name = "numSpamTimes";
             this.numSpamTimes.Size = new System.Drawing.Size(64, 20);
             this.numSpamTimes.TabIndex = 9;

@@ -296,11 +296,15 @@
     <EmbeddedResource Include="UI\PacketSpammer.resx">
       <DependentUpon>PacketSpammer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\PacketTamperer.resources" />
+    <EmbeddedResource Include="UI\PacketTamperer.resx">
+      <DependentUpon>PacketTamperer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\PluginManager.resx">
       <DependentUpon>PluginManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\RawCommandEditor.resources" />
+    <EmbeddedResource Include="UI\RawCommandEditor.resx">
+      <DependentUpon>RawCommandEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Root.resx">
       <DependentUpon>Root.cs</DependentUpon>
     </EmbeddedResource>
@@ -335,6 +339,7 @@
     <Content Include="EasyLoad64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\aqlitegrimoire14.swf" />
     <None Include="Resources\aqlitegrimoire_e.swf" />
     <None Include="Resources\aqlitegrimoire.swf" />
     <None Include="Resources\grimpro.swf" />

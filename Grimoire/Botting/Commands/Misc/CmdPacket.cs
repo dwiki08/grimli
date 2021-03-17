@@ -9,7 +9,7 @@ namespace Grimoire.Botting.Commands.Misc
         public string Packet { get; set; }
         public int SpamTimes { get; set; } = 1;
         public bool ForClient { get; set; } = false;
-        public int Delay { get; set; } = 2000;
+        public int Delay { get; set; } = 1000;
 
         public async Task Execute(IBotEngine instance)
         {
@@ -18,7 +18,13 @@ namespace Grimoire.Botting.Commands.Misc
                 if (!instance.IsRunning || !Player.IsLoggedIn) break;
                 if (ForClient)
                 {
-                    await Proxy.Instance.SendToClient(Packet);
+                    string packet = Packet;
+                    if (packet.Split(' ')[0] == "Level")
+                    {
+                        packet = "{\"t\":\"xt\",\"b\":{\"r\":-1,\"o\":{\"cmd\":\"levelUp\",\"intExpToLevel\":\"200000\",\"intLevel\":" + packet.Split(' ')[1] + "}}}";
+                    }
+
+                    await Proxy.Instance.SendToClient(packet);
                     await Task.Delay(Delay);
                 }
                 else
@@ -31,7 +37,8 @@ namespace Grimoire.Botting.Commands.Misc
 
         public override string ToString()
         {
-            return $"Send packet [{SpamTimes}x]: {Packet}";
+            string text = ForClient ? "To client" : "To server";
+            return $"{text} [{SpamTimes}x]: {Packet}";
         }
     }
 }

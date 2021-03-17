@@ -28,14 +28,14 @@ namespace Grimoire.Botting.Commands.Combat
 
                 if (s.Type == Skill.SkillType.Safe)
                 {
-                    if (s.SafeMp)
+                    if (s.IsSafeMp)
                     {
-                        if ((double)Player.Mana / Player.ManaMax * 100 <= s.SafeHealth)
+                        if ((double)Player.Mana / Player.ManaMax * 100 <= s.SafeValue)
                             Player.UseSkill(s.Index);
                     }
                     else
                     {
-                        if ((double)Player.Health / Player.HealthMax * 100 <= s.SafeHealth)
+                        if ((double)Player.Health / Player.HealthMax * 100 <= s.SafeValue)
                             Player.UseSkill(s.Index);
                     }
                 }

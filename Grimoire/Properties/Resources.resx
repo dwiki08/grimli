@@ -124,6 +124,9 @@
   <data name="aqlitegrimoire" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\aqlitegrimoire.swf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="aqlitegrimoire14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\aqlitegrimoire14.swf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="aqlitegrimoire_e" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\aqlitegrimoire_e.swf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -132,6 +135,9 @@
   </data>
   <data name="grim" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\grim.swf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="grimoire" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\grimoire.swf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="grimpro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\grimpro.swf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

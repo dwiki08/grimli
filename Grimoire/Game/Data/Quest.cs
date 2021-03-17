@@ -57,7 +57,28 @@ namespace Grimoire.Game.Data
 
 		public string ItemId { get; set; }
 
-		public string Text { get; set; }
+		public string Text { 
+			get {
+				return _text + (_completeInBlank? " [InBlank]" : "");
+			}
+			set {
+				this._text = value;
+				return;
+			}
+		} 
+
+		public bool CompleteInBlank {
+			get {
+				return _completeInBlank;
+			}
+			set {
+				this._completeInBlank = value;
+				return;
+			} 
+		}
+
+		private string _text;
+		private bool _completeInBlank;
 
 		public void Accept()
 		{

@@ -105,8 +105,9 @@ namespace Grimoire.UI
             }
         }
 
-        private void btnFAccept_Click(object sender, EventArgs e)
+        private async void btnFAccept_Click(object sender, EventArgs e)
         {
+            btnFAccept.Enabled = false;
             if (txtLoaders.Text == null) return;
             int questId = Int32.Parse(txtLoaders.Text);
             List<int> listQuests = new List<int>();
@@ -116,11 +117,11 @@ namespace Grimoire.UI
                 questId++;
             }
 
-            _ = acceptBatchAsync(listQuests);
+            await acceptBatchAsync(listQuests);
+            btnFAccept.Enabled = true;
         }
         private async Task acceptBatchAsync(List<int> listQuest)
         {
-            //btnFAccept.Enabled = false;
             Player.Quests.Get(listQuest);
             await Task.Delay(1000);
             for (int i = 0; i < listQuest.Count; i++)
@@ -131,7 +132,6 @@ namespace Grimoire.UI
                     await Task.Delay(1000);
                 }
             }
-            //btnFAccept.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

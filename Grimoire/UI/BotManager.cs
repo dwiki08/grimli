@@ -75,12 +75,13 @@ namespace Grimoire.UI
         private BotManager()
         {
             InitializeComponent();
+            cbSafeType.SelectedIndex = 0;
         }
 
         private void BotManager_Load(object sender, EventArgs e)
         {
             _panels = new[] { pnlCombat, pnlMap, pnlQuest, pnlItem, pnlMisc, pnlOptions, pnlSaved, pnlClientSide, pnlFroztt };
-            pnlCombat.Size = new Size(379, 315);
+            pnlCombat.Size = new Size(399, 315);
             pnlMap.Size = new Size(343, 315);
             pnlQuest.Size = new Size(349, 315);
             pnlItem.Size = new Size(318, 315);
@@ -92,7 +93,7 @@ namespace Grimoire.UI
             HidePanels(pnlCombat);
             lstBoosts.DisplayMember = "Text";
             lstQuests.DisplayMember = "Text";
-            lstSkills.DisplayMember = "Text";
+            //lstSkills.DisplayMember = "Text";
             cbBoosts.DisplayMember = "Name";
             cbServers.DisplayMember = "Name";
             cbStatement.DisplayMember = "Text";
@@ -142,7 +143,7 @@ namespace Grimoire.UI
         }
 
         private bool clearSkillAfter = false;
-        private Configuration GenerateConfiguration()
+        public Configuration GenerateConfiguration()
         {
             List<Skill> randSkills = new List<Skill>();
             if (lstSkills.Items.Cast<Skill>().ToList().Count > 0)
@@ -267,7 +268,7 @@ namespace Grimoire.UI
             txtDescription.Text = config.Description;
         }
 
-        private void OnConfigurationChanged(Configuration config)
+        public void OnConfigurationChanged(Configuration config)
         {
             if (InvokeRequired)
                 Invoke(new Action(() => ApplyConfiguration(config)));
@@ -275,7 +276,7 @@ namespace Grimoire.UI
                 ApplyConfiguration(config);
         }
 
-        private void OnIndexChanged(int index)
+        public void OnIndexChanged(int index)
         {
             if (index > -1)
             {
@@ -286,7 +287,7 @@ namespace Grimoire.UI
             }
         }
 
-        private void OnIsRunningChanged(bool isRunning)
+        public void OnIsRunningChanged(bool isRunning)
         {
             if (!isRunning)
             {
@@ -312,6 +313,10 @@ namespace Grimoire.UI
                 Invoke(new Action(() => { chkEnable.Checked = isRunning; }));
             else
                 chkEnable.Checked = isRunning;
+
+            Root.Instance.chkEnable.Checked = isRunning;
+
+            selectionMode(isRunning ? SelectionMode.One : SelectionMode.MultiExtended);
         }
 
         public void AddCommand(IBotCommand cmd)
@@ -527,9 +532,35 @@ namespace Grimoire.UI
             }
         }
 
-        private void chkEnable_Click(object sender, EventArgs e)
+        private void lstSkills_DoubleClick(object sender, EventArgs e)
         {
-            if (/*!Player.IsAlive || !Player.IsLoggedIn ||*/ lstCommands.Items.Count <= 0)
+            int index = lstSkills.SelectedIndex;
+            if (index > -1)
+            {
+                object cmd = lstSkills.Items[index];
+
+                string result = JsonConvert.SerializeObject(cmd, Formatting.Indented, _serializerSettings);
+
+                string mod = RawCommandEditor.Show(result);
+
+                if (mod != null)
+                {
+                    try
+                    {
+                        Skill modifiedCmd = (Skill)JsonConvert.DeserializeObject(mod, cmd.GetType());
+                        lstSkills.Items.Remove(cmd);
+                        lstSkills.Items.Insert(index, modifiedCmd);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        public bool isRunning = false;
+
+        private void chkEnable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkEnable.Checked && (lstCommands.Items.Count <= 0 || !Player.IsLoggedIn))
             {
                 chkEnable.Checked = false;
                 return;
@@ -537,11 +568,8 @@ namespace Grimoire.UI
 
             if (chkEnable.Checked)
             {
-                this.lstCommands.SelectionMode = SelectionMode.One;
-                this.lstSkills.SelectionMode = SelectionMode.One;
-                this.lstQuests.SelectionMode = SelectionMode.One;
-                this.lstDrops.SelectionMode = SelectionMode.One;
-                this.lstBoosts.SelectionMode = SelectionMode.One;
+                isRunning = true;
+                selectionMode(SelectionMode.One);
 
                 btnUp.Enabled = false;
                 btnDown.Enabled = false;
@@ -551,18 +579,29 @@ namespace Grimoire.UI
                 ActiveBotEngine.IndexChanged += OnIndexChanged;
                 ActiveBotEngine.ConfigurationChanged += OnConfigurationChanged;
                 ActiveBotEngine.Start(GenerateConfiguration());
+
+                Root.Instance.chkEnable.Checked = true;
             }
             else
             {
+                if (!isRunning) return;
                 if (clearSkillAfter) lstSkills.Items.Clear();
                 ActiveBotEngine.Stop();
+                selectionMode(SelectionMode.MultiExtended);
+                isRunning = false;
 
-                this.lstCommands.SelectionMode = SelectionMode.MultiExtended;
-                this.lstSkills.SelectionMode = SelectionMode.MultiExtended;
-                this.lstQuests.SelectionMode = SelectionMode.MultiExtended;
-                this.lstDrops.SelectionMode = SelectionMode.MultiExtended;
-                this.lstBoosts.SelectionMode = SelectionMode.MultiExtended;
+                Root.Instance.chkEnable.Checked = false;
             }
+
+        }
+
+        private void selectionMode(SelectionMode mode)
+        {
+            this.lstCommands.SelectionMode = mode;
+            this.lstSkills.SelectionMode = mode;
+            this.lstQuests.SelectionMode = mode;
+            this.lstDrops.SelectionMode = mode;
+            this.lstBoosts.SelectionMode = mode;
         }
 
         private Panel[] _panels;
@@ -573,7 +612,7 @@ namespace Grimoire.UI
             switch (exception.Name)
             {
                 case "pnlCombat":
-                    Size = new Size(624, 392);
+                    Size = new Size(644, 392);
                     break;
                 case "pnlMap":
                     Size = new Size(589, 392);
@@ -709,81 +748,6 @@ namespace Grimoire.UI
         #endregion
 
         #region Combat tab
-        private CancellationTokenSource _cts;
-        private int _skillIndex;
-        private static IJsonMessageHandler HandlerRMP { get; } = new HandlerSkills();
-        private async void btnAutoCombat_Click(object sender, EventArgs e)
-        {
-            if (!chkEnable.Checked && btnAutoCombat.Text.Equals("Auto Combat"))
-            {
-                btnAutoCombat.Text = "Stop Combat";
-
-                if (chkInfiniteRMP.Checked)
-                {
-                    Proxy.Instance.RegisterHandler(HandlerRMP);
-                    Flash.Call("SetInfiniteRange", new string[0]);
-                    chkInfiniteRMP.Enabled = false;
-                }
-
-                List<Skill> ls = new List<Skill>();
-                if (lstSkills.Items.Count > 0)
-                {
-                    for (int i = 0; i < lstSkills.Items.Count; i++)
-                    {
-                        ls.Add((Skill)lstSkills.Items[i]);
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i <= 4; i++)
-                    {
-                        string index = "" + i;
-                        ls.Add(new Skill
-                        {
-                            Text = $"{index}: {Skill.GetSkillName(index)}",
-                            Index = index,
-                            Type = Skill.SkillType.Normal
-                        });
-                    }
-                }
-
-                _skillIndex = 0;
-                while (btnAutoCombat.Text.Equals("Stop Combat") && Player.IsLoggedIn && Player.IsAlive)
-                {
-                    Player.AttackMonster("*");
-                    Skill s = ls[_skillIndex];
-
-                    if (s.Type == Skill.SkillType.Safe)
-                    {
-                        if (s.SafeMp)
-                        {
-                            if ((double)Player.Mana / Player.ManaMax * 100 <= s.SafeHealth)
-                                Player.UseSkill(s.Index);
-                        }
-                        else
-                        {
-                            if ((double)Player.Health / Player.HealthMax * 100 <= s.SafeHealth)
-                                Player.UseSkill(s.Index);
-                        }
-                    }
-                    else
-                    {
-                        Player.UseSkill(s.Index);
-                    }
-
-                    int count = ls.Count - 1;
-
-                    _skillIndex = _skillIndex >= count ? 0 : ++_skillIndex;
-                    await Task.Delay(200);
-                }
-            }
-            else
-            {
-                btnAutoCombat.Text = "Auto Combat";
-                if (chkInfiniteRMP.Checked) Proxy.Instance.UnregisterHandler(HandlerRMP);
-                chkInfiniteRMP.Enabled = true;
-            }
-        }
         private void btnAttack_Click(object sender, EventArgs e)
         {
             string monster = string.IsNullOrEmpty(this.txtMonster.Text) ? "*" : this.txtMonster.Text;
@@ -826,15 +790,19 @@ namespace Grimoire.UI
             if (txtKillFItem.Text.Length > 0 && txtKillFQ.Text.Length > 0)
             {
                 string monster = string.IsNullOrEmpty(this.txtKillFMonster.Text) ? "*" : this.txtKillFMonster.Text;
+                string qty = string.IsNullOrEmpty(this.txtKillFQ.Text) ? "1" : this.txtKillFQ.Text;
+                string item = txtKillFItem.Text;
                 string monId = "";
+
+                if (txtKillFMonster.Text == "Monster (*  = random)") monster = "*";
+                if (qty == "Quantity (* = any)") qty = "1";
+
+                //testing atk by id
                 if (monster.Split(' ')[0].Equals("/id"))
                 {
                     monId = monster.Split(' ')[1];
                 }
-                bool flag = this.txtKillFMonster.Text == "Monster (*  = random)";
-                if (flag) monster = "*";
-                string text = this.txtKillFItem.Text;
-                string text2 = this.txtKillFQ.Text;
+                //
 
                 if (chkAddToWhitelist.Checked)
                 {
@@ -843,10 +811,10 @@ namespace Grimoire.UI
                         ','
                     });
 
-                    foreach (string item in items)
+                    foreach (string _item in items)
                     {
-                        if (!lstDrops.Items.Cast<string>().ToList().Any((string d) => d.Equals(item, StringComparison.OrdinalIgnoreCase)))
-                            lstDrops.Items.Add(item);
+                        if (!lstDrops.Items.Cast<string>().ToList().Any((string d) => d.Equals(_item, StringComparison.OrdinalIgnoreCase)))
+                            lstDrops.Items.Add(_item);
                     }
                 }
 
@@ -856,18 +824,19 @@ namespace Grimoire.UI
                 {
                     ItemType = (this.rbItems.Checked ? ItemType.Items : ItemType.TempItems),
                     Monster = monster,
-                    ItemName = text,
-                    Quantity = text2,
+                    ItemName = item,
+                    Quantity = qty,
                     IsGetDrops = chkGetDropKillFor.Checked,
                     AfterKills = int.TryParse(this.txtAfterXKill.Text, out times) ? times : 1
                 };
 
                 if (rbForQuest.Checked)
                 {
+                    if (!int.TryParse(txtForQuestID.Text, out _)) return;
                     cmd = new CmdKillFor
                     {
                         Monster = monster,
-                        QuestId = txtForQuestId.Text
+                        QuestId = txtForQuestID.Text
                     };
                 }
 
@@ -907,17 +876,6 @@ namespace Grimoire.UI
             }
         }
 
-        private void btnAddSkill_Click(object sender, EventArgs e)
-        {
-            string index = numSkill.Text;
-            lstSkills.Items.Add(new Skill
-            {
-                Text = $"{index}: {Skill.GetSkillName(index)}",
-                Index = index,
-                Type = Skill.SkillType.Normal
-            });
-        }
-
         private void btnAllSkill_Click(object sender, EventArgs e)
         {
             //string index = numSkill.Text;
@@ -925,7 +883,7 @@ namespace Grimoire.UI
             {
                 lstSkills.Items.Add(new Skill
                 {
-                    Text = $"{i}: {Skill.GetSkillName("" + i)}",
+                    //Text = $"{i}: {Skill.GetSkillName("" + i)}",
                     Index = "" + i,
                     Type = Skill.SkillType.Normal
                 });
@@ -942,34 +900,50 @@ namespace Grimoire.UI
                 {
                     Text = $"[S] {index}: {Skill.GetSkillName(index)}",
                     Index = index,
-                    SafeHealth = safe,
+                    SafeValue = safe,
                     Type = Skill.SkillType.Safe,
-                    SafeMp = chkSafeMp.Checked
+                    IsSafeMp = chkSafeMp.Checked
                 },
                 Wait = false
             }, (Control.ModifierKeys & Keys.Control) == Keys.Control);
+        }
+
+        private void btnAddSkill_Click(object sender, EventArgs e)
+        {
+            string index = numSkill.Text;
+            lstSkills.Items.Add(new Skill
+            {
+                Text = Skill.GetSkillName(index),
+                Index = index,
+                Type = Skill.SkillType.Normal
+            });
         }
 
         private void btnAddSafe_Click(object sender, EventArgs e)
         {
             string index = numSkill.Text;
             int safe = (int)numSafe.Value;
+
+            Skill.SafeType safeType = Skill.SafeType.LowerThan;
+            if (cbSafeType.SelectedIndex == 0)
+            {
+                safeType = Skill.SafeType.LowerThan;
+            } else if (cbSafeType.SelectedIndex == 1)
+            {
+                safeType = Skill.SafeType.GreaterThan;
+            }
             lstSkills.Items.Add(new Skill
             {
-                Text = $"[S] {index}: {Skill.GetSkillName(index)}",
+                Text = Skill.GetSkillName(index),
                 Index = index,
-                SafeHealth = safe,
+                SafeValue = safe,
+                SType = safeType,
                 Type = Skill.SkillType.Safe,
-                SafeMp = chkSafeMp.Checked
+                IsSafeMp = chkSafeMp.Checked
             });
         }
 
         private void btnRest_Click(object sender, EventArgs e)
-        {
-            this.AddCommand(new CmdRest(), (Control.ModifierKeys & Keys.Control) == Keys.Control);
-        }
-
-        private void btnRestF_Click(object sender, EventArgs e)
         {
             this.AddCommand(new CmdRest { Full = true }, (Control.ModifierKeys & Keys.Control) == Keys.Control);
         }
@@ -989,7 +963,7 @@ namespace Grimoire.UI
             {
                 this.AddSkill(new Skill
                 {
-                    Text = "[" + this.txtSkillSetName.Text.ToUpper() + "]",
+                    Text = this.txtSkillSetName.Text.ToUpper(),
                     Type = Skill.SkillType.Label
                 }, (Control.ModifierKeys & Keys.Control) == Keys.Control);
             }
@@ -1168,9 +1142,11 @@ namespace Grimoire.UI
 
         private void btnQuestAdd_Click(object sender, EventArgs e)
         {
-            Quest q = new Quest { Id = (int)numQuestID.Value };
-            if (chkQuestItem.Checked)
-                q.ItemId = numQuestItem.Value.ToString();
+            Quest q = new Quest { 
+                Id = (int)numQuestID.Value,
+                CompleteInBlank = chkCompleteBlank.Checked
+            };
+            if (chkQuestItem.Checked) q.ItemId = numQuestItem.Value.ToString();
             q.Text = q.ItemId != null ? $"{q.Id}:{q.ItemId}" : q.Id.ToString();
             lstQuests.Items.Add(q);
         }
@@ -1649,6 +1625,18 @@ namespace Grimoire.UI
             await Proxy.Instance.SendToClient(packet);
         }
 
+        private void btnSetLevelCmd_Click(object sender, EventArgs e)
+        {
+            string packet = "Level " + tbLevel.Text;
+
+            this.AddCommand(new CmdPacket
+            {
+                Packet = packet,
+                SpamTimes = 1,
+                ForClient = true
+            }, (Control.ModifierKeys & Keys.Control) == Keys.Control);
+        }
+
         private async void btnDoomBSkip_Click(object sender, EventArgs e)
         {
             btnDoomBSkip.Enabled = false;
@@ -1754,6 +1742,14 @@ namespace Grimoire.UI
             {
                 Flash.Call("SetWalkSpeed", new string[] { "8" });
             }
+        }
+
+        private void btnFPS_Click(object sender, EventArgs e)
+        {
+            Flash.Call("SetFPS", new string[]
+            {
+                numFPSs.Value.ToString()
+            });
         }
     }
 }

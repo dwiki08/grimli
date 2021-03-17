@@ -102,7 +102,20 @@ namespace Grimoire.Botting.Commands.Combat
 
         public override string ToString()
         {
-            return $"KF {(int.TryParse(QuestId, out _) ? "quest" : (ItemType == ItemType.Items ? "items" : "tempitems") )}: {Monster} {(IsGetDrops ? $" get drops, {AfterKills}kills" : "")}";
+            string text;
+            if (int.TryParse(QuestId, out _))
+            {
+                text = $"KFQuest: [{QuestId}] [{Monster}]";
+            } else if (ItemType == ItemType.Items)
+            {
+                text = $"KFItems: {(IsGetDrops? $"[{AfterKills}kill drop] " : "")}[{ItemName} {Quantity}x] [{Monster}]";
+            } else
+            {
+                text = $"KFTemps: [{ItemName} {Quantity}x] [{Monster}]";
+            }
+
+            return text;
+            //return $"KF {(int.TryParse(QuestId, out _) ? "quest" : (ItemType == ItemType.Items ? "items" : "tempitems") )}: {Monster} {(IsGetDrops ? $" get drops, {AfterKills}kills" : "")}";
         }
     }
 }

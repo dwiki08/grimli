@@ -16,10 +16,10 @@ namespace Grimoire.Networking.Handlers
 			{
 				message.DataObject["anims"] = new JArray();
 			}
-			if (message.DataObject["a"] != null)
+			/*if (message.DataObject["a"] != null)
 			{
 				message.DataObject["a"] = new JArray();
-			}
+			}*/
 		}
 	}
 }

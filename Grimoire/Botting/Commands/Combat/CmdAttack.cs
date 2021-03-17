@@ -75,14 +75,14 @@ namespace Grimoire.Botting.Commands.Combat
                 }
                 if (s.Type == Skill.SkillType.Safe)
                 {
-                    if (s.SafeMp)
+                    if (s.IsSafeMp)
                     {
-                        if ((double)Player.Mana / (double)Player.ManaMax * 100.0 <= (double)s.SafeHealth)
+                        if ((double)Player.Mana / (double)Player.ManaMax * 100.0 <= (double)s.SafeValue)
                         {
                             Player.UseSkill(s.Index);
                         }
                     }
-                    else if ((double)Player.Health / (double)Player.HealthMax * 100.0 <= (double)s.SafeHealth)
+                    else if ((double)Player.Health / (double)Player.HealthMax * 100.0 <= (double)s.SafeValue)
                     {
                         Player.UseSkill(s.Index);
                     }
@@ -111,14 +111,14 @@ namespace Grimoire.Botting.Commands.Combat
                 Skill s = instance.Configuration.Skills[_skillIndex];
                 if (s.Type == Skill.SkillType.Safe)
                 {
-                    if (s.SafeMp)
+                    if (s.IsSafeMp)
                     {
-                        if ((double)Player.Mana / (double)Player.ManaMax * 100.0 <= (double)s.SafeHealth)
+                        if ((double)Player.Mana / (double)Player.ManaMax * 100.0 <= (double)s.SafeValue)
                         {
                             Player.UseSkill(s.Index);
                         }
                     }
-                    else if ((double)Player.Health / (double)Player.HealthMax * 100.0 <= (double)s.SafeHealth)
+                    else if ((double)Player.Health / (double)Player.HealthMax * 100.0 <= (double)s.SafeValue)
                     {
                         Player.UseSkill(s.Index);
                     }

@@ -54,7 +54,7 @@ namespace Grimoire.Botting.Commands.Quest
 
         public override string ToString()
         {
-            return $"Complete quest [{CompleteTry}x try]: {(Quest.ItemId != null && Quest.ItemId != "0" ? $"{Quest.Id}:{Quest.ItemId}" : Quest.Id.ToString())} {(InBlank ? "in Blank" : "")}";
+            return $"Complete quest [{CompleteTry}x]: {(Quest.ItemId != null && Quest.ItemId != "0" ? $"{Quest.Id}:{Quest.ItemId}" : Quest.Id.ToString())} {(InBlank ? "[InBlank]" : "")}";
         }
     }
 }

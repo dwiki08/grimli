@@ -26,9 +26,9 @@
             this.btnTwins = new System.Windows.Forms.Button();
             this.btnTercess = new System.Windows.Forms.Button();
             this.grpTravel = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.numPriv = new System.Windows.Forms.NumericUpDown();
             this.chkPriv = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.grpTravel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numPriv)).BeginInit();
             this.SuspendLayout();
@@ -133,10 +133,25 @@
             this.grpTravel.TabStop = false;
             this.grpTravel.Text = "Fast travels";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 276);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(125, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Klunk Shop";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // numPriv
             // 
             this.numPriv.Enabled = false;
             this.numPriv.Location = new System.Drawing.Point(64, 18);
+            this.numPriv.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.numPriv.Name = "numPriv";
             this.numPriv.Size = new System.Drawing.Size(67, 20);
             this.numPriv.TabIndex = 1;
@@ -151,16 +166,6 @@
             this.chkPriv.Text = "Private";
             this.chkPriv.UseVisualStyleBackColor = true;
             this.chkPriv.CheckedChanged += new System.EventHandler(this.chkPriv_CheckedChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 276);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Klunk Shop";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Travel
             // 

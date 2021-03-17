@@ -1,1 +1,23 @@
-{"txtMonster":"Monster (*  = random)","txtKillFMon":"Monster (* = random)","txtKillFItem":"Item name","txtKillFQ":"Quantity (* = any)","txtPacket":"%xt%zm%.........","txtPlayer":"Player name","txtAuthor":"Author","txtDescription":"Description","txtJoin":"battleon-1e99","txtJoinCell":"Enter","txtJoinPad":"Spawn","txtCell":"Cell","txtPad":"Pad","txtItem":"Item name","txtSwapBank":"Bank item name","txtSwapInv":"Inventory item name","txtWhitelist":"Item name","txtLabel":"Label name"}
+{
+  "txtMonster": "Monster (*  = random)",
+  "txtKillFMonster": "Monster (*  = random)",
+  "txtSkillSetName": "Skill Set Name",
+  "txtKillFItem": "Item name",
+  "txtKillFQ": "Quantity (* = any)",
+  "txtForQuestID": "QuestId",
+  "txtAfterXKill": "after x",
+  "txtPacket": "%xt%zm%.........",
+  "txtPlayer": "Player name",
+  "txtAuthor": "Author",
+  "txtDescription": "Description",
+  "txtJoin": "battleon-a",
+  "txtJoinCell": "Enter",
+  "txtJoinPad": "Spawn",
+  "txtCell": "Cell",
+  "txtPad": "Pad",
+  "txtItem": "Item name",
+  "txtSwapBank": "Bank item name",
+  "txtSwapInv": "Inventory item name",
+  "txtWhitelist": "Item name",
+  "txtLabel": "Label name"
+}

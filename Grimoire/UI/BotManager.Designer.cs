@@ -42,9 +42,11 @@
             this.cbLists = new System.Windows.Forms.ComboBox();
             this.chkEnable = new System.Windows.Forms.CheckBox();
             this.pnlCombat = new System.Windows.Forms.Panel();
+            this.chkRestFully = new System.Windows.Forms.CheckBox();
+            this.cbSafeType = new System.Windows.Forms.ComboBox();
             this.txtKillFMonster = new System.Windows.Forms.TextBox();
             this.rbForQuest = new System.Windows.Forms.RadioButton();
-            this.txtForQuestId = new System.Windows.Forms.TextBox();
+            this.txtForQuestID = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtAfterXKill = new System.Windows.Forms.TextBox();
             this.chkGetDropKillFor = new System.Windows.Forms.CheckBox();
@@ -52,8 +54,6 @@
             this.btnUseSkillSet = new System.Windows.Forms.Button();
             this.btnAddSkillSet = new System.Windows.Forms.Button();
             this.txtSkillSetName = new System.Windows.Forms.TextBox();
-            this.chkInfiniteRMP = new System.Windows.Forms.CheckBox();
-            this.btnAutoCombat = new System.Windows.Forms.Button();
             this.btnAttack = new System.Windows.Forms.Button();
             this.btnAddSkillCmd = new System.Windows.Forms.Button();
             this.chkSafeMp = new System.Windows.Forms.CheckBox();
@@ -68,7 +68,6 @@
             this.numRest = new System.Windows.Forms.NumericUpDown();
             this.chkHP = new System.Windows.Forms.CheckBox();
             this.numSkillD = new System.Windows.Forms.NumericUpDown();
-            this.btnRestF = new System.Windows.Forms.Button();
             this.btnRest = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.numSafe = new System.Windows.Forms.NumericUpDown();
@@ -215,6 +214,9 @@
             this.btnSavedAdd = new System.Windows.Forms.Button();
             this.txtSaved = new System.Windows.Forms.TextBox();
             this.pnlClientSide = new System.Windows.Forms.Panel();
+            this.numFPSs = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnFPS = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.btnSetGuild = new System.Windows.Forms.Button();
             this.tbGuild = new System.Windows.Forms.TextBox();
@@ -250,7 +252,7 @@
             this.tbMapF = new System.Windows.Forms.TextBox();
             this.tbMonNameF = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnSetLevelCmd = new System.Windows.Forms.Button();
             this.pnlCombat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRestMP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRest)).BeginInit();
@@ -280,6 +282,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numRelogDelay)).BeginInit();
             this.pnlSaved.SuspendLayout();
             this.pnlClientSide.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFPSs)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlFroztt.SuspendLayout();
             this.SuspendLayout();
@@ -353,6 +356,7 @@
             this.lstSkills.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstSkills.Size = new System.Drawing.Size(201, 238);
             this.lstSkills.TabIndex = 28;
+            this.lstSkills.DoubleClick += new System.EventHandler(this.lstSkills_DoubleClick);
             this.lstSkills.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstBoxs_KeyPress);
             // 
             // btnDown
@@ -432,14 +436,15 @@
             this.chkEnable.TabIndex = 101;
             this.chkEnable.Text = "Enable bot";
             this.chkEnable.UseVisualStyleBackColor = true;
-            this.chkEnable.Click += new System.EventHandler(this.chkEnable_Click);
+            this.chkEnable.CheckedChanged += new System.EventHandler(this.chkEnable_CheckedChanged);
             // 
             // pnlCombat
             // 
-            this.pnlCombat.Controls.Add(this.comboBox1);
+            this.pnlCombat.Controls.Add(this.chkRestFully);
+            this.pnlCombat.Controls.Add(this.cbSafeType);
             this.pnlCombat.Controls.Add(this.txtKillFMonster);
             this.pnlCombat.Controls.Add(this.rbForQuest);
-            this.pnlCombat.Controls.Add(this.txtForQuestId);
+            this.pnlCombat.Controls.Add(this.txtForQuestID);
             this.pnlCombat.Controls.Add(this.label16);
             this.pnlCombat.Controls.Add(this.txtAfterXKill);
             this.pnlCombat.Controls.Add(this.chkGetDropKillFor);
@@ -447,8 +452,6 @@
             this.pnlCombat.Controls.Add(this.btnUseSkillSet);
             this.pnlCombat.Controls.Add(this.btnAddSkillSet);
             this.pnlCombat.Controls.Add(this.txtSkillSetName);
-            this.pnlCombat.Controls.Add(this.chkInfiniteRMP);
-            this.pnlCombat.Controls.Add(this.btnAutoCombat);
             this.pnlCombat.Controls.Add(this.btnAttack);
             this.pnlCombat.Controls.Add(this.btnAddSkillCmd);
             this.pnlCombat.Controls.Add(this.chkSafeMp);
@@ -463,7 +466,6 @@
             this.pnlCombat.Controls.Add(this.numRest);
             this.pnlCombat.Controls.Add(this.chkHP);
             this.pnlCombat.Controls.Add(this.numSkillD);
-            this.pnlCombat.Controls.Add(this.btnRestF);
             this.pnlCombat.Controls.Add(this.btnRest);
             this.pnlCombat.Controls.Add(this.label2);
             this.pnlCombat.Controls.Add(this.numSafe);
@@ -481,16 +483,39 @@
             this.pnlCombat.Controls.Add(this.txtMonster);
             this.pnlCombat.Location = new System.Drawing.Point(219, 27);
             this.pnlCombat.Name = "pnlCombat";
-            this.pnlCombat.Size = new System.Drawing.Size(379, 319);
+            this.pnlCombat.Size = new System.Drawing.Size(398, 319);
             this.pnlCombat.TabIndex = 102;
+            // 
+            // chkRestFully
+            // 
+            this.chkRestFully.AutoSize = true;
+            this.chkRestFully.Location = new System.Drawing.Point(336, 92);
+            this.chkRestFully.Name = "chkRestFully";
+            this.chkRestFully.Size = new System.Drawing.Size(47, 17);
+            this.chkRestFully.TabIndex = 75;
+            this.chkRestFully.Text = "Fully";
+            this.chkRestFully.UseVisualStyleBackColor = true;
+            // 
+            // cbSafeType
+            // 
+            this.cbSafeType.FormattingEnabled = true;
+            this.cbSafeType.Items.AddRange(new object[] {
+            "<= Lower than",
+            ">= Greater than"});
+            this.cbSafeType.Location = new System.Drawing.Point(159, 112);
+            this.cbSafeType.Name = "cbSafeType";
+            this.cbSafeType.Size = new System.Drawing.Size(109, 21);
+            this.cbSafeType.TabIndex = 74;
             // 
             // txtKillFMonster
             // 
-            this.txtKillFMonster.Location = new System.Drawing.Point(5, 182);
+            this.txtKillFMonster.Location = new System.Drawing.Point(5, 183);
             this.txtKillFMonster.Name = "txtKillFMonster";
             this.txtKillFMonster.Size = new System.Drawing.Size(144, 20);
             this.txtKillFMonster.TabIndex = 73;
             this.txtKillFMonster.Text = "Monster (*  = random)";
+            this.txtKillFMonster.Enter += new System.EventHandler(this.TextboxEnter);
+            this.txtKillFMonster.Leave += new System.EventHandler(this.TextboxLeave);
             // 
             // rbForQuest
             // 
@@ -504,13 +529,15 @@
             this.rbForQuest.UseVisualStyleBackColor = true;
             this.rbForQuest.CheckedChanged += new System.EventHandler(this.rbForQuest_CheckedChanged);
             // 
-            // txtForQuestId
+            // txtForQuestID
             // 
-            this.txtForQuestId.Location = new System.Drawing.Point(62, 111);
-            this.txtForQuestId.Name = "txtForQuestId";
-            this.txtForQuestId.Size = new System.Drawing.Size(79, 20);
-            this.txtForQuestId.TabIndex = 71;
-            this.txtForQuestId.Text = "questId";
+            this.txtForQuestID.Location = new System.Drawing.Point(62, 111);
+            this.txtForQuestID.Name = "txtForQuestID";
+            this.txtForQuestID.Size = new System.Drawing.Size(79, 20);
+            this.txtForQuestID.TabIndex = 71;
+            this.txtForQuestID.Text = "QuestId";
+            this.txtForQuestID.Enter += new System.EventHandler(this.TextboxEnter);
+            this.txtForQuestID.Leave += new System.EventHandler(this.TextboxLeave);
             // 
             // label16
             // 
@@ -529,6 +556,8 @@
             this.txtAfterXKill.Size = new System.Drawing.Size(52, 20);
             this.txtAfterXKill.TabIndex = 69;
             this.txtAfterXKill.Text = "after x";
+            this.txtAfterXKill.Enter += new System.EventHandler(this.TextboxEnter);
+            this.txtAfterXKill.Leave += new System.EventHandler(this.TextboxLeave);
             // 
             // chkGetDropKillFor
             // 
@@ -555,7 +584,7 @@
             // 
             // btnUseSkillSet
             // 
-            this.btnUseSkillSet.Location = new System.Drawing.Point(263, 61);
+            this.btnUseSkillSet.Location = new System.Drawing.Point(274, 61);
             this.btnUseSkillSet.Name = "btnUseSkillSet";
             this.btnUseSkillSet.Size = new System.Drawing.Size(110, 23);
             this.btnUseSkillSet.TabIndex = 66;
@@ -565,7 +594,7 @@
             // 
             // btnAddSkillSet
             // 
-            this.btnAddSkillSet.Location = new System.Drawing.Point(263, 32);
+            this.btnAddSkillSet.Location = new System.Drawing.Point(274, 32);
             this.btnAddSkillSet.Name = "btnAddSkillSet";
             this.btnAddSkillSet.Size = new System.Drawing.Size(110, 23);
             this.btnAddSkillSet.TabIndex = 65;
@@ -575,31 +604,13 @@
             // 
             // txtSkillSetName
             // 
-            this.txtSkillSetName.Location = new System.Drawing.Point(263, 6);
+            this.txtSkillSetName.Location = new System.Drawing.Point(274, 6);
             this.txtSkillSetName.Name = "txtSkillSetName";
             this.txtSkillSetName.Size = new System.Drawing.Size(110, 20);
             this.txtSkillSetName.TabIndex = 64;
             this.txtSkillSetName.Text = "Skill Set Name";
-            // 
-            // chkInfiniteRMP
-            // 
-            this.chkInfiniteRMP.AutoSize = true;
-            this.chkInfiniteRMP.Location = new System.Drawing.Point(264, 266);
-            this.chkInfiniteRMP.Name = "chkInfiniteRMP";
-            this.chkInfiniteRMP.Size = new System.Drawing.Size(87, 17);
-            this.chkInfiniteRMP.TabIndex = 63;
-            this.chkInfiniteRMP.Text = "Infinite range";
-            this.chkInfiniteRMP.UseVisualStyleBackColor = true;
-            // 
-            // btnAutoCombat
-            // 
-            this.btnAutoCombat.Location = new System.Drawing.Point(169, 263);
-            this.btnAutoCombat.Name = "btnAutoCombat";
-            this.btnAutoCombat.Size = new System.Drawing.Size(92, 23);
-            this.btnAutoCombat.TabIndex = 62;
-            this.btnAutoCombat.Text = "Auto Combat";
-            this.btnAutoCombat.UseVisualStyleBackColor = true;
-            this.btnAutoCombat.Click += new System.EventHandler(this.btnAutoCombat_Click);
+            this.txtSkillSetName.Enter += new System.EventHandler(this.TextboxEnter);
+            this.txtSkillSetName.Leave += new System.EventHandler(this.TextboxLeave);
             // 
             // btnAttack
             // 
@@ -615,7 +626,7 @@
             // 
             this.btnAddSkillCmd.Location = new System.Drawing.Point(159, 33);
             this.btnAddSkillCmd.Name = "btnAddSkillCmd";
-            this.btnAddSkillCmd.Size = new System.Drawing.Size(98, 23);
+            this.btnAddSkillCmd.Size = new System.Drawing.Size(109, 23);
             this.btnAddSkillCmd.TabIndex = 59;
             this.btnAddSkillCmd.Text = "Add Cmd";
             this.btnAddSkillCmd.UseVisualStyleBackColor = true;
@@ -624,7 +635,7 @@
             // chkSafeMp
             // 
             this.chkSafeMp.AutoSize = true;
-            this.chkSafeMp.Location = new System.Drawing.Point(226, 64);
+            this.chkSafeMp.Location = new System.Drawing.Point(227, 91);
             this.chkSafeMp.Name = "chkSafeMp";
             this.chkSafeMp.Size = new System.Drawing.Size(42, 17);
             this.chkSafeMp.TabIndex = 58;
@@ -634,7 +645,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(251, 127);
+            this.label12.Location = new System.Drawing.Point(276, 121);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(37, 13);
             this.label12.TabIndex = 57;
@@ -643,7 +654,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(358, 175);
+            this.label11.Location = new System.Drawing.Point(378, 168);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(15, 13);
             this.label11.TabIndex = 56;
@@ -652,7 +663,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(358, 147);
+            this.label10.Location = new System.Drawing.Point(378, 140);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(15, 13);
             this.label10.TabIndex = 55;
@@ -671,7 +682,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(166, 162);
+            this.label13.Location = new System.Drawing.Point(161, 190);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 13);
             this.label13.TabIndex = 53;
@@ -682,7 +693,7 @@
             this.chkExistQuest.AutoSize = true;
             this.chkExistQuest.Checked = true;
             this.chkExistQuest.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkExistQuest.Location = new System.Drawing.Point(170, 234);
+            this.chkExistQuest.Location = new System.Drawing.Point(172, 294);
             this.chkExistQuest.Name = "chkExistQuest";
             this.chkExistQuest.Size = new System.Drawing.Size(197, 17);
             this.chkExistQuest.TabIndex = 51;
@@ -691,7 +702,7 @@
             // 
             // numRestMP
             // 
-            this.numRestMP.Location = new System.Drawing.Point(316, 173);
+            this.numRestMP.Location = new System.Drawing.Point(336, 166);
             this.numRestMP.Name = "numRestMP";
             this.numRestMP.Size = new System.Drawing.Size(40, 20);
             this.numRestMP.TabIndex = 50;
@@ -704,7 +715,7 @@
             // chkMP
             // 
             this.chkMP.AutoSize = true;
-            this.chkMP.Location = new System.Drawing.Point(254, 176);
+            this.chkMP.Location = new System.Drawing.Point(277, 169);
             this.chkMP.Name = "chkMP";
             this.chkMP.Size = new System.Drawing.Size(57, 17);
             this.chkMP.TabIndex = 49;
@@ -713,7 +724,7 @@
             // 
             // numRest
             // 
-            this.numRest.Location = new System.Drawing.Point(316, 147);
+            this.numRest.Location = new System.Drawing.Point(336, 140);
             this.numRest.Name = "numRest";
             this.numRest.Size = new System.Drawing.Size(40, 20);
             this.numRest.TabIndex = 48;
@@ -726,7 +737,7 @@
             // chkHP
             // 
             this.chkHP.AutoSize = true;
-            this.chkHP.Location = new System.Drawing.Point(254, 148);
+            this.chkHP.Location = new System.Drawing.Point(277, 142);
             this.chkHP.Name = "chkHP";
             this.chkHP.Size = new System.Drawing.Size(56, 17);
             this.chkHP.TabIndex = 47;
@@ -740,7 +751,7 @@
             0,
             0,
             0});
-            this.numSkillD.Location = new System.Drawing.Point(157, 180);
+            this.numSkillD.Location = new System.Drawing.Point(162, 209);
             this.numSkillD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -755,19 +766,9 @@
             0,
             0});
             // 
-            // btnRestF
-            // 
-            this.btnRestF.Location = new System.Drawing.Point(305, 101);
-            this.btnRestF.Name = "btnRestF";
-            this.btnRestF.Size = new System.Drawing.Size(68, 23);
-            this.btnRestF.TabIndex = 44;
-            this.btnRestF.Text = "Rest fully";
-            this.btnRestF.UseVisualStyleBackColor = true;
-            this.btnRestF.Click += new System.EventHandler(this.btnRestF_Click);
-            // 
             // btnRest
             // 
-            this.btnRest.Location = new System.Drawing.Point(248, 101);
+            this.btnRest.Location = new System.Drawing.Point(274, 88);
             this.btnRest.Name = "btnRest";
             this.btnRest.Size = new System.Drawing.Size(56, 23);
             this.btnRest.TabIndex = 43;
@@ -778,7 +779,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(211, 132);
+            this.label2.Location = new System.Drawing.Point(205, 144);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(15, 13);
             this.label2.TabIndex = 42;
@@ -786,7 +787,7 @@
             // 
             // numSafe
             // 
-            this.numSafe.Location = new System.Drawing.Point(168, 135);
+            this.numSafe.Location = new System.Drawing.Point(159, 141);
             this.numSafe.Minimum = new decimal(new int[] {
             1,
             0,
@@ -806,16 +807,16 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(160, 93);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 39);
+            this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 40;
-            this.label1.Text = "Use safe skill\r\nwhen HP is\r\nless than";
+            this.label1.Text = "When HP or";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAddSafe
             // 
             this.btnAddSafe.Location = new System.Drawing.Point(157, 61);
             this.btnAddSafe.Name = "btnAddSafe";
-            this.btnAddSafe.Size = new System.Drawing.Size(63, 23);
+            this.btnAddSafe.Size = new System.Drawing.Size(111, 23);
             this.btnAddSafe.TabIndex = 39;
             this.btnAddSafe.Text = "Safe skill";
             this.btnAddSafe.UseVisualStyleBackColor = true;
@@ -825,7 +826,7 @@
             // 
             this.btnAddSkill.Location = new System.Drawing.Point(211, 4);
             this.btnAddSkill.Name = "btnAddSkill";
-            this.btnAddSkill.Size = new System.Drawing.Size(46, 23);
+            this.btnAddSkill.Size = new System.Drawing.Size(57, 23);
             this.btnAddSkill.TabIndex = 38;
             this.btnAddSkill.Text = "Add";
             this.btnAddSkill.UseVisualStyleBackColor = true;
@@ -954,7 +955,7 @@
             this.pnlMap.Controls.Add(this.txtJoinPad);
             this.pnlMap.Controls.Add(this.txtJoinCell);
             this.pnlMap.Controls.Add(this.txtJoin);
-            this.pnlMap.Location = new System.Drawing.Point(604, 27);
+            this.pnlMap.Location = new System.Drawing.Point(634, 27);
             this.pnlMap.Name = "pnlMap";
             this.pnlMap.Size = new System.Drawing.Size(343, 200);
             this.pnlMap.TabIndex = 103;
@@ -1484,7 +1485,7 @@
             // chkCompleteBlank
             // 
             this.chkCompleteBlank.AutoSize = true;
-            this.chkCompleteBlank.Location = new System.Drawing.Point(11, 105);
+            this.chkCompleteBlank.Location = new System.Drawing.Point(131, 52);
             this.chkCompleteBlank.Name = "chkCompleteBlank";
             this.chkCompleteBlank.Size = new System.Drawing.Size(111, 17);
             this.chkCompleteBlank.TabIndex = 17;
@@ -1494,7 +1495,7 @@
             // chkReAccept
             // 
             this.chkReAccept.AutoSize = true;
-            this.chkReAccept.Location = new System.Drawing.Point(131, 105);
+            this.chkReAccept.Location = new System.Drawing.Point(12, 107);
             this.chkReAccept.Name = "chkReAccept";
             this.chkReAccept.Size = new System.Drawing.Size(74, 17);
             this.chkReAccept.TabIndex = 16;
@@ -1672,9 +1673,9 @@
             this.chkPckToClient.AutoSize = true;
             this.chkPckToClient.Location = new System.Drawing.Point(8, 30);
             this.chkPckToClient.Name = "chkPckToClient";
-            this.chkPckToClient.Size = new System.Drawing.Size(52, 17);
+            this.chkPckToClient.Size = new System.Drawing.Size(90, 17);
             this.chkPckToClient.TabIndex = 124;
-            this.chkPckToClient.Text = "Client";
+            this.chkPckToClient.Text = "send to Client";
             this.chkPckToClient.UseVisualStyleBackColor = true;
             // 
             // numSpamTimes
@@ -1894,7 +1895,7 @@
             this.numDelay.Size = new System.Drawing.Size(59, 20);
             this.numDelay.TabIndex = 73;
             this.numDelay.Value = new decimal(new int[] {
-            2000,
+            1000,
             0,
             0,
             0});
@@ -2252,6 +2253,7 @@
             // chkHidePlayers
             // 
             this.chkHidePlayers.AutoSize = true;
+            this.chkHidePlayers.Enabled = false;
             this.chkHidePlayers.Location = new System.Drawing.Point(163, 98);
             this.chkHidePlayers.Name = "chkHidePlayers";
             this.chkHidePlayers.Size = new System.Drawing.Size(84, 17);
@@ -2508,6 +2510,10 @@
             // 
             // pnlClientSide
             // 
+            this.pnlClientSide.Controls.Add(this.btnSetLevelCmd);
+            this.pnlClientSide.Controls.Add(this.numFPSs);
+            this.pnlClientSide.Controls.Add(this.label8);
+            this.pnlClientSide.Controls.Add(this.btnFPS);
             this.pnlClientSide.Controls.Add(this.label19);
             this.pnlClientSide.Controls.Add(this.btnSetGuild);
             this.pnlClientSide.Controls.Add(this.tbGuild);
@@ -2519,13 +2525,54 @@
             this.pnlClientSide.Controls.Add(this.tbLevel);
             this.pnlClientSide.Location = new System.Drawing.Point(20, 84);
             this.pnlClientSide.Name = "pnlClientSide";
-            this.pnlClientSide.Size = new System.Drawing.Size(200, 162);
+            this.pnlClientSide.Size = new System.Drawing.Size(277, 204);
             this.pnlClientSide.TabIndex = 110;
+            // 
+            // numFPSs
+            // 
+            this.numFPSs.Location = new System.Drawing.Point(7, 170);
+            this.numFPSs.Maximum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            this.numFPSs.Minimum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.numFPSs.Name = "numFPSs";
+            this.numFPSs.Size = new System.Drawing.Size(50, 20);
+            this.numFPSs.TabIndex = 28;
+            this.numFPSs.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(59, 174);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(27, 13);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "FPS";
+            // 
+            // btnFPS
+            // 
+            this.btnFPS.Location = new System.Drawing.Point(114, 169);
+            this.btnFPS.Name = "btnFPS";
+            this.btnFPS.Size = new System.Drawing.Size(75, 23);
+            this.btnFPS.TabIndex = 26;
+            this.btnFPS.Text = "Set";
+            this.btnFPS.UseVisualStyleBackColor = true;
+            this.btnFPS.Click += new System.EventHandler(this.btnFPS_Click);
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(7, 114);
+            this.label19.Location = new System.Drawing.Point(6, 123);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(33, 13);
             this.label19.TabIndex = 8;
@@ -2533,6 +2580,7 @@
             // 
             // btnSetGuild
             // 
+            this.btnSetGuild.Enabled = false;
             this.btnSetGuild.Location = new System.Drawing.Point(114, 72);
             this.btnSetGuild.Name = "btnSetGuild";
             this.btnSetGuild.Size = new System.Drawing.Size(75, 23);
@@ -2542,6 +2590,7 @@
             // 
             // tbGuild
             // 
+            this.tbGuild.Enabled = false;
             this.tbGuild.Location = new System.Drawing.Point(7, 74);
             this.tbGuild.Name = "tbGuild";
             this.tbGuild.Size = new System.Drawing.Size(100, 20);
@@ -2550,6 +2599,7 @@
             // 
             // btnSetUsername
             // 
+            this.btnSetUsername.Enabled = false;
             this.btnSetUsername.Location = new System.Drawing.Point(114, 46);
             this.btnSetUsername.Name = "btnSetUsername";
             this.btnSetUsername.Size = new System.Drawing.Size(75, 23);
@@ -2559,6 +2609,7 @@
             // 
             // tbUsername
             // 
+            this.tbUsername.Enabled = false;
             this.tbUsername.Location = new System.Drawing.Point(7, 48);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(100, 20);
@@ -2567,9 +2618,9 @@
             // 
             // btnDoomBSkip
             // 
-            this.btnDoomBSkip.Location = new System.Drawing.Point(8, 131);
+            this.btnDoomBSkip.Location = new System.Drawing.Point(7, 141);
             this.btnDoomBSkip.Name = "btnDoomBSkip";
-            this.btnDoomBSkip.Size = new System.Drawing.Size(179, 23);
+            this.btnDoomBSkip.Size = new System.Drawing.Size(182, 23);
             this.btnDoomBSkip.TabIndex = 3;
             this.btnDoomBSkip.Text = "Doomvault B- Skip";
             this.btnDoomBSkip.UseVisualStyleBackColor = true;
@@ -2679,8 +2730,8 @@
             // froztt13ToolStripMenuItem
             // 
             this.froztt13ToolStripMenuItem.Name = "froztt13ToolStripMenuItem";
-            this.froztt13ToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.froztt13ToolStripMenuItem.Text = "Froztt13";
+            this.froztt13ToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.froztt13ToolStripMenuItem.Text = "Hunt";
             this.froztt13ToolStripMenuItem.Click += new System.EventHandler(this.froztt13ToolStripMenuItem_Click);
             // 
             // pnlFroztt
@@ -2842,16 +2893,15 @@
             this.label20.TabIndex = 0;
             this.label20.Text = "Short Hunting";
             // 
-            // comboBox1
+            // btnSetLevelCmd
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "<=",
-            ">="});
-            this.comboBox1.Location = new System.Drawing.Point(155, 204);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(74, 21);
-            this.comboBox1.TabIndex = 74;
+            this.btnSetLevelCmd.Location = new System.Drawing.Point(195, 20);
+            this.btnSetLevelCmd.Name = "btnSetLevelCmd";
+            this.btnSetLevelCmd.Size = new System.Drawing.Size(75, 23);
+            this.btnSetLevelCmd.TabIndex = 29;
+            this.btnSetLevelCmd.Text = "Cmd";
+            this.btnSetLevelCmd.UseVisualStyleBackColor = true;
+            this.btnSetLevelCmd.Click += new System.EventHandler(this.btnSetLevelCmd_Click);
             // 
             // BotManager
             // 
@@ -2880,7 +2930,6 @@
             this.Controls.Add(this.lstDrops);
             this.Controls.Add(this.lstBoosts);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
@@ -2927,6 +2976,7 @@
             this.pnlSaved.PerformLayout();
             this.pnlClientSide.ResumeLayout(false);
             this.pnlClientSide.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFPSs)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnlFroztt.ResumeLayout(false);
@@ -2937,8 +2987,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.ListBox lstCommands;
-        private System.Windows.Forms.ListBox lstSkills;
+        public System.Windows.Forms.ListBox lstCommands;
+        public System.Windows.Forms.ListBox lstSkills;
         private System.Windows.Forms.ListBox lstQuests;
         private System.Windows.Forms.ListBox lstDrops;
         private System.Windows.Forms.ListBox lstBoosts;
@@ -2948,7 +2998,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.CheckBox chkAll;
         private System.Windows.Forms.ComboBox cbLists;
-        private System.Windows.Forms.CheckBox chkEnable;
+        public System.Windows.Forms.CheckBox chkEnable;
         private System.Windows.Forms.Panel pnlCombat;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox chkExistQuest;
@@ -2957,7 +3007,6 @@
         private System.Windows.Forms.NumericUpDown numRest;
         private System.Windows.Forms.CheckBox chkHP;
         private System.Windows.Forms.NumericUpDown numSkillD;
-        private System.Windows.Forms.Button btnRestF;
         private System.Windows.Forms.Button btnRest;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numSafe;
@@ -3095,8 +3144,6 @@
         private System.Windows.Forms.Button btnAddSkillCmd;
         private System.Windows.Forms.Button btnAttack;
         private System.Windows.Forms.CheckBox chkPickupAll;
-        private System.Windows.Forms.Button btnAutoCombat;
-        private System.Windows.Forms.CheckBox chkInfiniteRMP;
         private System.Windows.Forms.Button btnAgroOff;
         private System.Windows.Forms.Button btnAgroOn;
         private System.Windows.Forms.Button btnIndexUp;
@@ -3119,7 +3166,7 @@
         private System.Windows.Forms.Button btnCmdPing;
         private System.Windows.Forms.CheckBox chkReAccept;
         private System.Windows.Forms.CheckBox chkCompleteBlank;
-        private System.Windows.Forms.TextBox txtForQuestId;
+        private System.Windows.Forms.TextBox txtForQuestID;
         private System.Windows.Forms.RadioButton rbForQuest;
         private System.Windows.Forms.TextBox txtKillFMonster;
         private System.Windows.Forms.CheckBox chkPckToClient;
@@ -3135,7 +3182,6 @@
         private System.Windows.Forms.TextBox tbLevel;
         private System.Windows.Forms.ToolStripMenuItem froztt13ToolStripMenuItem;
         private System.Windows.Forms.Button btnDoomBSkip;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btnSetGuild;
         private System.Windows.Forms.TextBox tbGuild;
         private System.Windows.Forms.Button btnSetUsername;
@@ -3159,6 +3205,12 @@
         private System.Windows.Forms.NumericUpDown numDropDelay;
         private System.Windows.Forms.CheckBox cbBlankFirst;
         private System.Windows.Forms.CheckBox cbWalkSpeed;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbSafeType;
+        private System.Windows.Forms.CheckBox chkRestFully;
+        private System.Windows.Forms.Button btnFPS;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.NumericUpDown numFPSs;
+        private System.Windows.Forms.Button btnSetLevelCmd;
     }
 }

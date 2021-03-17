@@ -59,6 +59,18 @@ namespace Grimoire.UI
 			this.prgLoader.Visible = false;
 		}
 
+		private void chkAttack_MouseHover(object sender, EventArgs e)
+		{
+			ToolTip ToolTip1 = new ToolTip();
+			ToolTip1.SetToolTip(this.chkAttack, "Using skill set from Bot Manager");
+		}
+
+		private void chkEnable_MouseHover(object sender, EventArgs e)
+		{
+			ToolTip ToolTip1 = new ToolTip();
+			ToolTip1.SetToolTip(this.chkEnable, "Start bot manager");
+		}
+
 		private void botToolStripMenuItem_Click_1(object sender, EventArgs e)
 		{
 			this.ShowForm(BotManager.Instance);
@@ -154,18 +166,11 @@ namespace Grimoire.UI
 
 		private void cbCells_Click(object sender, EventArgs e)
 		{
+			if (!Player.IsLoggedIn) return;
 			this.cbCells.Items.Clear();
 			ComboBox.ObjectCollection items = this.cbCells.Items;
 			object[] cells = World.Cells;
 			items.AddRange(cells);
-		}
-
-		private void btnFPS_Click(object sender, EventArgs e)
-		{
-			Flash.Call("SetFPS", new string[]
-			{
-				this.numFPS.Value.ToString()
-			});
 		}
 
 		private void Root_FormClosing(object sender, FormClosingEventArgs e)
@@ -182,36 +187,56 @@ namespace Grimoire.UI
 
 		private async void chkAttack_CheckedChangedAsync(object sender, EventArgs e)
 		{
+			if (chkAttack.Checked && !Player.IsLoggedIn)
+			{
+				chkAttack.Checked = false;
+				return;
+			}
+
 			if (chkAttack.Checked)
 			{
 				Proxy.Instance.RegisterHandler(HandlerRMP);
 				Flash.Call("SetInfiniteRange", new string[0]);
 
-				/*CmdKill kill = new CmdKill
-				{
-					Monster = "*"
-				};
-
-				await kill.Execute(BotManager.Instance.ActiveBotEngine);*/
-
-				string[] listSkills = tbSkills.Text.Split(';');
-                int index = 0;
-                while (chkAttack.Checked)
+                /*CmdKill kill = new CmdKill
                 {
-                    if (!Player.HasTarget) Player.AttackMonster("*");
-                    await Task.Delay(100);
-                    Player.UseSkill(listSkills[index]);
-					index++;
-                    if (index == listSkills.Length) index = 0;
+                    Monster = "*"
+                };
+
+                await kill.Execute(BotManager.Instance.ActiveBotEngine);*/
+
+                //string[] listSkills = tbSkills.Text.Split(';');
+                List<string> listSkills = new List<string>();
+				foreach (Skill skill in BotManager.Instance.lstSkills.Items)
+                {
+					listSkills.Add(skill.Index);
                 }
-            }
+
+				if (listSkills.Count <= 0)
+                {
+					for (int i = 1; i <= 4; i++)
+                    {
+						listSkills.Add(i.ToString());
+                    }
+                }
+
+				int index = 0;
+				while (chkAttack.Checked)
+				{
+					if (!Player.HasTarget) Player.AttackMonster("*");
+					await Task.Delay(200);
+					Player.UseSkill(listSkills[index]);
+					index++;
+					if (index == listSkills.Count) index = 0;
+				}
+			}
 			else
 			{
 				Proxy.Instance.UnregisterHandler(HandlerRMP);
 			}
 
 
-            /*if (chkAttack.Checked)
+			/*if (chkAttack.Checked)
             {
                 listSkill.Add("1");
                 listSkill.Add("2");
@@ -223,7 +248,7 @@ namespace Grimoire.UI
             {
                 Proxy.Instance.ReceivedFromClient -= CaptureSkill;
             }*/
-        }
+		}
 
 		private List<string> listSkill = new List<string>();
 		private void CaptureSkill(Networking.Message msg)
@@ -234,6 +259,26 @@ namespace Grimoire.UI
 				{
 					Player.UseSkill(skill);
 				}
+			}
+		}
+
+		private void checkBox1_CheckedChanged(object sender, EventArgs e)
+		{
+			if (chkEnable.Checked && (BotManager.Instance.lstCommands.Items.Count <= 0 || !Player.IsLoggedIn))
+			{
+				chkEnable.Checked = false;
+				return;
+			}
+
+			if (chkEnable.Checked)
+			{
+				if (!BotManager.Instance.chkEnable.Checked)
+					BotManager.Instance.chkEnable.Checked = true;
+			}
+			else
+			{
+				if (BotManager.Instance.chkEnable.Checked)
+					BotManager.Instance.chkEnable.Checked = false;
 			}
 		}
 	}
