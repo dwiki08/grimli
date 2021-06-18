@@ -119,7 +119,7 @@ namespace Grimoire.UI
 
 		private void InitFlashMovie()
 		{
-			byte[] aqlitegrimoire = Resources.grim;
+			byte[] aqlitegrimoire = Resources.aqlitegrimoire;
 			using (MemoryStream memoryStream = new MemoryStream())
 			{
 				using (BinaryWriter binaryWriter = new BinaryWriter(memoryStream))
