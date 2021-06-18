@@ -48,8 +48,6 @@ namespace Grimoire.Botting.Commands.Map
 			}
 		}
 
-		private static IJsonMessageHandler MapHandler { get; } = new MapHandler();
-
 		public async Task TryJoin(IBotEngine instance, string MapName, string RoomProp = "")
 		{
 			fMap = MapName;

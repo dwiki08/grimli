@@ -63,16 +63,6 @@ namespace Grimoire.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] aqlite {
-            get {
-                object obj = ResourceManager.GetObject("aqlite", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] aqlitegrimoire {
             get {
                 object obj = ResourceManager.GetObject("aqlitegrimoire", resourceCulture);
@@ -81,27 +71,23 @@ namespace Grimoire.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] aqlitegrimoire_e {
-            get {
-                object obj = ResourceManager.GetObject("aqlitegrimoire_e", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] aqlitegrimoire14 {
-            get {
-                object obj = ResourceManager.GetObject("aqlitegrimoire14", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {&quot;txtMonster&quot;:&quot;Monster (*  = random)&quot;,&quot;txtKillFMon&quot;:&quot;Monster (* = random)&quot;,&quot;txtKillFItem&quot;:&quot;Item name&quot;,&quot;txtKillFQ&quot;:&quot;Quantity (* = any)&quot;,&quot;txtPacket&quot;:&quot;%xt%zm%.........&quot;,&quot;txtPlayer&quot;:&quot;Player name&quot;,&quot;txtAuthor&quot;:&quot;Author&quot;,&quot;txtDescription&quot;:&quot;Description&quot;,&quot;txtJoin&quot;:&quot;battleon-1e99&quot;,&quot;txtJoinCell&quot;:&quot;Enter&quot;,&quot;txtJoinPad&quot;:&quot;Spawn&quot;,&quot;txtCell&quot;:&quot;Cell&quot;,&quot;txtPad&quot;:&quot;Pad&quot;,&quot;txtItem&quot;:&quot;Item name&quot;,&quot;txtSwapBank&quot;:&quot;Bank item name&quot;,&quot;txtSwapInv&quot;:&quot;Inventory item name&quot;,&quot;txtWhitelist&quot;:&quot;Item name&quot;,&quot;txtLabel&quot;:&quot;Label name&quot;}.
+        ///   Looks up a localized string similar to {
+        ///  &quot;txtMonster&quot;: &quot;Monster (*  = random)&quot;,
+        ///  &quot;txtKillFMonster&quot;: &quot;Monster (*  = random)&quot;,
+        ///  &quot;txtSkillSetName&quot;: &quot;Skill Set Name&quot;,
+        ///  &quot;txtKillFItem&quot;: &quot;Item name&quot;,
+        ///  &quot;txtKillFQ&quot;: &quot;Quantity (* = any)&quot;,
+        ///  &quot;txtForQuestID&quot;: &quot;QuestId&quot;,
+        ///  &quot;txtAfterXKill&quot;: &quot;after x&quot;,
+        ///  &quot;txtPacket&quot;: &quot;%xt%zm%.........&quot;,
+        ///  &quot;txtPlayer&quot;: &quot;Player name&quot;,
+        ///  &quot;txtAuthor&quot;: &quot;Author&quot;,
+        ///  &quot;txtDescription&quot;: &quot;Description&quot;,
+        ///  &quot;txtJoin&quot;: &quot;battleon-a&quot;,
+        ///  &quot;txtJoinCell&quot;: &quot;Enter&quot;,
+        ///  &quot;txtJoinPad&quot;: &quot;Spawn&quot;,
+        ///  &quot;txtCell&quot;: &quot;Cell&quot;,
+        ///  &quot;txtPad&quot;: &quot;Pad [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string defaulttext {
             get {
@@ -115,26 +101,6 @@ namespace Grimoire.Properties {
         internal static byte[] grim {
             get {
                 object obj = ResourceManager.GetObject("grim", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] grimoire {
-            get {
-                object obj = ResourceManager.GetObject("grimoire", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] grimpro {
-            get {
-                object obj = ResourceManager.GetObject("grimpro", resourceCulture);
                 return ((byte[])(obj));
             }
         }
