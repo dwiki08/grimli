@@ -100,7 +100,6 @@
     <Compile Include="Botting\Commands\Map\CmdMoveToCell.cs" />
     <Compile Include="Botting\Commands\Map\CmdTravel.cs" />
     <Compile Include="Botting\Commands\Map\CmdWalk.cs" />
-    <Compile Include="Botting\Commands\Map\MapHandler.cs" />
     <Compile Include="Botting\Commands\Misc\CmdBotDelay.cs" />
     <Compile Include="Botting\Commands\Misc\CmdDelay.cs" />
     <Compile Include="Botting\Commands\Misc\CmdGotoLabel.cs" />
@@ -286,7 +285,9 @@
     <EmbeddedResource Include="UI\BotManager.resx">
       <DependentUpon>BotManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Hotkeys.resources" />
+    <EmbeddedResource Include="UI\Hotkeys.resx">
+      <DependentUpon>Hotkeys.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Loaders.resx">
       <DependentUpon>Loaders.cs</DependentUpon>
     </EmbeddedResource>
@@ -296,14 +297,8 @@
     <EmbeddedResource Include="UI\PacketSpammer.resx">
       <DependentUpon>PacketSpammer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\PacketTamperer.resx">
-      <DependentUpon>PacketTamperer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\PluginManager.resx">
       <DependentUpon>PluginManager.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\RawCommandEditor.resx">
-      <DependentUpon>RawCommandEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Root.resx">
       <DependentUpon>Root.cs</DependentUpon>
@@ -339,15 +334,10 @@
     <Content Include="EasyLoad64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\aqlitegrimoire14.swf" />
-    <None Include="Resources\aqlitegrimoire_e.swf" />
     <None Include="Resources\aqlitegrimoire.swf" />
-    <None Include="Resources\grimpro.swf" />
     <None Include="Resources\grim.swf" />
-    <None Include="Resources\aqlite.swf" />
     <None Include="Resources\defaulttext.txt" />
     <None Include="Resources\statementcmds.txt" />
-    <None Include="Resources\grimoire.swf" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

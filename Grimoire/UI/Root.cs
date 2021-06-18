@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AxShockwaveFlashObjects;
-using Grimoire.Botting;
-using Grimoire.Botting.Commands.Combat;
 using Grimoire.FlashEoLHook;
 using Grimoire.Game;
 using Grimoire.Game.Data;
@@ -124,7 +119,7 @@ namespace Grimoire.UI
 
 		private void InitFlashMovie()
 		{
-			byte[] aqlitegrimoire = Resources.aqlitegrimoire;
+			byte[] aqlitegrimoire = Resources.grim;
 			using (MemoryStream memoryStream = new MemoryStream())
 			{
 				using (BinaryWriter binaryWriter = new BinaryWriter(memoryStream))

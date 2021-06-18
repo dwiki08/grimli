@@ -16,11 +16,8 @@ using Grimoire.Game.Data;
 using Newtonsoft.Json;
 using Grimoire.Game;
 using Grimoire.Properties;
-using System.Collections;
-using System.Threading;
 using System.Threading.Tasks;
 using Grimoire.Networking;
-using Grimoire.Networking.Handlers;
 using Grimoire.Tools;
 
 namespace Grimoire.UI
