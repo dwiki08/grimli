@@ -42,13 +42,19 @@ namespace Grimoire.UI
 			Proxy.Instance.ReceivedFromClient -= this.ReceivedFromClient;
 		}
 
-		private async void btnToClient_Click(object sender, EventArgs e)
+		private void btnToClient_Click(object sender, EventArgs e)
 		{
+			sendToClient();
+		}
+
+		public async void sendToClient()
+        {
 			if (!string.IsNullOrEmpty(this.txtSend.Text))
 			{
 				this.btnToClient.Enabled = false;
 				await Proxy.Instance.SendToClient(this.txtSend.Text);
 				this.btnToClient.Enabled = true;
+				Console.WriteLine("Sent to client");
 			}
 		}
 

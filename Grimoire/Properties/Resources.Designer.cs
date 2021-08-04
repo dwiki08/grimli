@@ -71,6 +71,16 @@ namespace Grimoire.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] aqlitegrimoire_e {
+            get {
+                object obj = ResourceManager.GetObject("aqlitegrimoire_e", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;txtMonster&quot;: &quot;Monster (*  = random)&quot;,
         ///  &quot;txtKillFMonster&quot;: &quot;Monster (*  = random)&quot;,
@@ -92,16 +102,6 @@ namespace Grimoire.Properties {
         internal static string defaulttext {
             get {
                 return ResourceManager.GetString("defaulttext", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] grim {
-            get {
-                object obj = ResourceManager.GetObject("grim", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         

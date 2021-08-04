@@ -4,6 +4,8 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AxShockwaveFlashObjects;
+using Grimoire.Botting;
+using Grimoire.Botting.Commands.Combat;
 using Grimoire.FlashEoLHook;
 using Grimoire.Game;
 using Grimoire.Game.Data;
@@ -119,7 +121,7 @@ namespace Grimoire.UI
 
 		private void InitFlashMovie()
 		{
-			byte[] aqlitegrimoire = Resources.aqlitegrimoire;
+			byte[] aqlitegrimoire = Resources.aqlitegrimoire_e;
 			using (MemoryStream memoryStream = new MemoryStream())
 			{
 				using (BinaryWriter binaryWriter = new BinaryWriter(memoryStream))
@@ -182,26 +184,50 @@ namespace Grimoire.UI
 
 		private async void chkAttack_CheckedChangedAsync(object sender, EventArgs e)
 		{
-			if (chkAttack.Checked && !Player.IsLoggedIn)
+			if (!Player.IsLoggedIn || chkEnable.Checked)
 			{
 				chkAttack.Checked = false;
 				return;
 			}
 
+			var botE = BotManager.Instance.ActiveBotEngine;
+
 			if (chkAttack.Checked)
 			{
+
 				Proxy.Instance.RegisterHandler(HandlerRMP);
 				Flash.Call("SetInfiniteRange", new string[0]);
 
-                /*CmdKill kill = new CmdKill
-                {
-                    Monster = "*"
-                };
+				List<Skill> randSkills = new List<Skill>();
+				for (int i = 1; i <= 4; i++)
+				{
+					randSkills.Add(new Skill
+					{
+						Text = $"{i}: {Skill.GetSkillName("" + i)}",
+						Index = "" + i,
+						Type = Skill.SkillType.Normal
+					});
+				}
 
-                await kill.Execute(BotManager.Instance.ActiveBotEngine);*/
+				var config = new Configuration();
+				config.Skills = randSkills;
+
+				//create new BotEngine
+				botE.Start(config);
+
+				CmdKill kill = new CmdKill
+				{
+					Monster = "*"
+				};
+
+				while (chkAttack.Checked)
+				{
+					await kill.Execute(botE);
+					await Task.Delay(200);
+				}
 
                 //string[] listSkills = tbSkills.Text.Split(';');
-                List<string> listSkills = new List<string>();
+                /*List<string> listSkills = new List<string>();
 				foreach (Skill skill in BotManager.Instance.lstSkills.Items)
                 {
 					listSkills.Add(skill.Index);
@@ -223,26 +249,13 @@ namespace Grimoire.UI
 					Player.UseSkill(listSkills[index]);
 					index++;
 					if (index == listSkills.Count) index = 0;
-				}
+				}*/
 			}
 			else
 			{
+				botE.Stop();
 				Proxy.Instance.UnregisterHandler(HandlerRMP);
 			}
-
-
-			/*if (chkAttack.Checked)
-            {
-                listSkill.Add("1");
-                listSkill.Add("2");
-                listSkill.Add("3");
-                listSkill.Add("4");
-                Proxy.Instance.ReceivedFromClient += CaptureSkill;
-            }
-            else
-            {
-                Proxy.Instance.ReceivedFromClient -= CaptureSkill;
-            }*/
 		}
 
 		private List<string> listSkill = new List<string>();
@@ -276,5 +289,6 @@ namespace Grimoire.UI
 					BotManager.Instance.chkEnable.Checked = false;
 			}
 		}
+
 	}
 }

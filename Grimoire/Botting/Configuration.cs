@@ -34,6 +34,7 @@ namespace Grimoire.Botting
         public bool HidePlayers { get; set; }
         public bool SkipCutscenes { get; set; }
         public bool DisableAnimations { get; set; }
+        public bool AntiCounter { get; set; }
         public int WalkSpeed { get; set; }
         public List<string> NotifyUponDrop { get; set; } = new List<string>();
         public bool RestIfMp { get; set; }

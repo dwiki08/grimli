@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMessage", "AutoMessage\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntiMod", "AntiMOD\AntiMod.csproj", "{93DB3A18-77BF-4802-9BD4-6A7C86B6362D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UE", "UE\UE.csproj", "{1D6ABC9C-5939-4054-ADC0-00077C9B975C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillsHack", "ExamplePacketPlugin\SkillsHack.csproj", "{43B10CBE-3C8D-4505-A319-E3BCC01D3539}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{93DB3A18-77BF-4802-9BD4-6A7C86B6362D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93DB3A18-77BF-4802-9BD4-6A7C86B6362D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93DB3A18-77BF-4802-9BD4-6A7C86B6362D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D6ABC9C-5939-4054-ADC0-00077C9B975C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D6ABC9C-5939-4054-ADC0-00077C9B975C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D6ABC9C-5939-4054-ADC0-00077C9B975C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D6ABC9C-5939-4054-ADC0-00077C9B975C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43B10CBE-3C8D-4505-A319-E3BCC01D3539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43B10CBE-3C8D-4505-A319-E3BCC01D3539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43B10CBE-3C8D-4505-A319-E3BCC01D3539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43B10CBE-3C8D-4505-A319-E3BCC01D3539}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

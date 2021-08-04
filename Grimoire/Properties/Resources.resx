@@ -121,11 +121,11 @@
   <data name="aqlitegrimoire" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\aqlitegrimoire.swf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="aqlitegrimoire_e" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\aqlitegrimoire_e.swf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="defaulttext" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\defaulttext.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="grim" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\grim.swf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="statementcmds" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\statementcmds.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>

@@ -12,7 +12,7 @@ namespace Grimoire.Botting.Commands.Quest
         {
             await instance.WaitUntil(() => Player.Quests.QuestTree.Any(q => q.Id == Quest.Id));
             await instance.WaitUntil(() => World.IsActionAvailable(LockActions.AcceptQuest));
-            while (!Player.Quests.IsInProgress(Quest.Id))
+            while (!Player.Quests.IsInProgress(Quest.Id) && Player.IsLoggedIn && instance.IsRunning)
             {
                 await Task.Delay(1000);
                 Quest.Accept();

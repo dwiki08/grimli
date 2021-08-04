@@ -142,7 +142,7 @@
 
 		private global::System.ComponentModel.IContainer components;
 
-		private global::System.Windows.Forms.RichTextBox txtSend;
+		public global::System.Windows.Forms.RichTextBox txtSend;
 
 		private global::System.Windows.Forms.RichTextBox txtReceive;
 
@@ -152,7 +152,7 @@
 
 		private global::System.Windows.Forms.CheckBox chkFromServer;
 
-		private global::System.Windows.Forms.Button btnToClient;
+		public global::System.Windows.Forms.Button btnToClient;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbFilter;

@@ -214,6 +214,8 @@
             this.btnSavedAdd = new System.Windows.Forms.Button();
             this.txtSaved = new System.Windows.Forms.TextBox();
             this.pnlClientSide = new System.Windows.Forms.Panel();
+            this.chkAntiCounter = new System.Windows.Forms.CheckBox();
+            this.btnSetLevelCmd = new System.Windows.Forms.Button();
             this.numFPSs = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.btnFPS = new System.Windows.Forms.Button();
@@ -252,7 +254,6 @@
             this.tbMapF = new System.Windows.Forms.TextBox();
             this.tbMonNameF = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.btnSetLevelCmd = new System.Windows.Forms.Button();
             this.pnlCombat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRestMP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRest)).BeginInit();
@@ -2510,6 +2511,7 @@
             // 
             // pnlClientSide
             // 
+            this.pnlClientSide.Controls.Add(this.chkAntiCounter);
             this.pnlClientSide.Controls.Add(this.btnSetLevelCmd);
             this.pnlClientSide.Controls.Add(this.numFPSs);
             this.pnlClientSide.Controls.Add(this.label8);
@@ -2525,8 +2527,29 @@
             this.pnlClientSide.Controls.Add(this.tbLevel);
             this.pnlClientSide.Location = new System.Drawing.Point(20, 84);
             this.pnlClientSide.Name = "pnlClientSide";
-            this.pnlClientSide.Size = new System.Drawing.Size(277, 204);
+            this.pnlClientSide.Size = new System.Drawing.Size(277, 254);
             this.pnlClientSide.TabIndex = 110;
+            // 
+            // chkAntiCounter
+            // 
+            this.chkAntiCounter.AutoSize = true;
+            this.chkAntiCounter.Location = new System.Drawing.Point(9, 210);
+            this.chkAntiCounter.Name = "chkAntiCounter";
+            this.chkAntiCounter.Size = new System.Drawing.Size(84, 17);
+            this.chkAntiCounter.TabIndex = 30;
+            this.chkAntiCounter.Text = "Anti-Counter";
+            this.chkAntiCounter.UseVisualStyleBackColor = true;
+            this.chkAntiCounter.CheckedChanged += new System.EventHandler(this.chkAntiCounter_CheckedChanged);
+            // 
+            // btnSetLevelCmd
+            // 
+            this.btnSetLevelCmd.Location = new System.Drawing.Point(195, 20);
+            this.btnSetLevelCmd.Name = "btnSetLevelCmd";
+            this.btnSetLevelCmd.Size = new System.Drawing.Size(75, 23);
+            this.btnSetLevelCmd.TabIndex = 29;
+            this.btnSetLevelCmd.Text = "Cmd";
+            this.btnSetLevelCmd.UseVisualStyleBackColor = true;
+            this.btnSetLevelCmd.Click += new System.EventHandler(this.btnSetLevelCmd_Click);
             // 
             // numFPSs
             // 
@@ -2641,9 +2664,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(5, 6);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(47, 13);
+            this.label17.Size = new System.Drawing.Size(53, 13);
             this.label17.TabIndex = 1;
-            this.label17.Text = "Charater";
+            this.label17.Text = "Character";
             // 
             // tbLevel
             // 
@@ -2892,16 +2915,6 @@
             this.label20.Size = new System.Drawing.Size(72, 13);
             this.label20.TabIndex = 0;
             this.label20.Text = "Short Hunting";
-            // 
-            // btnSetLevelCmd
-            // 
-            this.btnSetLevelCmd.Location = new System.Drawing.Point(195, 20);
-            this.btnSetLevelCmd.Name = "btnSetLevelCmd";
-            this.btnSetLevelCmd.Size = new System.Drawing.Size(75, 23);
-            this.btnSetLevelCmd.TabIndex = 29;
-            this.btnSetLevelCmd.Text = "Cmd";
-            this.btnSetLevelCmd.UseVisualStyleBackColor = true;
-            this.btnSetLevelCmd.Click += new System.EventHandler(this.btnSetLevelCmd_Click);
             // 
             // BotManager
             // 
@@ -3212,5 +3225,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.NumericUpDown numFPSs;
         private System.Windows.Forms.Button btnSetLevelCmd;
+        private System.Windows.Forms.CheckBox chkAntiCounter;
     }
 }

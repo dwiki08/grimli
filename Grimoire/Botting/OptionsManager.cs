@@ -33,6 +33,8 @@ namespace Grimoire.Botting
 		public static bool EnemyMagnet { get; set; }
 		public static bool LagKiller { get; set; }
 
+		public static bool AntiCounter { get; set; }
+
 		public static bool SkipCutscenes { get; set; }
 
 		private static IJsonMessageHandler HandlerDisableAnimations { get; } = new HandlerAnimations();

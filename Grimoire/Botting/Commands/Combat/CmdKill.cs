@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Grimoire.Game;
 using Grimoire.Game.Data;
@@ -11,8 +12,13 @@ namespace Grimoire.Botting.Commands.Combat
         public string Monster { get; set; }
 		public string MonId { get; set; }
 
+		private bool antiCounter = false;
+		private bool onPause = false;
+
         public async Task Execute(IBotEngine instance)
         {
+			antiCounter = instance.Configuration.AntiCounter;
+
             await instance.WaitUntil(() => World.IsMonsterAvailable(Monster), null, 3);
 
             if (instance.Configuration.WaitForSkills)
@@ -21,15 +27,19 @@ namespace Grimoire.Botting.Commands.Combat
             if (!instance.IsRunning || !Player.IsAlive || !Player.IsLoggedIn)
                 return;
 
-            Player.AttackMonster(Monster);
+			if (antiCounter) Proxy.Instance.ReceivedFromServer += CapturePlayerData;
+
+			Player.AttackMonster(Monster);
             
             if (instance.Configuration.Skills.Count > 0)
 				Task.Run(() => UseSkillsSet(instance));
 
-			await instance.WaitUntil(() => !Player.HasTarget, null, 360);
+			await instance.WaitUntil(() => !Player.HasTarget && !onPause, null, 360);
             Player.CancelTarget();
 
-            _cts?.Cancel(false);
+			if (antiCounter) Proxy.Instance.ReceivedFromServer -= CapturePlayerData;
+
+			_cts?.Cancel(false);
         }
 
 		private CancellationTokenSource _cts;
@@ -95,6 +105,12 @@ namespace Grimoire.Botting.Commands.Combat
 		private int Index;
 		private async Task UseSkillsSet(IBotEngine instance)
 		{
+			if (onPause)
+            {
+				await Task.Delay(500);
+				return;
+            }
+
 			this._cts = new CancellationTokenSource();
 			int ClassIndex = -1;
 			bool flag = BotData.SkillSet != null && BotData.SkillSet.ContainsKey("[" + BotData.BotSkill + "]");
@@ -104,7 +120,7 @@ namespace Grimoire.Botting.Commands.Combat
 			}
 			int Count = instance.Configuration.Skills.Count - 1;
 			this.Index = ClassIndex;
-			while (!this._cts.IsCancellationRequested)
+			while (!this._cts.IsCancellationRequested && !onPause)
 			{
 				bool flag2 = !Player.IsLoggedIn || !Player.IsAlive;
 				if (flag2)
@@ -116,11 +132,11 @@ namespace Grimoire.Botting.Commands.Combat
 					}
 					return;
 				}
-				if (this.Monster.ToLower() == "escherion" && World.IsMonsterAvailable("Staff of Inversion"))
+				if (/*this.Monster.ToLower() == "escherion" &&*/ World.IsMonsterAvailable("Staff of Inversion"))
 				{
 					Player.AttackMonster("Staff of Inversion");
 				}
-				if (this.Monster.ToLower() == "vath" && World.IsMonsterAvailable("Stalagbite"))
+				if (/*this.Monster.ToLower() == "vath" &&*/ World.IsMonsterAvailable("Stalagbite"))
 				{
 					Player.AttackMonster("Stalagbite");
 				}
@@ -250,6 +266,37 @@ namespace Grimoire.Botting.Commands.Combat
 			{
 				Player.CancelTarget();
 				await Task.Delay(500);
+			}
+		}
+
+		private void CapturePlayerData(Message message)
+		{
+			string msg = message.ToString();
+
+			try
+			{
+				//"cmd":"aura++","auras":[{"nam":"Counter Attack"
+				//prepares a counter attack!!
+				string c1 = "\"cmd\":\"aura++\",\"auras\":[{\"nam\":\"Counter Attack\"";
+				string c2 = "prepares a counter attack";
+				if (msg.Contains(c2))
+				{
+					Console.WriteLine("Countering attack");
+					Player.CancelTarget();
+					onPause = true;
+				}
+
+				//"cmd":"aura--","aura":{"nam":"Counter Attack"
+				if (msg.Contains("\"cmd\":\"aura--\",\"aura\":{\"nam\":\"Counter Attack\""))
+				{
+					Console.WriteLine($"Stop counter attack");
+					onPause = false;
+				}
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("MyMsg: " + msg);
+				Console.WriteLine("MyError: " + e.Message);
 			}
 		}
 

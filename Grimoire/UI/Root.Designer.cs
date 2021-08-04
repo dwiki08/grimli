@@ -56,9 +56,9 @@
             "Bottom",
             "Up",
             "Down"});
-            this.cbPads.Location = new System.Drawing.Point(676, 2);
+            this.cbPads.Location = new System.Drawing.Point(696, 2);
             this.cbPads.Name = "cbPads";
-            this.cbPads.Size = new System.Drawing.Size(91, 21);
+            this.cbPads.Size = new System.Drawing.Size(90, 21);
             this.cbPads.TabIndex = 17;
             this.cbPads.SelectedIndexChanged += new System.EventHandler(this.cbPads_SelectedIndexChanged);
             // 
@@ -66,9 +66,9 @@
             // 
             this.cbCells.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbCells.FormattingEnabled = true;
-            this.cbCells.Location = new System.Drawing.Point(773, 2);
+            this.cbCells.Location = new System.Drawing.Point(788, 2);
             this.cbCells.Name = "cbCells";
-            this.cbCells.Size = new System.Drawing.Size(104, 21);
+            this.cbCells.Size = new System.Drawing.Size(93, 21);
             this.cbCells.TabIndex = 18;
             this.cbCells.SelectedIndexChanged += new System.EventHandler(this.cbCells_SelectedIndexChanged);
             this.cbCells.Click += new System.EventHandler(this.cbCells_Click);
@@ -196,7 +196,7 @@
             // chkAttack
             // 
             this.chkAttack.AutoSize = true;
-            this.chkAttack.Location = new System.Drawing.Point(590, 4);
+            this.chkAttack.Location = new System.Drawing.Point(611, 4);
             this.chkAttack.Name = "chkAttack";
             this.chkAttack.Size = new System.Drawing.Size(82, 17);
             this.chkAttack.TabIndex = 25;
@@ -205,11 +205,11 @@
             this.chkAttack.CheckedChanged += new System.EventHandler(this.chkAttack_CheckedChangedAsync);
             this.chkAttack.MouseHover += new System.EventHandler(this.chkAttack_MouseHover);
             // 
-            // checkBox1
+            // chkEnable
             // 
             this.chkEnable.AutoSize = true;
-            this.chkEnable.Location = new System.Drawing.Point(517, 4);
-            this.chkEnable.Name = "checkBox1";
+            this.chkEnable.Location = new System.Drawing.Point(538, 4);
+            this.chkEnable.Name = "chkEnable";
             this.chkEnable.Size = new System.Drawing.Size(67, 17);
             this.chkEnable.TabIndex = 27;
             this.chkEnable.Text = "Start Bot";

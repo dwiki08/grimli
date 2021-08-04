@@ -12,7 +12,7 @@ namespace Grimoire.Botting.Commands.Combat
 
         public async Task Execute(IBotEngine instance)
         {
-            Player.AttackMonster(this.Monster);
+            if (!Player.HasTarget) Player.AttackMonster(this.Monster);
             if (instance.Configuration.Skills.Count > 0)
                 Task.Run(() => UseSkillsSet(instance));
 
@@ -56,7 +56,7 @@ namespace Grimoire.Botting.Commands.Combat
             int Count = instance.Configuration.Skills.Count - 1;
             this.Index = ClassIndex;
             bool flag2 = !Player.IsLoggedIn || !Player.IsAlive;
-            if (flag2)
+            /*if (flag2)
             {
                 while (Player.HasTarget)
                 {
@@ -64,7 +64,7 @@ namespace Grimoire.Botting.Commands.Combat
                     await Task.Delay(500);
                 }
                 return;
-            }
+            }*/
             if (ClassIndex != -1)
             {
                 //with label
